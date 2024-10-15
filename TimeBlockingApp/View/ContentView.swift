@@ -13,6 +13,8 @@ struct ContentView: View {
 
     var body: some View {
         DayHeaderView()
+            .padding(.leading, 10)
+            .padding(.top, 12)
         Spacer()
     }
 }
