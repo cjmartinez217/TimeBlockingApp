@@ -12,10 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
-        DayHeaderView()
-            .padding(.leading, 10)
-            .padding(.top, 12)
-        Spacer()
+        DayCalendarView()
     }
 }
 
