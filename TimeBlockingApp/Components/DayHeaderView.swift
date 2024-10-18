@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DayHeaderView: View {
+struct DayHeader: View {
     var body: some View {
         HStack {
             Image(systemName: "line.horizontal.3")
@@ -25,7 +25,7 @@ struct DayHeaderView: View {
 
 #Preview {
     VStack {
-        DayHeaderView()
+        DayHeader()
         Spacer()
     }
 }
