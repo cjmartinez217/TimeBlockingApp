@@ -12,7 +12,17 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
-        DayCalendarView()
+        ZStack {
+            DayCalendarView()
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    AddEventButton()
+                        .padding(.trailing, 24)
+                }
+            }
+        }
     }
 }
 
