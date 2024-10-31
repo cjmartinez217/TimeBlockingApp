@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    // state var for button and pass
 
     var body: some View {
         ZStack {
@@ -23,6 +24,7 @@ struct ContentView: View {
                 }
             }
         }
+
     }
 }
 
