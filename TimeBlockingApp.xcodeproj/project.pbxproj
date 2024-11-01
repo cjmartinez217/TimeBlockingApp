@@ -11,13 +11,18 @@
 		A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */; };
 		A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */; };
 		A696C5C42CD3B16700F23E2E /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C32CD3B16700F23E2E /* AddEventView.swift */; };
+		A696C5C62CD5061700F23E2E /* SideMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C52CD5061700F23E2E /* SideMenuButton.swift */; };
+		A696C5C82CD5087200F23E2E /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C72CD5087200F23E2E /* WeekCalendarView.swift */; };
+		A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C92CD5088900F23E2E /* MonthCalendarView.swift */; };
+		A696C5CD2CD50B7900F23E2E /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5CC2CD50B7900F23E2E /* SideMenu.swift */; };
+		A696C5D02CD50E6300F23E2E /* SideMenuUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5CF2CD50E6300F23E2E /* SideMenuUtils.swift */; };
 		A6C74E532CB965940084FE6A /* TimeBlockingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E522CB965940084FE6A /* TimeBlockingAppApp.swift */; };
 		A6C74E552CB965940084FE6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E542CB965940084FE6A /* ContentView.swift */; };
 		A6C74E572CB965960084FE6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6C74E562CB965960084FE6A /* Assets.xcassets */; };
 		A6C74E5A2CB965960084FE6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6C74E592CB965960084FE6A /* Preview Assets.xcassets */; };
 		A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E5B2CB965960084FE6A /* Persistence.swift */; };
 		A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E5D2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld */; };
-		A6C74E6C2CBE9E510084FE6A /* DayHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E6B2CBE9E510084FE6A /* DayHeaderView.swift */; };
+		A6C74E6C2CBE9E510084FE6A /* DayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E6B2CBE9E510084FE6A /* DayHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +30,11 @@
 		A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarView.swift; sourceTree = "<group>"; };
 		A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
 		A696C5C32CD3B16700F23E2E /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
+		A696C5C52CD5061700F23E2E /* SideMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButton.swift; sourceTree = "<group>"; };
+		A696C5C72CD5087200F23E2E /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
+		A696C5C92CD5088900F23E2E /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
+		A696C5CC2CD50B7900F23E2E /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		A696C5CF2CD50E6300F23E2E /* SideMenuUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuUtils.swift; sourceTree = "<group>"; };
 		A6C74E4F2CB965940084FE6A /* TimeBlockingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeBlockingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6C74E522CB965940084FE6A /* TimeBlockingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockingAppApp.swift; sourceTree = "<group>"; };
 		A6C74E542CB965940084FE6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,7 +42,7 @@
 		A6C74E592CB965960084FE6A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A6C74E5B2CB965960084FE6A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A6C74E5E2CB965960084FE6A /* TimeBlockingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeBlockingApp.xcdatamodel; sourceTree = "<group>"; };
-		A6C74E6B2CBE9E510084FE6A /* DayHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeaderView.swift; sourceTree = "<group>"; };
+		A6C74E6B2CBE9E510084FE6A /* DayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,10 +60,29 @@
 			isa = PBXGroup;
 			children = (
 				A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */,
-				A6C74E6B2CBE9E510084FE6A /* DayHeaderView.swift */,
+				A6C74E6B2CBE9E510084FE6A /* DayHeader.swift */,
 				A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */,
+				A696C5C52CD5061700F23E2E /* SideMenuButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		A696C5CB2CD50AB900F23E2E /* CalendarViews */ = {
+			isa = PBXGroup;
+			children = (
+				A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */,
+				A696C5C72CD5087200F23E2E /* WeekCalendarView.swift */,
+				A696C5C92CD5088900F23E2E /* MonthCalendarView.swift */,
+			);
+			path = CalendarViews;
+			sourceTree = "<group>";
+		};
+		A696C5CE2CD50E4B00F23E2E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A696C5CF2CD50E6300F23E2E /* SideMenuUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		A6C74E462CB965940084FE6A = {
@@ -78,6 +107,7 @@
 				A6C74E522CB965940084FE6A /* TimeBlockingAppApp.swift */,
 				A696C5B22CC2A67400F23E2E /* Components */,
 				A6C74E692CBE9DF40084FE6A /* View */,
+				A696C5CE2CD50E4B00F23E2E /* Utils */,
 				A6C74E562CB965960084FE6A /* Assets.xcassets */,
 				A6C74E6A2CBE9E160084FE6A /* Model */,
 				A6C74E582CB965960084FE6A /* Preview Content */,
@@ -97,8 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				A6C74E542CB965940084FE6A /* ContentView.swift */,
-				A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */,
 				A696C5C32CD3B16700F23E2E /* AddEventView.swift */,
+				A696C5CB2CD50AB900F23E2E /* CalendarViews */,
+				A696C5CC2CD50B7900F23E2E /* SideMenu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,14 +214,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */,
+				A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */,
 				A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */,
 				A6C74E552CB965940084FE6A /* ContentView.swift in Sources */,
 				A696C5B12CC14F6B00F23E2E /* DayTimeGrid.swift in Sources */,
 				A696C5C42CD3B16700F23E2E /* AddEventView.swift in Sources */,
 				A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */,
-				A6C74E6C2CBE9E510084FE6A /* DayHeaderView.swift in Sources */,
+				A696C5C82CD5087200F23E2E /* WeekCalendarView.swift in Sources */,
+				A696C5CD2CD50B7900F23E2E /* SideMenu.swift in Sources */,
+				A696C5D02CD50E6300F23E2E /* SideMenuUtils.swift in Sources */,
+				A6C74E6C2CBE9E510084FE6A /* DayHeader.swift in Sources */,
 				A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */,
 				A6C74E532CB965940084FE6A /* TimeBlockingAppApp.swift in Sources */,
+				A696C5C62CD5061700F23E2E /* SideMenuButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

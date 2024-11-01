@@ -11,9 +11,9 @@ struct AddEventButton: View {
     @State var isAddEventPresented: Bool = false
 
     var body: some View {
-        Button(action: {
+        Button {
             isAddEventPresented.toggle()
-        }) {
+        } label: {
             ZStack {
                 Circle()
                     .fill(Color(red: 1, green: 0.6, blue: 0.6))
