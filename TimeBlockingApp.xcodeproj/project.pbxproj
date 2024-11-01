@@ -10,6 +10,7 @@
 		A696C5B12CC14F6B00F23E2E /* DayTimeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */; };
 		A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */; };
 		A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */; };
+		A696C5C42CD3B16700F23E2E /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C32CD3B16700F23E2E /* AddEventView.swift */; };
 		A6C74E532CB965940084FE6A /* TimeBlockingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E522CB965940084FE6A /* TimeBlockingAppApp.swift */; };
 		A6C74E552CB965940084FE6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E542CB965940084FE6A /* ContentView.swift */; };
 		A6C74E572CB965960084FE6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6C74E562CB965960084FE6A /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTimeGrid.swift; sourceTree = "<group>"; };
 		A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarView.swift; sourceTree = "<group>"; };
 		A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
+		A696C5C32CD3B16700F23E2E /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		A6C74E4F2CB965940084FE6A /* TimeBlockingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeBlockingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6C74E522CB965940084FE6A /* TimeBlockingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBlockingAppApp.swift; sourceTree = "<group>"; };
 		A6C74E542CB965940084FE6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				A6C74E542CB965940084FE6A /* ContentView.swift */,
 				A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */,
+				A696C5C32CD3B16700F23E2E /* AddEventView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */,
 				A6C74E552CB965940084FE6A /* ContentView.swift in Sources */,
 				A696C5B12CC14F6B00F23E2E /* DayTimeGrid.swift in Sources */,
+				A696C5C42CD3B16700F23E2E /* AddEventView.swift in Sources */,
 				A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */,
 				A6C74E6C2CBE9E510084FE6A /* DayHeaderView.swift in Sources */,
 				A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */,
