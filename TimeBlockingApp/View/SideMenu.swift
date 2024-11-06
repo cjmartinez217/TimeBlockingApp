@@ -35,20 +35,28 @@ struct SideMenu: View {
 
     var sideMenuContent: some View {
         HStack {
-            ZStack{
-                Rectangle()
-                    .fill(.white)
-                    .frame(width: 270)
-                    .shadow(color: .purple.opacity(0.1), radius: 5, x: 0, y: 3)
-
+            VStack {
                 VStack(alignment: .leading, spacing: 0) {
+                    Text("Views")
+                        .font(.system(size: 20, weight: .bold))
+                        .padding(.leading, 20)
+                        .padding(.bottom, 10)
 
                     ForEach(SideMenuRowType.allCases, id: \.self){ row in
-                        RowView(isSelected: selectedSideMenuTab == row.rawValue, title: row.title) {
+                        RowView(isSelected: selectedSideMenuTab == row.rawValue, title: row.title, icon: row.icon) {
                             selectedSideMenuTab = row.rawValue
                             isShowing.toggle()
                         }
                     }
+                    .padding(.leading)
+
+                    Divider()
+                        .padding(.top)
+                        .padding(.bottom)
+
+                    Text("Calendars")
+                        .font(.system(size: 20, weight: .bold))
+                        .padding(.leading, 20)
 
                     Spacer()
                 }
@@ -63,27 +71,22 @@ struct SideMenu: View {
         .background(.clear)
     }
 
-    func RowView(isSelected: Bool, title: String, hideDivider: Bool = false, action: @escaping (()->())) -> some View{
+    func RowView(isSelected: Bool, title: String, icon: String, action: @escaping (()->())) -> some View{
         Button{
             action()
         } label: {
             VStack(alignment: .leading){
-                HStack(spacing: 20){
-                    Rectangle()
-                        .fill(isSelected ? .purple : .white)
-                        .frame(width: 5)
-
+                HStack {
+                    Image(systemName: icon)
+                        .foregroundColor(isSelected ? .black : .gray)
                     Text(title)
-                        .font(.system(size: 14, weight: .regular))
+                        .font(.system(size: 16, weight: .regular))
                         .foregroundColor(isSelected ? .black : .gray)
                     Spacer()
                 }
             }
         }
-        .frame(height: 50)
-        .background(
-            LinearGradient(colors: [isSelected ? .purple.opacity(0.5) : .white, .white], startPoint: .leading, endPoint: .trailing)
-        )
+        .frame(height: 40)
     }
 }
 

@@ -20,4 +20,15 @@ enum SideMenuRowType: Int, CaseIterable {
             return "Month"
         }
     }
+
+    var icon: String {
+        switch self {
+        case .day:
+            return "rectangle.grid.1x2"
+        case .week:
+            return "rectangle.split.3x1"
+        case .month:
+            return "rectangle.split.3x3"
+        }
+    }
 }

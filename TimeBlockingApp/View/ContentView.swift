@@ -25,31 +25,21 @@ struct ContentView: View {
                 MonthCalendarView(presentSideMenu: $presentSideMenu)
                     .tag(2)
             }
-            .ignoresSafeArea(.all)
+            .tabViewStyle(.page)
+            .ignoresSafeArea()
 
             SideMenu(isShowing: $presentSideMenu, selectedSideMenuTab: $selectedSideMenuTab)
                 .ignoresSafeArea(.all)
+
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
-                    AddEventButton()
+                    AddEventButton(isDisabled: $presentSideMenu)
                         .padding(.trailing, 24)
                 }
             }
         }
-
-//        ZStack {
-//            DayCalendarView()
-//            VStack {
-//                Spacer()
-//                HStack {
-//                    Spacer()
-//                    AddEventButton()
-//                        .padding(.trailing, 24)
-//                }
-//            }
-//        }
     }
 }
 
