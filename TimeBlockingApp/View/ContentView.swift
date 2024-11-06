@@ -10,21 +10,36 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @State var presentSideMenu = false
+    @State var selectedSideMenuTab = 0
     // state var for button and pass
 
     var body: some View {
+
         ZStack {
-            DayCalendarView()
+            TabView(selection: $selectedSideMenuTab) {
+                DayCalendarView(presentSideMenu: $presentSideMenu)
+                    .tag(0)
+                WeekCalendarView(presentSideMenu: $presentSideMenu)
+                    .tag(1)
+                MonthCalendarView(presentSideMenu: $presentSideMenu)
+                    .tag(2)
+            }
+            .tabViewStyle(.page)
+            .ignoresSafeArea()
+
+            SideMenu(isShowing: $presentSideMenu, selectedSideMenuTab: $selectedSideMenuTab)
+                .ignoresSafeArea(.all)
+
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
-                    AddEventButton()
+                    AddEventButton(isDisabled: $presentSideMenu)
                         .padding(.trailing, 24)
                 }
             }
         }
-
     }
 }
 
