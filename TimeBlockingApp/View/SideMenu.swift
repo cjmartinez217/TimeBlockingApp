@@ -51,12 +51,43 @@ struct SideMenu: View {
                     .padding(.leading)
 
                     Divider()
-                        .padding(.top)
-                        .padding(.bottom)
+                        .padding(.vertical)
 
-                    Text("Calendars")
-                        .font(.system(size: 20, weight: .bold))
+                    VStack {
+                        Text("Calendars")
+                            .font(.system(size: 20, weight: .bold))
                         .padding(.leading, 20)
+
+                    }
+
+                    Divider()
+                        .padding(.vertical)
+
+                    // Accounts, Settings, Feedback Section
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack {
+                            Image(systemName: "person.crop.circle")
+                                .font(.system(size: 18, weight: .semibold))
+                            Text("Accounts")
+                                .font(.system(size: 18, weight: .semibold))
+                        }
+
+                        HStack {
+                            Image(systemName: "gearshape")
+                                .font(.system(size: 18, weight: .semibold))
+                            Text("Settings")
+                                .font(.system(size: 18, weight: .semibold))
+                        }
+
+                        HStack {
+                            Image(systemName: "bubble.left")
+                                .font(.system(size: 18, weight: .semibold))
+                            Text("Send feedback")
+                                .font(.system(size: 18, weight: .semibold))
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 16)
 
                     Spacer()
                 }
