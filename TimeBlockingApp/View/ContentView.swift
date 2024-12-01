@@ -12,7 +12,6 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State var presentSideMenu = false
     @State var selectedSideMenuTab = 0
-    // state var for button and pass
 
     var body: some View {
 

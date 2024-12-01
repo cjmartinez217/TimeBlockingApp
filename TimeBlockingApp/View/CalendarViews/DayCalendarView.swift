@@ -14,11 +14,15 @@ struct DayCalendarView: View {
         VStack {
             HStack(alignment: .center) {
                 SideMenuButton(presentSideMenu: $presentSideMenu)
-                DayHeader()
+                VStack(alignment: .leading) {
+                    Text("Thursday")
+                        .font(.system(size: 26, weight: .medium, design: .rounded))
+                    Text("July 25")
+                        .font(.system(size: 18, weight: .light, design: .rounded))
+                }
                 Spacer()
             }
             .padding(.leading, 10)
-            Spacer()
             DayTimeGrid()
         }
     }
