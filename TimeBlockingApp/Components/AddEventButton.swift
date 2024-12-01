@@ -17,7 +17,7 @@ struct AddEventButton: View {
         } label: {
             ZStack {
                 Circle()
-                    .fill(isDisabled ? Color(red: 0.75, green: 0.55, blue: 0.55) : Color(red: 1, green: 0.6, blue: 0.6))
+                    .fill(isDisabled ? Color(red: 0.75, green: 0.55, blue: 0.55) : Color("PrimaryThemeColor"))
                     .frame(width: 64, height: 64)
                 Image(systemName: "plus")
                     .foregroundStyle(Color(.white))
