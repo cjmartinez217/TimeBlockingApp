@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6172AD22CECE9050021532B /* WeekTimeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD12CECE9050021532B /* WeekTimeGrid.swift */; };
+		A6172AD42CEF8FD60021532B /* WeekHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD32CEF8FD60021532B /* WeekHeader.swift */; };
 		A696C5B12CC14F6B00F23E2E /* DayTimeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */; };
 		A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */; };
 		A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */; };
@@ -22,10 +24,11 @@
 		A6C74E5A2CB965960084FE6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6C74E592CB965960084FE6A /* Preview Assets.xcassets */; };
 		A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E5B2CB965960084FE6A /* Persistence.swift */; };
 		A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E5D2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld */; };
-		A6C74E6C2CBE9E510084FE6A /* DayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E6B2CBE9E510084FE6A /* DayHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A6172AD12CECE9050021532B /* WeekTimeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimeGrid.swift; sourceTree = "<group>"; };
+		A6172AD32CEF8FD60021532B /* WeekHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekHeader.swift; sourceTree = "<group>"; };
 		A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTimeGrid.swift; sourceTree = "<group>"; };
 		A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarView.swift; sourceTree = "<group>"; };
 		A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
@@ -42,7 +45,6 @@
 		A6C74E592CB965960084FE6A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A6C74E5B2CB965960084FE6A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A6C74E5E2CB965960084FE6A /* TimeBlockingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeBlockingApp.xcdatamodel; sourceTree = "<group>"; };
-		A6C74E6B2CBE9E510084FE6A /* DayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +62,10 @@
 			isa = PBXGroup;
 			children = (
 				A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */,
-				A6C74E6B2CBE9E510084FE6A /* DayHeader.swift */,
 				A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */,
 				A696C5C52CD5061700F23E2E /* SideMenuButton.swift */,
+				A6172AD12CECE9050021532B /* WeekTimeGrid.swift */,
+				A6172AD32CEF8FD60021532B /* WeekHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6172AD42CEF8FD60021532B /* WeekHeader.swift in Sources */,
 				A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */,
 				A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */,
 				A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */,
@@ -221,9 +225,9 @@
 				A696C5C42CD3B16700F23E2E /* AddEventView.swift in Sources */,
 				A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */,
 				A696C5C82CD5087200F23E2E /* WeekCalendarView.swift in Sources */,
+				A6172AD22CECE9050021532B /* WeekTimeGrid.swift in Sources */,
 				A696C5CD2CD50B7900F23E2E /* SideMenu.swift in Sources */,
 				A696C5D02CD50E6300F23E2E /* SideMenuUtils.swift in Sources */,
-				A6C74E6C2CBE9E510084FE6A /* DayHeader.swift in Sources */,
 				A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */,
 				A6C74E532CB965940084FE6A /* TimeBlockingAppApp.swift in Sources */,
 				A696C5C62CD5061700F23E2E /* SideMenuButton.swift in Sources */,
