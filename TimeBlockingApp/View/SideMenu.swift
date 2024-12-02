@@ -10,6 +10,7 @@ import SwiftUI
 struct SideMenu: View {
     @Binding var isShowing: Bool
     @Binding var selectedSideMenuTab: Int
+    @State private var selectedPage: SideMenuPage?
 
     var edgeTransition: AnyTransition = .move(edge: .leading)
     var body: some View {
@@ -31,6 +32,11 @@ struct SideMenu: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
         .animation(.easeInOut, value: isShowing)
+        .fullScreenCover(item: $selectedPage) { page in
+             SideMenuDetailView(page: page) {
+                 selectedPage = nil
+             }
+         }
     }
 
     var sideMenuContent: some View {
@@ -66,24 +72,39 @@ struct SideMenu: View {
                     // Accounts, Settings, Feedback Section
                     VStack(alignment: .leading, spacing: 16) {
                         HStack {
-                            Image(systemName: "person.crop.circle")
-                                .font(.system(size: 18, weight: .semibold))
-                            Text("Accounts")
-                                .font(.system(size: 18, weight: .semibold))
+                            Button {
+                                selectedPage = .accounts
+                            } label: {
+                                Image(systemName: "person.crop.circle")
+                                    .font(.system(size: 18, weight: .semibold))
+                                Text("Accounts")
+                                    .font(.system(size: 18, weight: .semibold))
+                            }
+                            .foregroundColor(.black)
                         }
 
                         HStack {
-                            Image(systemName: "gearshape")
-                                .font(.system(size: 18, weight: .semibold))
-                            Text("Settings")
-                                .font(.system(size: 18, weight: .semibold))
+                            Button {
+                                selectedPage = .settings
+                            } label: {
+                                Image(systemName: "gearshape")
+                                    .font(.system(size: 18, weight: .semibold))
+                                Text("Settings")
+                                    .font(.system(size: 18, weight: .semibold))
+                            }
+                            .foregroundColor(.black)
                         }
 
                         HStack {
-                            Image(systemName: "bubble.left")
-                                .font(.system(size: 18, weight: .semibold))
-                            Text("Send feedback")
-                                .font(.system(size: 18, weight: .semibold))
+                            Button {
+                                selectedPage = .feedback
+                            } label: {
+                                Image(systemName: "bubble.left")
+                                    .font(.system(size: 18, weight: .semibold))
+                                Text("Send feedback")
+                                    .font(.system(size: 18, weight: .semibold))
+                            }
+                            .foregroundColor(.black)
                         }
                     }
                     .padding(.horizontal)
