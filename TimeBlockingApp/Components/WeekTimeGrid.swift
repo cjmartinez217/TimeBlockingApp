@@ -11,15 +11,15 @@ struct WeekTimeGrid: View {
     let hours = Array(0...23)
 
     var body: some View {
-            ZStack {
-                HStack(spacing: 47) {
-                    ForEach(0..<7, id: \.self) { _ in
-                        Divider()
-                            .background(Color.gray)
-                    }
+        ZStack {
+            HStack(spacing: 47) {
+                ForEach(0..<7, id: \.self) { _ in
+                    Divider()
+                        .background(Color.gray)
                 }
-                .padding(.leading, 22)
-                ScrollView {
+            }
+            .padding(.leading, 22)
+            ScrollView {
                 VStack(spacing: 0) {
                     ForEach(hours, id: \.self) { hour in
                         ZStack(alignment: .topLeading) {
