@@ -15,7 +15,7 @@ struct SideMenuButton: View {
             presentSideMenu.toggle()
         } label: {
             Image(systemName: "line.horizontal.3")
-                .font(.system(size: 38, weight: .bold, design: .rounded))
+                .font(.system(size: 34, weight: .bold, design: .rounded))
                 .foregroundStyle(Color(.black))
         }
     }
