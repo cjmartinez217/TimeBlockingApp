@@ -15,7 +15,7 @@ struct WeekCalendarView: View {
             HStack(alignment: .center) {
                 SideMenuButton(presentSideMenu: $presentSideMenu)
                 Text("July")
-                    .font(.system(size: 26, weight: .medium, design: .rounded))
+                    .font(.system(size: 28, weight: .medium, design: .rounded))
                 Spacer()
             }
             .padding(.leading, 10)

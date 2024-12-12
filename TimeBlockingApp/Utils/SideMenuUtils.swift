@@ -32,3 +32,15 @@ enum SideMenuRowType: Int, CaseIterable {
         }
     }
 }
+
+enum SideMenuPage: Identifiable {
+    case accounts, settings, feedback
+
+    var id: String {
+        switch self {
+        case .accounts: return "accounts"
+        case .settings: return "settings"
+        case .feedback: return "feedback"
+        }
+    }
+}

@@ -24,6 +24,11 @@
 		A6C74E5A2CB965960084FE6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6C74E592CB965960084FE6A /* Preview Assets.xcassets */; };
 		A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E5B2CB965960084FE6A /* Persistence.swift */; };
 		A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E5D2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld */; };
+		A6F9A6AA2CFDE61300A61FBD /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6A92CFDE61300A61FBD /* AccountsView.swift */; };
+		A6F9A6AC2CFDE63100A61FBD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6AB2CFDE63100A61FBD /* SettingsView.swift */; };
+		A6F9A6AE2CFDE64C00A61FBD /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6AD2CFDE64C00A61FBD /* FeedbackView.swift */; };
+		A6F9A6B02CFDEA0600A61FBD /* SideMenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6AF2CFDEA0600A61FBD /* SideMenuDetailView.swift */; };
+		A6F9A6B22D08808C00A61FBD /* MonthGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6B12D08808C00A61FBD /* MonthGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,11 @@
 		A6C74E592CB965960084FE6A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A6C74E5B2CB965960084FE6A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A6C74E5E2CB965960084FE6A /* TimeBlockingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeBlockingApp.xcdatamodel; sourceTree = "<group>"; };
+		A6F9A6A92CFDE61300A61FBD /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		A6F9A6AB2CFDE63100A61FBD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A6F9A6AD2CFDE64C00A61FBD /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		A6F9A6AF2CFDEA0600A61FBD /* SideMenuDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuDetailView.swift; sourceTree = "<group>"; };
+		A6F9A6B12D08808C00A61FBD /* MonthGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +76,7 @@
 				A696C5C52CD5061700F23E2E /* SideMenuButton.swift */,
 				A6172AD12CECE9050021532B /* WeekTimeGrid.swift */,
 				A6172AD32CEF8FD60021532B /* WeekHeader.swift */,
+				A6F9A6B12D08808C00A61FBD /* MonthGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -133,6 +144,10 @@
 				A696C5C32CD3B16700F23E2E /* AddEventView.swift */,
 				A696C5CB2CD50AB900F23E2E /* CalendarViews */,
 				A696C5CC2CD50B7900F23E2E /* SideMenu.swift */,
+				A6F9A6A92CFDE61300A61FBD /* AccountsView.swift */,
+				A6F9A6AB2CFDE63100A61FBD /* SettingsView.swift */,
+				A6F9A6AD2CFDE64C00A61FBD /* FeedbackView.swift */,
+				A6F9A6AF2CFDEA0600A61FBD /* SideMenuDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,16 +234,21 @@
 				A6172AD42CEF8FD60021532B /* WeekHeader.swift in Sources */,
 				A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */,
 				A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */,
+				A6F9A6B22D08808C00A61FBD /* MonthGrid.swift in Sources */,
 				A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */,
 				A6C74E552CB965940084FE6A /* ContentView.swift in Sources */,
+				A6F9A6AC2CFDE63100A61FBD /* SettingsView.swift in Sources */,
 				A696C5B12CC14F6B00F23E2E /* DayTimeGrid.swift in Sources */,
 				A696C5C42CD3B16700F23E2E /* AddEventView.swift in Sources */,
 				A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */,
+				A6F9A6AA2CFDE61300A61FBD /* AccountsView.swift in Sources */,
 				A696C5C82CD5087200F23E2E /* WeekCalendarView.swift in Sources */,
+				A6F9A6AE2CFDE64C00A61FBD /* FeedbackView.swift in Sources */,
 				A6172AD22CECE9050021532B /* WeekTimeGrid.swift in Sources */,
 				A696C5CD2CD50B7900F23E2E /* SideMenu.swift in Sources */,
 				A696C5D02CD50E6300F23E2E /* SideMenuUtils.swift in Sources */,
 				A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */,
+				A6F9A6B02CFDEA0600A61FBD /* SideMenuDetailView.swift in Sources */,
 				A6C74E532CB965940084FE6A /* TimeBlockingAppApp.swift in Sources */,
 				A696C5C62CD5061700F23E2E /* SideMenuButton.swift in Sources */,
 			);
