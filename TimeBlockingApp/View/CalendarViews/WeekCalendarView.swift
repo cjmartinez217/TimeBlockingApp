@@ -17,8 +17,9 @@ struct WeekCalendarView: View {
                 Text("July")
                     .font(.system(size: 28, weight: .medium, design: .rounded))
                 Spacer()
+                AddEventButton(isDisabled: $presentSideMenu)
             }
-            .padding(.leading, 10)
+            .padding(.horizontal, 10)
             WeekHeader()
                 .padding(.leading, 70)
                 .padding(.vertical, 10)

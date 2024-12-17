@@ -21,8 +21,9 @@ struct DayCalendarView: View {
                         .font(.system(size: 18, weight: .light, design: .rounded))
                 }
                 Spacer()
+                AddEventButton(isDisabled: $presentSideMenu)
             }
-            .padding(.leading, 10)
+            .padding(.horizontal, 10)
             DayTimeGrid()
         }
     }
