@@ -9,42 +9,51 @@ import SwiftUI
 
 struct DayTimeGrid: View {
     let hours = Array(0...23)
+    @State private var currentTimePosition: CGFloat = 0
+    let hourHeight: CGFloat = 70
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 0) {
-                ForEach(hours, id: \.self) { hour in
-                    ZStack(alignment: .topLeading) {
-                        Divider()
-                            .background(Color.gray)
-                            .offset(y: 37)
-                            .padding(.leading, 60)
-                        HStack {
-                            Text(formatTime(hour))
-                                .frame(width: 50, alignment: .trailing)
-                                .padding(.leading, 8)
+            ZStack(alignment: .topLeading) {
+                VStack(spacing: 0) {
+                    ForEach(hours, id: \.self) { hour in
+                        ZStack(alignment: .topLeading) {
                             Divider()
                                 .background(Color.gray)
-                                .frame(height: 70)
-                            Spacer()
+                                .offset(y: 37)
+                                .padding(.leading, 60)
+                            HStack {
+                                Text(TimeUtils.formatTime(hour))
+                                    .frame(width: 50, alignment: .trailing)
+                                    .padding(.leading, 8)
+                                Divider()
+                                    .background(Color.gray)
+                                    .frame(height: hourHeight)
+                                Spacer()
+                            }
+                            .frame(height: hourHeight)
                         }
-                        .frame(height: 70)
                     }
                 }
+
+                TimeBar()
+                    .padding(.leading, 60)
+                    .offset(y: currentTimePosition)
+                    .onAppear {
+                        updateCurrentTimePosition()
+                    }
             }
         }
+        .onAppear(perform: startTimer)
     }
 
-    func formatTime(_ hour: Int) -> String {
-        if hour == 0 {
-            return "12 AM"
-        }
-        else if hour < 12 {
-            return "\(hour) AM"
-        } else if hour == 12 {
-            return "12 PM"
-        } else {
-            return "\(hour - 12) PM"
+    func updateCurrentTimePosition() {
+        currentTimePosition = TimeUtils.currentTimeYPosition(hourHeight: hourHeight, offset: 30)
+    }
+
+    func startTimer() {
+        Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
+            updateCurrentTimePosition()
         }
     }
 }
