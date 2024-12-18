@@ -30,11 +30,11 @@ struct ContentView: View {
             SideMenu(isShowing: $presentSideMenu, selectedSideMenuTab: $selectedSideMenuTab)
                 .ignoresSafeArea(.all)
 
-            VStack {
+            HStack {
                 Spacer()
-                HStack {
+                VStack(alignment: .trailing) {
                     Spacer()
-                    AddEventButton(isDisabled: $presentSideMenu)
+                    AIButton(isDisabled: $presentSideMenu)
                         .padding(.trailing, 24)
                 }
             }
