@@ -30,6 +30,8 @@
 		A6F9A6B02CFDEA0600A61FBD /* SideMenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6AF2CFDEA0600A61FBD /* SideMenuDetailView.swift */; };
 		A6F9A6B22D08808C00A61FBD /* MonthGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6B12D08808C00A61FBD /* MonthGrid.swift */; };
 		A6F9A6B42D0B718900A61FBD /* AIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6B32D0B718900A61FBD /* AIButton.swift */; };
+		A6F9A6B62D13110500A61FBD /* TimeUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6B52D13110500A61FBD /* TimeUtils.swift */; };
+		A6F9A6B82D13168000A61FBD /* TimeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6B72D13168000A61FBD /* TimeBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		A6F9A6AF2CFDEA0600A61FBD /* SideMenuDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuDetailView.swift; sourceTree = "<group>"; };
 		A6F9A6B12D08808C00A61FBD /* MonthGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthGrid.swift; sourceTree = "<group>"; };
 		A6F9A6B32D0B718900A61FBD /* AIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIButton.swift; sourceTree = "<group>"; };
+		A6F9A6B52D13110500A61FBD /* TimeUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUtils.swift; sourceTree = "<group>"; };
+		A6F9A6B72D13168000A61FBD /* TimeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 				A6172AD32CEF8FD60021532B /* WeekHeader.swift */,
 				A6F9A6B12D08808C00A61FBD /* MonthGrid.swift */,
 				A6F9A6B32D0B718900A61FBD /* AIButton.swift */,
+				A6F9A6B72D13168000A61FBD /* TimeBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				A696C5CF2CD50E6300F23E2E /* SideMenuUtils.swift */,
+				A6F9A6B52D13110500A61FBD /* TimeUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -248,8 +254,10 @@
 				A6F9A6AA2CFDE61300A61FBD /* AccountsView.swift in Sources */,
 				A696C5C82CD5087200F23E2E /* WeekCalendarView.swift in Sources */,
 				A6F9A6AE2CFDE64C00A61FBD /* FeedbackView.swift in Sources */,
+				A6F9A6B62D13110500A61FBD /* TimeUtils.swift in Sources */,
 				A6172AD22CECE9050021532B /* WeekTimeGrid.swift in Sources */,
 				A696C5CD2CD50B7900F23E2E /* SideMenu.swift in Sources */,
+				A6F9A6B82D13168000A61FBD /* TimeBar.swift in Sources */,
 				A696C5D02CD50E6300F23E2E /* SideMenuUtils.swift in Sources */,
 				A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */,
 				A6F9A6B02CFDEA0600A61FBD /* SideMenuDetailView.swift in Sources */,
