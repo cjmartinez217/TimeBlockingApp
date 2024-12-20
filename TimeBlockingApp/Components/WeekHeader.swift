@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct WeekHeader: View {
-    let datesAndDayLetters = zip(Array(21...27), ["S", "M", "T", "W", "T", "F", "S"]).map { $0 }
-    let currentDate = 25
+    var weekDates: [(Int, String)] = TimeUtils.getWeekDates()
+    let currentDate = Calendar.current.component(.day, from: Date())
 
     var body: some View {
         VStack {
             HStack {
-                ForEach(datesAndDayLetters, id: \.0) { date, dayLetter in
+                ForEach(weekDates, id: \.0) { date, dayLetter in
                     VStack(spacing: 0) {
                         Text(dayLetter)
                             .foregroundColor(date == currentDate ? Color("PrimaryThemeColor") : .black)
