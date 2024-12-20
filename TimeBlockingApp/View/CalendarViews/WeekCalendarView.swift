@@ -14,7 +14,7 @@ struct WeekCalendarView: View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
                 SideMenuButton(presentSideMenu: $presentSideMenu)
-                Text("July")
+                Text(TimeUtils.getMonth())
                     .font(.system(size: 28, weight: .medium, design: .rounded))
                 Spacer()
                 AddEventButton(isDisabled: $presentSideMenu)

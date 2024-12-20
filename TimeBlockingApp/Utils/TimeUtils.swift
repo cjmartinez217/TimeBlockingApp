@@ -48,8 +48,30 @@ struct TimeUtils {
         return (0..<7).map { offset in
             guard let date = calendar.date(byAdding: .day, value: offset, to: startOfWeek) else { return (0, "") }
             let dayLetter = String(calendar.weekdaySymbols[calendar.component(.weekday, from: date) - 1].prefix(1))
-            let dayNumber = calendar.component(.day, from: date)
+            let dayNumber = getDay(from: date)
             return (dayNumber, dayLetter)
         }
+    }
+
+    /// Returns the full day name (e.g., "Thursday") for the given date
+    /// - Parameter date: The date to format (defaults to the current date)
+    static func getDayOfWeek(from date: Date = Date()) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE" // Full day name
+        return formatter.string(from: date)
+    }
+
+    /// Returns the full month name (e.g., "July") for the given date
+    /// - Parameter date: The date to format (defaults to the current date)
+    static func getMonth(from date: Date = Date()) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM" // Full month name
+        return formatter.string(from: date)
+    }
+
+    /// Returns the day of the month (e.g., "25") for the given date
+    /// - Parameter date: The date to format (defaults to the current date)
+    static func getDay(from date: Date = Date()) -> Int {
+        return Calendar.current.component(.day, from: date)
     }
 }
