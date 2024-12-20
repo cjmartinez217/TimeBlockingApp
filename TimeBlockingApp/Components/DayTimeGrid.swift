@@ -41,20 +41,14 @@ struct DayTimeGrid: View {
                     .offset(y: currentTimePosition)
                     .onAppear {
                         updateCurrentTimePosition()
+                        TimeUtils.startTimer(onUpdate: updateCurrentTimePosition)
                     }
             }
         }
-        .onAppear(perform: startTimer)
     }
 
     func updateCurrentTimePosition() {
         currentTimePosition = TimeUtils.currentTimeYPosition(hourHeight: hourHeight, offset: 30)
-    }
-
-    func startTimer() {
-        Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
-            updateCurrentTimePosition()
-        }
     }
 }
 

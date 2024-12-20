@@ -9,11 +9,10 @@ import SwiftUI
 
 struct WeekTimeGrid: View {
     let hours = Array(0...23)
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     let hourHeight: CGFloat = 70
     @State private var currentTimePosition: CGFloat = 0
     private var currentDayIndex: Int {
-        Calendar.current.component(.weekday, from: Date()) - 1 // 0 = Sunday, 6 = Saturday
+        Calendar.current.component(.weekday, from: Date()) - 1
     }
 
     var body: some View {
@@ -50,14 +49,14 @@ struct WeekTimeGrid: View {
                         let dayWidth = (geometry.size.width - 60) / 7
 
                         TimeBar()
-                            .frame(width: dayWidth + 5) // Restrict the width to today's column
+                            .frame(width: dayWidth + 5)
                             .offset(
-                                x: CGFloat(currentDayIndex) * dayWidth + 60, // X-position for today
+                                x: CGFloat(currentDayIndex) * dayWidth + 60,
                                 y: currentTimePosition
                             )
                             .onAppear {
                                 updateCurrentTimePosition()
-                                print(geometry.size.width)
+                                TimeUtils.startTimer(onUpdate: updateCurrentTimePosition)
                             }
                     }
                 }
@@ -68,13 +67,6 @@ struct WeekTimeGrid: View {
     func updateCurrentTimePosition() {
         currentTimePosition = TimeUtils.currentTimeYPosition(hourHeight: hourHeight, offset: 41)
     }
-
-    func startTimer() {
-        Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
-            updateCurrentTimePosition()
-        }
-    }
-
 }
 
 #Preview {

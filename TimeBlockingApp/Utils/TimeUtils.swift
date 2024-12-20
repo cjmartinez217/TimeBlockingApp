@@ -32,4 +32,10 @@ struct TimeUtils {
         let minuteHeight = hourHeight / 60
         return CGFloat(currentHour) * hourHeight + CGFloat(currentMinute) * minuteHeight + offset
     }
+
+    static func startTimer(onUpdate: @escaping () -> Void) {
+        Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
+            onUpdate()
+        }
+    }
 }
