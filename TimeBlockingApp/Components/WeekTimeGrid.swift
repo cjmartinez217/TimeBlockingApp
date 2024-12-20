@@ -9,6 +9,11 @@ import SwiftUI
 
 struct WeekTimeGrid: View {
     let hours = Array(0...23)
+    let hourHeight: CGFloat = 70
+    @State private var currentTimePosition: CGFloat = 0
+    private var currentDayIndex: Int {
+        Calendar.current.component(.weekday, from: Date()) - 1
+    }
 
     var body: some View {
         ZStack {
@@ -20,39 +25,47 @@ struct WeekTimeGrid: View {
             }
             .padding(.leading, 22)
             ScrollView {
-                VStack(spacing: 0) {
-                    ForEach(hours, id: \.self) { hour in
-                        ZStack(alignment: .topLeading) {
-                            Divider()
-                                .background(Color.gray)
-                                .offset(y: 37)
-                                .padding(.leading, 60)
+                ZStack {
+                    VStack(spacing: 0) {
+                        ForEach(hours, id: \.self) { hour in
+                            ZStack(alignment: .topLeading) {
+                                Divider()
+                                    .background(Color.gray)
+                                    .offset(y: 37)
+                                    .padding(.leading, 60)
 
-                            HStack {
-                                Text(formatTime(hour))
-                                    .frame(width: 50, alignment: .trailing)
-                                    .padding(.leading, 8)
+                                HStack {
+                                    Text(TimeUtils.formatTime(hour))
+                                        .frame(width: 50, alignment: .trailing)
+                                        .padding(.leading, 8)
+                                }
+                                .frame(height: 70)
                             }
-                            .frame(height: 70)
                         }
                     }
+                    .padding(.top, 10)
+
+                    GeometryReader { geometry in
+                        let dayWidth = (geometry.size.width - 60) / 7
+
+                        TimeBar()
+                            .frame(width: dayWidth + 5)
+                            .offset(
+                                x: CGFloat(currentDayIndex) * dayWidth + 60,
+                                y: currentTimePosition
+                            )
+                            .onAppear {
+                                updateCurrentTimePosition()
+                                TimeUtils.startTimer(onUpdate: updateCurrentTimePosition)
+                            }
+                    }
                 }
-                .padding(.top, 10)
             }
         }
     }
 
-    func formatTime(_ hour: Int) -> String {
-        if hour == 0 {
-            return "12 AM"
-        }
-        else if hour < 12 {
-            return "\(hour) AM"
-        } else if hour == 12 {
-            return "12 PM"
-        } else {
-            return "\(hour - 12) PM"
-        }
+    func updateCurrentTimePosition() {
+        currentTimePosition = TimeUtils.currentTimeYPosition(hourHeight: hourHeight, offset: 41)
     }
 }
 

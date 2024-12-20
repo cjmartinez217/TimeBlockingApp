@@ -35,32 +35,6 @@ struct MonthGrid: View {
                 }
             }
         }
-
-//        ZStack {
-//            HStack {
-//                ForEach(0..<7, id: \.self) { _ in
-//                    Divider()
-//                        .background(Color.gray)
-//                    Spacer()
-//                }
-//            }
-//            .mask(
-//                VStack {
-//                    Spacer()
-//                    Rectangle()
-//                        .ignoresSafeArea()
-//                        .padding(.top, -7)
-//                }
-//            )
-//            VStack {
-//                ForEach(0..<4, id: \.self) { _ in
-//                    Divider()
-//                        .background(Color.gray)
-//                        .frame(maxHeight: 1)
-//                    Spacer()
-//                }
-//            }
-//        }
     }
 }
 
