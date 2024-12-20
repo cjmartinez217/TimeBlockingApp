@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WeekHeader: View {
     var weekDates: [(Int, String)] = TimeUtils.getWeekDates()
-    let currentDate = Calendar.current.component(.day, from: Date())
+    let currentDate = TimeUtils.getDay()
 
     var body: some View {
         VStack {

@@ -15,9 +15,10 @@ struct DayCalendarView: View {
             HStack(alignment: .center) {
                 SideMenuButton(presentSideMenu: $presentSideMenu)
                 VStack(alignment: .leading) {
-                    Text("Thursday")
+                    Text(TimeUtils.getDayOfWeek())
                         .font(.system(size: 26, weight: .medium, design: .rounded))
-                    Text("July 25")
+                    let monthDate = TimeUtils.getMonth() + " " + String(TimeUtils.getDay())
+                    Text(monthDate)
                         .font(.system(size: 18, weight: .light, design: .rounded))
                 }
                 Spacer()
