@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct MonthGrid: View {
-    let days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    let date: Date
+    private let days: [Date]
+
+    init(date: Date = Date()) {
+        self.date = date
+        self.days = TimeUtils.getDaysForMonthGrid(date: date)
+    }
 
     var body: some View {
         ZStack {
@@ -21,19 +27,50 @@ struct MonthGrid: View {
                 }
             }
             Grid {
-                ForEach(0..<5, id: \.self) { row in
+                ForEach(0..<6, id: \.self) { row in
                     Divider()
                         .background(Color.gray)
                         .frame(maxHeight: 1)
                     GridRow {
                         ForEach(0..<7, id: \.self) { column in
                             let index = row * 7 + column
-                            Text("\(days[index])")
+                            let day = days[index]
+                            DayCell(
+                                day: day,
+                                isToday: Calendar.current.isDate(day, inSameDayAs: Date()),
+                                isInMonth: Calendar.current.isDate(day, equalTo: date, toGranularity: .month)
+                            )
                         }
                     }
                     Spacer()
                 }
             }
+        }
+    }
+}
+
+struct DayCell: View {
+    let day: Date
+    let isToday: Bool
+    let isInMonth: Bool
+
+    var body: some View {
+        let foregroundColor: Color = {
+            switch (isToday, isInMonth) {
+            case (true, _):
+                return Color.white
+            case (false, false):
+                return Color.gray
+            default:
+                return Color.black
+            }
+        } ()
+        ZStack {
+            Circle()
+                .fill(isToday ? Color("PrimaryThemeColor") : Color.white)
+                .frame(width: 32, height: 32)
+            Text("\(TimeUtils.getDay(date: day))")
+                .foregroundColor(foregroundColor)
         }
     }
 }
