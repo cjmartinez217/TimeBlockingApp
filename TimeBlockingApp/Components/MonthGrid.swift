@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct MonthGrid: View {
-    private let days: [Date] = TimeUtils.getDaysForMonthGrid()
+    let date: Date
+    private let days: [Date]
+
+    init(date: Date = Date()) {
+        self.date = date
+        self.days = TimeUtils.getDaysForMonthGrid(date: date)
+    }
 
     var body: some View {
         ZStack {
@@ -21,19 +27,50 @@ struct MonthGrid: View {
                 }
             }
             Grid {
-                ForEach(0..<5, id: \.self) { row in
+                ForEach(0..<6, id: \.self) { row in
                     Divider()
                         .background(Color.gray)
                         .frame(maxHeight: 1)
                     GridRow {
                         ForEach(0..<7, id: \.self) { column in
                             let index = row * 7 + column
-                            Text("\(TimeUtils.getDay(date: days[index]))")
+                            let day = days[index]
+                            DayCell(
+                                day: day,
+                                isToday: Calendar.current.isDate(day, inSameDayAs: Date()),
+                                isInMonth: Calendar.current.isDate(day, equalTo: date, toGranularity: .month)
+                            )
                         }
                     }
                     Spacer()
                 }
             }
+        }
+    }
+}
+
+struct DayCell: View {
+    let day: Date
+    let isToday: Bool
+    let isInMonth: Bool
+
+    var body: some View {
+        let foregroundColor: Color = {
+            switch (isToday, isInMonth) {
+            case (true, _):
+                return Color.white
+            case (false, false):
+                return Color.gray
+            default:
+                return Color.black
+            }
+        } ()
+        ZStack {
+            Circle()
+                .fill(isToday ? Color("PrimaryThemeColor") : Color.white)
+                .frame(width: 32, height: 32)
+            Text("\(TimeUtils.getDay(date: day))")
+                .foregroundColor(foregroundColor)
         }
     }
 }

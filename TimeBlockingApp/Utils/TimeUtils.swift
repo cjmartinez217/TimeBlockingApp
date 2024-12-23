@@ -93,13 +93,8 @@ struct TimeUtils {
 
         // Add days from the previous month to fill the grid
         let daysFromPreviousMonth = weekdayOfFirstDay - 1
-        if let previousMonth = calendar.date(byAdding: .month, value: -1, to: startOfMonth) {
-            let range = calendar.range(of: .day, in: .month, for: previousMonth)!
-            let lastDayOfPreviousMonth = range.upperBound - 1
-            for i in 0..<daysFromPreviousMonth {
-                let day = lastDayOfPreviousMonth - (daysFromPreviousMonth - i - 1)
-                dates.append(calendar.date(byAdding: .day, value: day - lastDayOfPreviousMonth, to: previousMonth)!)
-            }
+        for i in stride(from: daysFromPreviousMonth, through: 1, by: -1) {
+            dates.append(calendar.date(byAdding: .day, value: -i, to: startOfMonth)!)
         }
 
         // Add days for the current month
