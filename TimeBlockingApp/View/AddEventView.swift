@@ -41,6 +41,7 @@ struct AddEventView: View {
                         isAddEventPresented.toggle()
                     }) {
                         Text("Cancel")
+                            .font(.system(size: 18, weight: .regular, design: .rounded))
                             .underline()
                     }
                     Spacer()
@@ -48,6 +49,7 @@ struct AddEventView: View {
 
                     }) {
                         Text("Save")
+                            .font(.system(size: 18, weight: .regular, design: .rounded))
                             .underline()
                     }
                 }
@@ -56,8 +58,8 @@ struct AddEventView: View {
                 // MARK: Event Title
                 TextField(text: $title) {
                     Text("Add title")
-                        .font(.system(size: 32, weight: .medium, design: .rounded))
                 }
+                .font(.system(size: 32, weight: .medium, design: .rounded))
                 .padding(.leading, 42)
                 .padding(.vertical, 16)
 
@@ -157,7 +159,7 @@ struct AddEventView: View {
                 HStack {
                     Image(systemName: "text.justify.left")
                         .imageScale(.large)
-                    TextField(text: $location) {
+                    TextField(text: $description) {
                         Text("Add description")
                     }
                     .font(.system(size: 24, weight: .regular, design: .rounded))
