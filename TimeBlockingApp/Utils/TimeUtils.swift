@@ -41,9 +41,9 @@ struct TimeUtils {
 
     /// Returns an array of tuples representing the current week's days
     /// - Returns: [(Day number, Day letter)]
-    static func getWeekDates() -> [(Int, String)] {
+    static func getWeekDates(date: Date = Date()) -> [(Int, String)] {
         let calendar = Calendar.current
-        let today = Date()
+        let today = date
         let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!
         return (0..<7).map { offset in
             guard let date = calendar.date(byAdding: .day, value: offset, to: startOfWeek) else { return (0, "") }

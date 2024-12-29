@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct DayTimeGrid: View {
-    let hours = Array(0...23)
+    var displayDate = Date()
+
     @State private var currentTimePosition: CGFloat = 0
+    let hours = Array(0...23)
     let hourHeight: CGFloat = 70
 
     var body: some View {
@@ -36,13 +38,16 @@ struct DayTimeGrid: View {
                     }
                 }
 
-                TimeBar()
-                    .padding(.leading, 60)
-                    .offset(y: currentTimePosition)
-                    .onAppear {
-                        updateCurrentTimePosition()
-                        TimeUtils.startTimer(onUpdate: updateCurrentTimePosition)
-                    }
+                if (Calendar.current.isDateInToday(displayDate)) {
+                    TimeBar()
+                        .padding(.leading, 60)
+                        .offset(y: currentTimePosition)
+                        .onAppear {
+                            updateCurrentTimePosition()
+                            TimeUtils.startTimer(onUpdate: updateCurrentTimePosition)
+                        }
+                        .animation(.none)
+                }
             }
         }
     }
