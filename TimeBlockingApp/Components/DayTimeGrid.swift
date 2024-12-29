@@ -46,6 +46,7 @@ struct DayTimeGrid: View {
                             updateCurrentTimePosition()
                             TimeUtils.startTimer(onUpdate: updateCurrentTimePosition)
                         }
+                        .animation(.none)
                 }
             }
         }

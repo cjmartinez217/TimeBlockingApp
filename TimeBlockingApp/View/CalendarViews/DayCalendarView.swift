@@ -38,6 +38,7 @@ struct DayCalendarView: View {
                     }
                 }
         )
+        .animation(.easeInOut)
     }
 }
 

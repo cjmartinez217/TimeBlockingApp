@@ -61,6 +61,7 @@ struct WeekTimeGrid: View {
                                     updateCurrentTimePosition()
                                     TimeUtils.startTimer(onUpdate: updateCurrentTimePosition)
                                 }
+                                .animation(.none)
                         }
                     }
                 }

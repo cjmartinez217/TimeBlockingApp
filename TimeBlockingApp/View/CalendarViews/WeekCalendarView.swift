@@ -51,6 +51,7 @@ struct WeekCalendarView: View {
                     }
                 }
         )
+        .animation(.easeInOut)
     }
 }
 

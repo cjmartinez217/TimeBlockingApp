@@ -33,6 +33,7 @@ struct MonthCalendarView: View {
                     }
                 }
         )
+        .animation(.easeInOut)
     }
 }
 
