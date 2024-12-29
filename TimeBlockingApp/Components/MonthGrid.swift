@@ -10,10 +10,12 @@ import SwiftUI
 struct MonthGrid: View {
     let date: Date
     private let days: [Date]
+    let onDaySelected: (Date) -> Void
 
-    init(date: Date = Date()) {
+    init(date: Date = Date(), onDaySelected: @escaping (Date) -> Void) {
         self.date = date
         self.days = TimeUtils.getDaysForMonthGrid(date: date)
+        self.onDaySelected = onDaySelected
     }
 
     var body: some View {
@@ -38,7 +40,8 @@ struct MonthGrid: View {
                             DayCell(
                                 day: day,
                                 isToday: Calendar.current.isDate(day, inSameDayAs: Date()),
-                                isInMonth: Calendar.current.isDate(day, equalTo: date, toGranularity: .month)
+                                isInMonth: Calendar.current.isDate(day, equalTo: date, toGranularity: .month),
+                                onTap: { onDaySelected(day) }
                             )
                         }
                     }
@@ -53,6 +56,7 @@ struct DayCell: View {
     let day: Date
     let isToday: Bool
     let isInMonth: Bool
+    let onTap: () -> Void
 
     var body: some View {
         let foregroundColor: Color = {
@@ -72,9 +76,12 @@ struct DayCell: View {
             Text("\(TimeUtils.getDay(date: day))")
                 .foregroundColor(foregroundColor)
         }
+        .onTapGesture {
+            onTap()
+        }
     }
 }
 
 #Preview {
-    MonthGrid()
+    MonthGrid(onDaySelected: { _ in })
 }
