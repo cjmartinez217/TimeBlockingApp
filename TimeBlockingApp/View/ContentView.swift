@@ -44,7 +44,10 @@ struct ContentView: View {
                 selectedSideMenuTab = 0
             }
         case 2:
-            MonthCalendarView(presentSideMenu: $presentSideMenu)
+            MonthCalendarView(presentSideMenu: $presentSideMenu) { day in
+                selectedDay = day
+                selectedSideMenuTab = 0
+            }
         default:
             EmptyView()
         }
