@@ -9,16 +9,16 @@ import SwiftUI
 
 struct DayCalendarView: View {
     @Binding var presentSideMenu: Bool
-    @State var currentDay = Date()
+    @Binding var displayDate: Date
 
     var body: some View {
         VStack {
             HStack(alignment: .center) {
                 SideMenuButton(presentSideMenu: $presentSideMenu)
                 VStack(alignment: .leading) {
-                    Text(TimeUtils.getDayOfWeek(date: currentDay))
+                    Text(TimeUtils.getDayOfWeek(date: displayDate))
                         .font(.system(size: 26, weight: .medium, design: .rounded))
-                    let monthDate = TimeUtils.getMonth(date: currentDay) + " " + String(TimeUtils.getDay(date: currentDay))
+                    let monthDate = TimeUtils.getMonth(date: displayDate) + " " + String(TimeUtils.getDay(date: displayDate))
                     Text(monthDate)
                         .font(.system(size: 18, weight: .light, design: .rounded))
                 }
@@ -26,15 +26,15 @@ struct DayCalendarView: View {
                 AddEventButton(isDisabled: $presentSideMenu)
             }
             .padding(.horizontal, 10)
-            DayTimeGrid(displayDate: currentDay)
+            DayTimeGrid(displayDate: displayDate)
         }
         .gesture(
             DragGesture()
                 .onEnded { value in
                     if value.translation.width < 0 { // Swipe left
-                        currentDay = Calendar.current.date(byAdding: .day, value: 1, to: currentDay)!
+                        displayDate = Calendar.current.date(byAdding: .day, value: 1, to: displayDate)!
                     } else if value.translation.width > 0 { // Swipe right
-                        currentDay = Calendar.current.date(byAdding: .day, value: -1, to: currentDay)!
+                        displayDate = Calendar.current.date(byAdding: .day, value: -1, to: displayDate)!
                     }
                 }
         )
@@ -43,5 +43,5 @@ struct DayCalendarView: View {
 }
 
 #Preview {
-    DayCalendarView(presentSideMenu: .constant(false))
+    DayCalendarView(presentSideMenu: .constant(false), displayDate: .constant(Date()))
 }

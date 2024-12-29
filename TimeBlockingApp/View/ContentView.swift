@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State var presentSideMenu = false
     @State var selectedSideMenuTab = 0
+    @State var selectedDay: Date = Date()
 
     var body: some View {
 
@@ -36,9 +37,12 @@ struct ContentView: View {
     var currentCalendarView: some View {
         switch selectedSideMenuTab {
         case 0:
-            DayCalendarView(presentSideMenu: $presentSideMenu)
+            DayCalendarView(presentSideMenu: $presentSideMenu, displayDate: $selectedDay)
         case 1:
-            WeekCalendarView(presentSideMenu: $presentSideMenu)
+            WeekCalendarView(presentSideMenu: $presentSideMenu) { day in
+                selectedDay = day
+                selectedSideMenuTab = 0
+            }
         case 2:
             MonthCalendarView(presentSideMenu: $presentSideMenu)
         default:

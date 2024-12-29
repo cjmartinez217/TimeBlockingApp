@@ -9,26 +9,29 @@ import SwiftUI
 
 struct WeekHeader: View {
     var dateInWeek = Date()
-    let todaysDate = TimeUtils.getDay()
+    let onDaySelected: (Date) -> Void
 
     var body: some View {
-        let weekDates: [(Int, String)] = TimeUtils.getWeekDates(date: dateInWeek)
+        let weekDates: [(Date, String)] = TimeUtils.getWeekDates(date: dateInWeek)
 
         VStack {
             HStack {
                 ForEach(weekDates, id: \.0) { date, dayLetter in
                     VStack(spacing: 0) {
                         Text(dayLetter)
-                            .foregroundColor(date == todaysDate ? Color("PrimaryThemeColor") : .black)
+                            .foregroundColor(Calendar.current.isDateInToday(date) ? Color("PrimaryThemeColor") : .black)
                         ZStack {
                             Circle()
-                                .fill(date == todaysDate ? Color("PrimaryThemeColor") : Color.white)
+                                .fill(Calendar.current.isDateInToday(date) ? Color("PrimaryThemeColor") : Color.white)
                                 .frame(width: 32, height: 32)
-                            Text("\(date)")
-                                .foregroundColor(date == todaysDate ? .white : .black)
+                            Text("\(TimeUtils.getDay(date: date))")
+                                .foregroundColor(Calendar.current.isDateInToday(date) ? .white : .black)
                         }
                     }
                     .frame(maxWidth: .infinity)
+                    .onTapGesture {
+                        onDaySelected(date)
+                    }
                 }
             }
             .frame(maxWidth: .infinity)
@@ -37,5 +40,5 @@ struct WeekHeader: View {
 }
 
 #Preview {
-    WeekHeader()
+    WeekHeader(onDaySelected: { _ in })
 }
