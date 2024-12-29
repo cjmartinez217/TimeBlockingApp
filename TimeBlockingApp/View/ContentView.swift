@@ -16,16 +16,7 @@ struct ContentView: View {
     var body: some View {
 
         ZStack {
-            TabView(selection: $selectedSideMenuTab) {
-                DayCalendarView(presentSideMenu: $presentSideMenu)
-                    .tag(0)
-                WeekCalendarView(presentSideMenu: $presentSideMenu)
-                    .tag(1)
-                MonthCalendarView(presentSideMenu: $presentSideMenu)
-                    .tag(2)
-            }
-            .tabViewStyle(.page)
-            .ignoresSafeArea()
+            currentCalendarView
 
             SideMenu(isShowing: $presentSideMenu, selectedSideMenuTab: $selectedSideMenuTab)
                 .ignoresSafeArea(.all)
@@ -38,6 +29,20 @@ struct ContentView: View {
                         .padding(.trailing, 24)
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    var currentCalendarView: some View {
+        switch selectedSideMenuTab {
+        case 0:
+            DayCalendarView(presentSideMenu: $presentSideMenu)
+        case 1:
+            WeekCalendarView(presentSideMenu: $presentSideMenu)
+        case 2:
+            MonthCalendarView(presentSideMenu: $presentSideMenu)
+        default:
+            EmptyView()
         }
     }
 }

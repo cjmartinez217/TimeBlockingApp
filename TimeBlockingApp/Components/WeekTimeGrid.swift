@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct WeekTimeGrid: View {
+    var dateInWeek: Date = Date()
+    @State private var currentTimePosition: CGFloat = 0
+
     let hours = Array(0...23)
     let hourHeight: CGFloat = 70
-    @State private var currentTimePosition: CGFloat = 0
     private var currentDayIndex: Int {
         Calendar.current.component(.weekday, from: Date()) - 1
     }
@@ -45,19 +47,21 @@ struct WeekTimeGrid: View {
                     }
                     .padding(.top, 10)
 
-                    GeometryReader { geometry in
-                        let dayWidth = (geometry.size.width - 60) / 7
-
-                        TimeBar()
-                            .frame(width: dayWidth + 5)
-                            .offset(
-                                x: CGFloat(currentDayIndex) * dayWidth + 60,
-                                y: currentTimePosition
-                            )
-                            .onAppear {
-                                updateCurrentTimePosition()
-                                TimeUtils.startTimer(onUpdate: updateCurrentTimePosition)
-                            }
+                    if (Calendar.current.isDateInToday(dateInWeek)) {
+                        GeometryReader { geometry in
+                            let dayWidth = (geometry.size.width - 60) / 7
+                            
+                            TimeBar()
+                                .frame(width: dayWidth + 5)
+                                .offset(
+                                    x: CGFloat(currentDayIndex) * dayWidth + 60,
+                                    y: currentTimePosition
+                                )
+                                .onAppear {
+                                    updateCurrentTimePosition()
+                                    TimeUtils.startTimer(onUpdate: updateCurrentTimePosition)
+                                }
+                        }
                     }
                 }
             }

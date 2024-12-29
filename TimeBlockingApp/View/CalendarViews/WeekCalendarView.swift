@@ -9,18 +9,19 @@ import SwiftUI
 
 struct WeekCalendarView: View {
     @Binding var presentSideMenu: Bool
+    @State private var dateInWeek = Date() // Track the start of the current week
 
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
                 SideMenuButton(presentSideMenu: $presentSideMenu)
-                Text(TimeUtils.getMonth())
+                Text(TimeUtils.getMonth(date: dateInWeek))
                     .font(.system(size: 28, weight: .medium, design: .rounded))
                 Spacer()
                 AddEventButton(isDisabled: $presentSideMenu)
             }
             .padding(.horizontal, 10)
-            WeekHeader()
+            WeekHeader(dateInWeek: dateInWeek)
                 .padding(.leading, 70)
                 .padding(.vertical, 10)
             ZStack(alignment: .top) {
@@ -36,10 +37,20 @@ struct WeekCalendarView: View {
                     Divider()
                         .background(Color.black)
                 }
-                WeekTimeGrid()
+                WeekTimeGrid(dateInWeek: dateInWeek)
                     .padding(.top, 15)
             }
         }
+        .gesture(
+            DragGesture()
+                .onEnded { value in
+                    if value.translation.width < 0 { // Swipe left
+                        dateInWeek = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: dateInWeek)!
+                    } else if value.translation.width > 0 { // Swipe right
+                        dateInWeek = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: dateInWeek)!
+                    }
+                }
+        )
     }
 }
 
