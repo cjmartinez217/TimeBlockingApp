@@ -9,7 +9,8 @@ import SwiftUI
 
 struct WeekCalendarView: View {
     @Binding var presentSideMenu: Bool
-    @State private var dateInWeek = Date() // Track the start of the current week
+    @State private var dateInWeek = Date()
+    let onDaySelected: (Date) -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -21,7 +22,7 @@ struct WeekCalendarView: View {
                 AddEventButton(isDisabled: $presentSideMenu)
             }
             .padding(.horizontal, 10)
-            WeekHeader(dateInWeek: dateInWeek)
+            WeekHeader(dateInWeek: dateInWeek, onDaySelected: onDaySelected)
                 .padding(.leading, 70)
                 .padding(.vertical, 10)
             ZStack(alignment: .top) {
@@ -56,5 +57,5 @@ struct WeekCalendarView: View {
 }
 
 #Preview {
-    WeekCalendarView(presentSideMenu: .constant(false))
+    WeekCalendarView(presentSideMenu: .constant(false), onDaySelected: { _ in })
 }
