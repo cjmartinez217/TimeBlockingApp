@@ -12,14 +12,16 @@ struct EventModel: Codable, Identifiable {
     let title: String
     let startDate: Date
     let endDate: Date
-    let description: String
+    let description: String?
+    let isAllDay: Bool?
 
-    init(id: UUID = UUID(), title: String, startDate: Date, endDate: Date, description: String) {
+    init(id: UUID = UUID(), title: String, startDate: Date, endDate: Date, description: String = "", isAllDay: Bool = false) {
         self.id = id
         self.title = title
         self.startDate = startDate
         self.endDate = endDate
         self.description = description
+        self.isAllDay = isAllDay
     }
 }
 

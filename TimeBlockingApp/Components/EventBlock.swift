@@ -17,8 +17,10 @@ struct EventBlock: View {
             VStack(alignment: .leading) {
                 Text(event.title)
                     .font(.system(size: 16, weight: .bold))
-                Text(event.description)
-                    .font(.system(size: 12))
+                if let eventDescription = event.description {
+                    Text(eventDescription)
+                        .font(.system(size: 12))
+                }
             }
             .padding(8)
         }
