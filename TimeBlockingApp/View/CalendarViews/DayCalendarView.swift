@@ -10,6 +10,7 @@ import SwiftUI
 struct DayCalendarView: View {
     @Binding var presentSideMenu: Bool
     @Binding var displayDate: Date
+    @EnvironmentObject var calendarViewModel: CalendarViewModel
 
     var body: some View {
         VStack {
@@ -26,7 +27,7 @@ struct DayCalendarView: View {
                 AddEventButton(isDisabled: $presentSideMenu)
             }
             .padding(.horizontal, 10)
-            DayTimeGrid(displayDate: displayDate)
+            DayTimeGrid(displayDate: displayDate, events: calendarViewModel.events)
         }
         .gesture(
             DragGesture()
@@ -44,4 +45,5 @@ struct DayCalendarView: View {
 
 #Preview {
     DayCalendarView(presentSideMenu: .constant(false), displayDate: .constant(Date()))
+        .environmentObject(CalendarViewModel())
 }
