@@ -38,22 +38,11 @@ struct AccountsView: View {
     }
     
     var header: some View {
-        HStack {
-            Button(action: {
-                // done action
-            }) {
-                Text("Done")
-                    .foregroundColor(.blue)
-                    .font(.system(size: 16, weight: .bold))
-            }
-            .frame(maxWidth: .infinity, alignment: .topLeading)
-            .padding(.horizontal, 15)
-            Text("Manage Accounts")
-                .font(.system(size: 20, weight: .bold))
-                .frame(maxWidth: .infinity, alignment: .leading)
-        }
-        .padding(.vertical, 10)
-        .background(Color.white)
+        Text("Manage Accounts")
+            .font(.system(size: 20, weight: .bold))
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.vertical, 10)
+            .background(Color.white)
     }
 
     // Profile view that takes a Profile object
