@@ -9,10 +9,10 @@ import SwiftUI
 
 struct DayTimeGrid: View {
     var displayDate = Date()
+    let events: [EventModel]
 
     @State private var currentTimePosition: CGFloat = 0
     let hours = Array(0...23)
-    let hourHeight: CGFloat = 70
 
     var body: some View {
         ScrollView {
@@ -30,14 +30,19 @@ struct DayTimeGrid: View {
                                     .padding(.leading, 8)
                                 Divider()
                                     .background(Color.gray)
-                                    .frame(height: hourHeight)
+                                    .frame(height: Constants.hourHeight)
                                 Spacer()
                             }
-                            .frame(height: hourHeight)
+                            .frame(height: Constants.hourHeight)
                         }
                     }
                 }
-
+                ForEach(events) { event in
+                    EventBlock(event: event)
+                        .padding(.top, CGFloat(Calendar.current.component(.hour, from: event.startDate)) * Constants.hourHeight)
+                        .padding(.leading, 66)
+                        .offset(y: 37)
+                }
                 if (Calendar.current.isDateInToday(displayDate)) {
                     TimeBar()
                         .padding(.leading, 60)
@@ -53,10 +58,18 @@ struct DayTimeGrid: View {
     }
 
     func updateCurrentTimePosition() {
-        currentTimePosition = TimeUtils.currentTimeYPosition(hourHeight: hourHeight, offset: 30)
+        currentTimePosition = TimeUtils.currentTimeYPosition(hourHeight: Constants.hourHeight, offset: 30)
     }
 }
 
 #Preview {
-    DayTimeGrid()
+    DayTimeGrid(events: [
+        EventModel(
+            id: UUID(),
+            title: "Test1",
+            startDate: Calendar.current.date(byAdding: .hour, value: 0, to: Date())!,
+            endDate: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!,
+            description: "testing"
+        )
+    ])
 }

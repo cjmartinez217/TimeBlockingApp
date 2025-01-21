@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		A6172AD22CECE9050021532B /* WeekTimeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD12CECE9050021532B /* WeekTimeGrid.swift */; };
 		A6172AD42CEF8FD60021532B /* WeekHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD32CEF8FD60021532B /* WeekHeader.swift */; };
+		A6535C232D37EE8000EC81B2 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C222D37EE8000EC81B2 /* CalendarEventModel.swift */; };
+		A6535C2A2D37F59F00EC81B2 /* MockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C292D37F59F00EC81B2 /* MockStore.swift */; };
+		A6535C2C2D37F68D00EC81B2 /* CalendarServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C2B2D37F68D00EC81B2 /* CalendarServiceProtocol.swift */; };
+		A6535C2E2D37F6BC00EC81B2 /* MockCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C2D2D37F6BC00EC81B2 /* MockCalendarService.swift */; };
+		A6535C312D3AB27900EC81B2 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C302D3AB27900EC81B2 /* CalendarViewModel.swift */; };
+		A6535C332D3F03B500EC81B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C322D3F03B500EC81B2 /* Constants.swift */; };
+		A6535C352D3F04A600EC81B2 /* EventBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C342D3F04A600EC81B2 /* EventBlock.swift */; };
 		A696C5B12CC14F6B00F23E2E /* DayTimeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */; };
 		A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */; };
 		A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */; };
@@ -37,6 +44,13 @@
 /* Begin PBXFileReference section */
 		A6172AD12CECE9050021532B /* WeekTimeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimeGrid.swift; sourceTree = "<group>"; };
 		A6172AD32CEF8FD60021532B /* WeekHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekHeader.swift; sourceTree = "<group>"; };
+		A6535C222D37EE8000EC81B2 /* CalendarEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
+		A6535C292D37F59F00EC81B2 /* MockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStore.swift; sourceTree = "<group>"; };
+		A6535C2B2D37F68D00EC81B2 /* CalendarServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarServiceProtocol.swift; sourceTree = "<group>"; };
+		A6535C2D2D37F6BC00EC81B2 /* MockCalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCalendarService.swift; sourceTree = "<group>"; };
+		A6535C302D3AB27900EC81B2 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		A6535C322D3F03B500EC81B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A6535C342D3F04A600EC81B2 /* EventBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBlock.swift; sourceTree = "<group>"; };
 		A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTimeGrid.swift; sourceTree = "<group>"; };
 		A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarView.swift; sourceTree = "<group>"; };
 		A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
@@ -74,6 +88,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A6535C212D37EE3C00EC81B2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6535C222D37EE8000EC81B2 /* CalendarEventModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A6535C272D37F58900EC81B2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A6535C282D37F59300EC81B2 /* Mock */,
+				A6535C2B2D37F68D00EC81B2 /* CalendarServiceProtocol.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A6535C282D37F59300EC81B2 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				A6535C292D37F59F00EC81B2 /* MockStore.swift */,
+				A6535C2D2D37F6BC00EC81B2 /* MockCalendarService.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		A6535C2F2D3AB25A00EC81B2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A6535C302D3AB27900EC81B2 /* CalendarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A696C5B22CC2A67400F23E2E /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +133,7 @@
 				A6F9A6B12D08808C00A61FBD /* MonthGrid.swift */,
 				A6F9A6B32D0B718900A61FBD /* AIButton.swift */,
 				A6F9A6B72D13168000A61FBD /* TimeBar.swift */,
+				A6535C342D3F04A600EC81B2 /* EventBlock.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -104,6 +153,7 @@
 			children = (
 				A696C5CF2CD50E6300F23E2E /* SideMenuUtils.swift */,
 				A6F9A6B52D13110500A61FBD /* TimeUtils.swift */,
+				A6535C322D3F03B500EC81B2 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -129,9 +179,12 @@
 			children = (
 				A6C74E522CB965940084FE6A /* TimeBlockingAppApp.swift */,
 				A696C5B22CC2A67400F23E2E /* Components */,
+				A6535C2F2D3AB25A00EC81B2 /* ViewModel */,
 				A6C74E692CBE9DF40084FE6A /* View */,
 				A696C5CE2CD50E4B00F23E2E /* Utils */,
 				A6C74E562CB965960084FE6A /* Assets.xcassets */,
+				A6535C212D37EE3C00EC81B2 /* Models */,
+				A6535C272D37F58900EC81B2 /* Services */,
 				A6C74E6A2CBE9E160084FE6A /* Model */,
 				A6C74E582CB965960084FE6A /* Preview Content */,
 			);
@@ -241,9 +294,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6172AD42CEF8FD60021532B /* WeekHeader.swift in Sources */,
+				A6535C2C2D37F68D00EC81B2 /* CalendarServiceProtocol.swift in Sources */,
 				A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */,
 				A6F9A6B42D0B718900A61FBD /* AIButton.swift in Sources */,
 				A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */,
+				A6535C332D3F03B500EC81B2 /* Constants.swift in Sources */,
+				A6535C2A2D37F59F00EC81B2 /* MockStore.swift in Sources */,
 				A6F9A6B22D08808C00A61FBD /* MonthGrid.swift in Sources */,
 				A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */,
 				A6C74E552CB965940084FE6A /* ContentView.swift in Sources */,
@@ -254,12 +310,16 @@
 				A6F9A6AA2CFDE61300A61FBD /* AccountsView.swift in Sources */,
 				A696C5C82CD5087200F23E2E /* WeekCalendarView.swift in Sources */,
 				A6F9A6AE2CFDE64C00A61FBD /* FeedbackView.swift in Sources */,
+				A6535C2E2D37F6BC00EC81B2 /* MockCalendarService.swift in Sources */,
 				A6F9A6B62D13110500A61FBD /* TimeUtils.swift in Sources */,
 				A6172AD22CECE9050021532B /* WeekTimeGrid.swift in Sources */,
+				A6535C232D37EE8000EC81B2 /* CalendarEventModel.swift in Sources */,
+				A6535C312D3AB27900EC81B2 /* CalendarViewModel.swift in Sources */,
 				A696C5CD2CD50B7900F23E2E /* SideMenu.swift in Sources */,
 				A6F9A6B82D13168000A61FBD /* TimeBar.swift in Sources */,
 				A696C5D02CD50E6300F23E2E /* SideMenuUtils.swift in Sources */,
 				A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */,
+				A6535C352D3F04A600EC81B2 /* EventBlock.swift in Sources */,
 				A6F9A6B02CFDEA0600A61FBD /* SideMenuDetailView.swift in Sources */,
 				A6C74E532CB965940084FE6A /* TimeBlockingAppApp.swift in Sources */,
 				A696C5C62CD5061700F23E2E /* SideMenuButton.swift in Sources */,
