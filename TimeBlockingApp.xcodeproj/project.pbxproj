@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C17CA5B2D40460600A66DFA /* AIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C17CA5A2D4045F900A66DFA /* AIView.swift */; };
 		A6172AD22CECE9050021532B /* WeekTimeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD12CECE9050021532B /* WeekTimeGrid.swift */; };
 		A6172AD42CEF8FD60021532B /* WeekHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD32CEF8FD60021532B /* WeekHeader.swift */; };
 		A6535C232D37EE8000EC81B2 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C222D37EE8000EC81B2 /* CalendarEventModel.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C17CA5A2D4045F900A66DFA /* AIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIView.swift; sourceTree = "<group>"; };
 		A6172AD12CECE9050021532B /* WeekTimeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimeGrid.swift; sourceTree = "<group>"; };
 		A6172AD32CEF8FD60021532B /* WeekHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekHeader.swift; sourceTree = "<group>"; };
 		A6535C222D37EE8000EC81B2 /* CalendarEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		A6C74E692CBE9DF40084FE6A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2C17CA5A2D4045F900A66DFA /* AIView.swift */,
 				A6C74E542CB965940084FE6A /* ContentView.swift */,
 				A696C5C32CD3B16700F23E2E /* AddEventView.swift */,
 				A696C5CB2CD50AB900F23E2E /* CalendarViews */,
@@ -299,6 +302,7 @@
 				A6F9A6B42D0B718900A61FBD /* AIButton.swift in Sources */,
 				A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */,
 				A6535C332D3F03B500EC81B2 /* Constants.swift in Sources */,
+				2C17CA5B2D40460600A66DFA /* AIView.swift in Sources */,
 				A6535C2A2D37F59F00EC81B2 /* MockStore.swift in Sources */,
 				A6F9A6B22D08808C00A61FBD /* MonthGrid.swift in Sources */,
 				A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */,
