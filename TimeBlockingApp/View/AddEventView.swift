@@ -12,8 +12,8 @@ struct AddEventView: View {
 
     @State private var title: String = ""
     @State private var isAllDay = false
-    @State private var startDate = Date()
-    @State private var endDate = Date()
+    @State private var startDate = TimeUtils.getStartDate()
+    @State private var endDate = TimeUtils.getEndDate()
     @State private var location: String = ""
     @State private var description: String = ""
 
@@ -166,69 +166,15 @@ struct AddEventView: View {
                 }
                 .padding(.leading, 16)
                 .padding(.vertical, 16)
-
                 Divider()
-
                 Spacer()
             }
             .onChange(of: startDate) { newStartDate in
-                // TODO: make endDate be startDate + 1 hour
                 if endDate < newStartDate {
-                    endDate = newStartDate
+                    endDate = Calendar.current.date(byAdding: .hour, value: 1, to: newStartDate)!
                 }
             }
         }
-    }
-}
-
-struct DatePickerView: View {
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMM d, yyyy"
-        return formatter
-    }
-
-    private var timeFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter
-    }
-
-    @Binding var selection: Date
-    var minDate: Date?
-    let displayedComponents: DatePicker.Components
-
-    private var label: String {
-        switch displayedComponents {
-        case .date:
-            return dateFormatter.string(from: selection)
-        case .hourAndMinute:
-            return timeFormatter.string(from: selection)
-        default:
-            return ""
-        }
-    }
-
-    var body: some View {
-        ZStack {
-            // Conditional underline for time display
-            if displayedComponents == .hourAndMinute {
-                Text(label)
-                    .underline()
-            } else {
-                Text(label)
-            }
-            DatePicker(
-                "",
-                selection: $selection,
-                in: (minDate ?? .distantPast)...,
-                displayedComponents: displayedComponents
-            )
-            .labelsHidden()
-            .opacity(0.02)
-            .frame(width: 0, height: 0) // Reduce visual footprint
-        }
-        .animation(.easeInOut)
     }
 }
 
