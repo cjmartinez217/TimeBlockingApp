@@ -172,6 +172,7 @@ struct AddEventView: View {
                 Spacer()
             }
             .onChange(of: startDate) { newStartDate in
+                // TODO: make endDate be startDate + 1 hour
                 if endDate < newStartDate {
                     endDate = newStartDate
                 }
