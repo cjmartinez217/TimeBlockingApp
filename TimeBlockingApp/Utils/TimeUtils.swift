@@ -112,4 +112,20 @@ struct TimeUtils {
 
         return dates
     }
+
+    static func getStartDate() -> Date {
+        let calendar = Calendar.current
+        let now = Date()
+        let oneHourFromNow = calendar.date(byAdding: .hour, value: 1, to: now)!
+        let components = calendar.dateComponents([.year, .month, .day, .hour], from: oneHourFromNow)
+        return calendar.date(from: components)!
+    }
+
+    static func getEndDate() -> Date {
+        let calendar = Calendar.current
+        let now = Date()
+        let twoHoursFromNow = calendar.date(byAdding: .hour, value: 2, to: now)!
+        let components = calendar.dateComponents([.year, .month, .day, .hour], from: twoHoursFromNow)
+        return calendar.date(from: components)!
+    }
 }

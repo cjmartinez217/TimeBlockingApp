@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A6172AD22CECE9050021532B /* WeekTimeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD12CECE9050021532B /* WeekTimeGrid.swift */; };
 		A6172AD42CEF8FD60021532B /* WeekHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD32CEF8FD60021532B /* WeekHeader.swift */; };
+		A63739962D43D33500DCDB61 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63739952D43D33500DCDB61 /* DatePickerView.swift */; };
 		A6535C232D37EE8000EC81B2 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C222D37EE8000EC81B2 /* CalendarEventModel.swift */; };
 		A6535C2A2D37F59F00EC81B2 /* MockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C292D37F59F00EC81B2 /* MockStore.swift */; };
 		A6535C2C2D37F68D00EC81B2 /* CalendarServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C2B2D37F68D00EC81B2 /* CalendarServiceProtocol.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		A6172AD12CECE9050021532B /* WeekTimeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimeGrid.swift; sourceTree = "<group>"; };
 		A6172AD32CEF8FD60021532B /* WeekHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekHeader.swift; sourceTree = "<group>"; };
+		A63739952D43D33500DCDB61 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		A6535C222D37EE8000EC81B2 /* CalendarEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
 		A6535C292D37F59F00EC81B2 /* MockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStore.swift; sourceTree = "<group>"; };
 		A6535C2B2D37F68D00EC81B2 /* CalendarServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarServiceProtocol.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				A6F9A6B32D0B718900A61FBD /* AIButton.swift */,
 				A6F9A6B72D13168000A61FBD /* TimeBar.swift */,
 				A6535C342D3F04A600EC81B2 /* EventBlock.swift */,
+				A63739952D43D33500DCDB61 /* DatePickerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				A6172AD42CEF8FD60021532B /* WeekHeader.swift in Sources */,
 				A6535C2C2D37F68D00EC81B2 /* CalendarServiceProtocol.swift in Sources */,
 				A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */,
+				A63739962D43D33500DCDB61 /* DatePickerView.swift in Sources */,
 				A6F9A6B42D0B718900A61FBD /* AIButton.swift in Sources */,
 				A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */,
 				A6535C332D3F03B500EC81B2 /* Constants.swift in Sources */,

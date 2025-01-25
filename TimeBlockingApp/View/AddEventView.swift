@@ -12,10 +12,8 @@ struct AddEventView: View {
 
     @State private var title: String = ""
     @State private var isAllDay = false
-    @State private var startDate = Date()
-    @State private var startTime = Date()
-    @State private var endDate = Date()
-    @State private var endTime = Date()
+    @State private var startDate = TimeUtils.getStartDate()
+    @State private var endDate = TimeUtils.getEndDate()
     @State private var location: String = ""
     @State private var description: String = ""
 
@@ -46,7 +44,10 @@ struct AddEventView: View {
                     }
                     Spacer()
                     Button(action: {
-
+                        print("start date: ")
+                        print(startDate)
+                        print("end date: ")
+                        print(endDate)
                     }) {
                         Text("Save")
                             .font(.system(size: 18, weight: .regular, design: .rounded))
@@ -77,15 +78,13 @@ struct AddEventView: View {
 
                     HStack {
                         DatePickerView(
-                            label: dateFormatter.string(from: startDate),
                             selection: $startDate,
                             displayedComponents: .date
                         )
                         Spacer()
                         if !isAllDay {
                             DatePickerView(
-                                label: timeFormatter.string(from: startTime),
-                                selection: $startTime,
+                                selection: $startDate,
                                 displayedComponents: .hourAndMinute
                             )
                         }
@@ -93,15 +92,15 @@ struct AddEventView: View {
                     .padding(.leading, 34)
                     HStack {
                         DatePickerView(
-                            label: dateFormatter.string(from: endDate),
                             selection: $endDate,
+                            minDate: startDate,
                             displayedComponents: .date
                         )
                         Spacer()
                         if !isAllDay {
                             DatePickerView(
-                                label: timeFormatter.string(from: endTime),
-                                selection: $endTime,
+                                selection: $endDate,
+                                minDate: startDate,
                                 displayedComponents: .hourAndMinute
                             )
                         }
@@ -167,39 +166,15 @@ struct AddEventView: View {
                 }
                 .padding(.leading, 16)
                 .padding(.vertical, 16)
-
                 Divider()
-
                 Spacer()
             }
-        }
-    }
-}
-
-struct DatePickerView: View {
-    let label: String
-    @Binding var selection: Date
-    let displayedComponents: DatePicker.Components
-
-    var body: some View {
-        ZStack {
-            // Conditional underline for time display
-            if displayedComponents == .hourAndMinute {
-                Text(label)
-                    .underline()
-            } else {
-                Text(label)
+            .onChange(of: startDate) { newStartDate in
+                if endDate < newStartDate {
+                    endDate = Calendar.current.date(byAdding: .hour, value: 1, to: newStartDate)!
+                }
             }
-            DatePicker(
-                "",
-                selection: $selection,
-                displayedComponents: displayedComponents
-            )
-            .labelsHidden()
-            .opacity(0.02) // Keeps it functional but hidden
-            .frame(width: 0, height: 0) // Reduce visual footprint
         }
-        .animation(.easeInOut)
     }
 }
 
