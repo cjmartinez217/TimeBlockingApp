@@ -16,6 +16,7 @@ struct AddEventView: View {
     @State private var endDate = TimeUtils.getEndDate()
     @State private var location: String = ""
     @State private var description: String = ""
+    @EnvironmentObject var calendarViewModel: CalendarViewModel
 
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -44,10 +45,7 @@ struct AddEventView: View {
                     }
                     Spacer()
                     Button(action: {
-                        print("start date: ")
-                        print(startDate)
-                        print("end date: ")
-                        print(endDate)
+                        createAndSaveEvent()
                     }) {
                         Text("Save")
                             .font(.system(size: 18, weight: .regular, design: .rounded))
@@ -176,8 +174,21 @@ struct AddEventView: View {
             }
         }
     }
+
+    func createAndSaveEvent() {
+        let newEvent = EventModel(
+            title: title,
+            startDate: startDate,
+            endDate: endDate,
+            description: description,
+            isAllDay: isAllDay
+        )
+        calendarViewModel.createEvent(newEvent)
+        isAddEventPresented.toggle()
+    }
 }
 
 #Preview {
     AddEventView(isAddEventPresented: .constant(true))
+        .environmentObject(CalendarViewModel())
 }

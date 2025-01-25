@@ -25,6 +25,7 @@ struct DayCalendarView: View {
                 }
                 Spacer()
                 AddEventButton(isDisabled: $presentSideMenu)
+                    .environmentObject(calendarViewModel)
             }
             .padding(.horizontal, 10)
             DayTimeGrid(displayDate: displayDate, events: calendarViewModel.events)
