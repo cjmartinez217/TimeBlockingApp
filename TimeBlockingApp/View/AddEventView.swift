@@ -45,15 +45,7 @@ struct AddEventView: View {
                     }
                     Spacer()
                     Button(action: {
-                        let newEvent = EventModel(
-                            title: title,
-                            startDate: startDate,
-                            endDate: endDate,
-                            description: description,
-                            isAllDay: isAllDay
-                        )
-                        calendarViewModel.createEvent(newEvent)
-                        isAddEventPresented.toggle()
+                        createAndSaveEvent()
                     }) {
                         Text("Save")
                             .font(.system(size: 18, weight: .regular, design: .rounded))
@@ -181,6 +173,18 @@ struct AddEventView: View {
                 }
             }
         }
+    }
+
+    func createAndSaveEvent() {
+        let newEvent = EventModel(
+            title: title,
+            startDate: startDate,
+            endDate: endDate,
+            description: description,
+            isAllDay: isAllDay
+        )
+        calendarViewModel.createEvent(newEvent)
+        isAddEventPresented.toggle()
     }
 }
 

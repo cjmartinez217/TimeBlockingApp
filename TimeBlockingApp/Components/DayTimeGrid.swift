@@ -39,7 +39,7 @@ struct DayTimeGrid: View {
                 }
                 ForEach(events) { event in
                     EventBlock(event: event)
-                        .padding(.top, (CGFloat(Calendar.current.component(.hour, from: event.startDate)) + CGFloat(Calendar.current.component(.minute, from: event.startDate)) / 60) * Constants.hourHeight)
+                        .padding(.top, getTopPadding(event))
                         .padding(.leading, 66)
                         .offset(y: 37)
                 }
@@ -59,6 +59,13 @@ struct DayTimeGrid: View {
 
     func updateCurrentTimePosition() {
         currentTimePosition = TimeUtils.currentTimeYPosition(hourHeight: Constants.hourHeight, offset: 30)
+    }
+
+    func getTopPadding(_ event: EventModel) -> CGFloat {
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: event.startDate)
+        let minute = calendar.component(.minute, from: event.startDate)
+        return (CGFloat(hour) + CGFloat(minute) / 60) * Constants.hourHeight
     }
 }
 
