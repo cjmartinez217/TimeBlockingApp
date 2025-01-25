@@ -39,7 +39,7 @@ struct DayTimeGrid: View {
                 }
                 ForEach(events) { event in
                     EventBlock(event: event)
-                        .padding(.top, CGFloat(Calendar.current.component(.hour, from: event.startDate)) * Constants.hourHeight)
+                        .padding(.top, (CGFloat(Calendar.current.component(.hour, from: event.startDate)) + CGFloat(Calendar.current.component(.minute, from: event.startDate)) / 60) * Constants.hourHeight)
                         .padding(.leading, 66)
                         .offset(y: 37)
                 }

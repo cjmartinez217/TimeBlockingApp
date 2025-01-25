@@ -15,19 +15,37 @@ class MockStore {
         let today = Date()
         let calendar = Calendar.current
 
+        var todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
+        todayComponents.hour = 9
+        let firstEventStart = calendar.date(from: todayComponents)!
+
+        todayComponents.hour = 10
+        todayComponents.minute = 30
+        let firstEventEnd = calendar.date(from: todayComponents)!
+
+        // Second event: 12:00 PM to 1:00 PM
+        todayComponents.hour = 12
+        todayComponents.minute = 0
+        let secondEventStart = calendar.date(from: todayComponents)!
+
+        todayComponents.hour = 13
+        let secondEventEnd = calendar.date(from: todayComponents)!
+
+
+
         events = [
             EventModel(
                 id: UUID(),
                 title: "Team Meeting",
-                startDate: calendar.date(byAdding: .hour, value: 0, to: today)!,
-                endDate: calendar.date(byAdding: .hour, value: 2, to: today)!,
+                startDate: firstEventStart,
+                endDate: firstEventEnd,
                 description: "Conference Room A"
             ),
             EventModel(
                 id: UUID(),
                 title: "Lunch Break",
-                startDate: calendar.date(byAdding: .hour, value: 4, to: today)!,
-                endDate: calendar.date(byAdding: .hour, value: 5, to: today)!,
+                startDate: secondEventStart,
+                endDate: secondEventEnd,
                 description: "Test description"
             )
         ]
