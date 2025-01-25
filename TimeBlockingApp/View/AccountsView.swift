@@ -42,7 +42,6 @@ struct AccountsView: View {
             .font(.system(size: 20, weight: .bold))
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.vertical, 10)
-            .background(Color.white)
     }
 
     // Profile view that takes a Profile object
