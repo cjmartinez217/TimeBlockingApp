@@ -11,7 +11,8 @@ struct EventBlock: View {
     let event: EventModel
 
     var body: some View {
-        let eventHeight =  CGFloat((Calendar.current.component(.hour, from: event.endDate)) - Calendar.current.component(.hour, from: event.startDate)) * Constants.hourHeight
+        let durationInMinutes = event.endDate.timeIntervalSince(event.startDate) / 60
+        let eventHeight =  durationInMinutes / 60 * Constants.hourHeight
 
         VStack {
             VStack(alignment: .leading) {
