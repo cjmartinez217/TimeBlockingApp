@@ -29,3 +29,11 @@ struct DayDateModel: Codable {
     let date: Date
     let events: [EventModel]
 }
+
+
+struct CalendarModel: Identifiable {
+    let id = UUID()
+    var name: String
+    var email: String
+    var isActive: Bool
+}

@@ -8,18 +8,12 @@
 import SwiftUI
 
 
-struct Profile: Identifiable {
-    let id = UUID()
-    var name: String
-    var email: String
-    var isActive: Bool
-}
 
 struct AccountsView: View {
-    @State private var profiles: [Profile] = [
-        Profile(name: "Lucas Werneck", email: "Lucasrw2k@gmail.com", isActive: true),
-        Profile(name: "Lucas Werneck - Work", email: "lucas@hellogov.ai", isActive: false),
-        Profile(name: "Lucas Werneck", email: "lucasrw3k@gmail.com", isActive: true)
+    @State private var profiles: [CalendarModel] = [
+        CalendarModel(name: "Lucas Werneck", email: "Lucasrw2k@gmail.com", isActive: true),
+        CalendarModel(name: "Lucas Werneck - Work", email: "lucas@hellogov.ai", isActive: false),
+        CalendarModel(name: "Christian Martinez", email: "lucasrw3k@gmail.com", isActive: true)
     ]
     
     var body: some View {
@@ -45,10 +39,10 @@ struct AccountsView: View {
     }
 
     // Profile view that takes a Profile object
-    func profileView(for profile: Profile) -> some View {
+    func profileView(for profile: CalendarModel) -> some View {
         VStack(alignment: .leading) {
             HStack {
-                profileIcon
+                profileIcon(for: profile.name)
                 VStack(alignment: .leading) {
                     Text(profile.name)
                         .font(.system(size: 15.0))
@@ -85,20 +79,21 @@ struct AccountsView: View {
         )
     }
     
-    var profileIcon: some View {
-        ZStack {
-            Circle()
-                .frame(width: 45.0)
-                .foregroundColor(.gray)
-            Text("L")
-                .font(.system(size: 20))
+    func profileIcon(for name: String) -> some View {
+            ZStack {
+                Circle()
+                    .frame(width: 45.0)
+                    .foregroundColor(.gray)
+                Text(String(name.prefix(1)))
+                    .font(.system(size: 20))
+                    .foregroundColor(.white)
+            }
         }
-    }
     
     // Add a new profile
     var addButton: some View {
         Button(action: {
-            profiles.append(Profile(name: "New User", email: "newuser@gmail.com", isActive: false))
+            profiles.append(CalendarModel(name: "New User", email: "newuser@gmail.com", isActive: false))
         }) {
             Text("Add Account")
                 .font(.system(size: 14))
@@ -111,12 +106,12 @@ struct AccountsView: View {
     }
     
     // Remove a profile
-    func removeProfile(_ profile: Profile) {
+    func removeProfile(_ profile: CalendarModel) {
         profiles.removeAll { $0.id == profile.id }
     }
     
     // Binding for each profile's isActive state
-    func binding(for profile: Profile) -> Binding<Bool> {
+    func binding(for profile: CalendarModel) -> Binding<Bool> {
         guard let index = profiles.firstIndex(where: { $0.id == profile.id }) else {
             return .constant(false)
         }
