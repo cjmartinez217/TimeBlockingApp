@@ -140,7 +140,7 @@ struct AddEventView: View {
 
                 // MARK: Color
                 HStack {
-                    RoundedRectangle(cornerSize: CGSize(width: 5, height: 5))
+                    RoundedRectangle(cornerRadius: 6)
                         .fill(Color.blue)
                         .frame(width: 24, height: 24)
                     Text("Default color")

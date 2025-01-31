@@ -128,4 +128,31 @@ struct TimeUtils {
         let components = calendar.dateComponents([.year, .month, .day, .hour], from: twoHoursFromNow)
         return calendar.date(from: components)!
     }
+
+    static func formatEventDateTime(start: Date, end: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMM d"
+
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm"
+
+        let periodFormatter = DateFormatter()
+        periodFormatter.dateFormat = "a"
+
+        let startTimeString = timeFormatter.string(from: start)
+        let endTimeString = timeFormatter.string(from: end)
+        let startPeriod = periodFormatter.string(from: start)
+        let endPeriod = periodFormatter.string(from: end)
+
+        var timeString = ""
+        if startPeriod == endPeriod {
+            // Same period (both AM or both PM)
+            timeString = "\(startTimeString)-\(endTimeString) \(endPeriod)"
+        } else {
+            // Different periods (AM to PM)
+            timeString = "\(startTimeString) \(startPeriod)-\(endTimeString) \(endPeriod)"
+        }
+
+        return "\(dateFormatter.string(from: start)) • \(timeString)"
+    }
 }
