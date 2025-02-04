@@ -23,11 +23,13 @@ struct EventDetailView: View {
 
                         VStack(alignment: .leading) {
                             Text(event.title)
+                                .foregroundStyle(.black)
                                 .font(.title2)
                                 .bold()
                             //TODO: fix date format
                             let displayDateTimeRange = TimeUtils.formatEventDateTime(start: event.startDate, end: event.endDate)
                             Text(displayDateTimeRange)
+                                .foregroundStyle(.black)
                         }
 
                         Spacer()
@@ -39,6 +41,7 @@ struct EventDetailView: View {
                             .font(.system(size: 24))
                             .foregroundColor(.secondary)
                         Text("115 Sandra Muraida Way")
+                            .foregroundStyle(.black)
                     }
 
                     // Reminder
@@ -47,6 +50,7 @@ struct EventDetailView: View {
                             .font(.system(size: 24))
                             .foregroundColor(.secondary)
                         Text("30 minutes before")
+                            .foregroundStyle(.black)
                     }
 
                     // Description
@@ -56,6 +60,7 @@ struct EventDetailView: View {
                                 .foregroundColor(.secondary)
                                 .font(.system(size: 24))
                             Text(description)
+                                .foregroundStyle(.black)
                         }
                     }
 
