@@ -69,7 +69,7 @@ struct EventDetailView: View {
                     Button(action: { dismiss() }) {
                         Image(systemName: "xmark")
                             .foregroundColor(.primary)
-                            .font(.system(size: 24))
+                            .font(.system(size: 20, weight: .semibold))
                     }
                 }
 
@@ -78,13 +78,13 @@ struct EventDetailView: View {
                         Button(action: {}) {
                             Image(systemName: "pencil")
                                 .foregroundColor(.primary)
-                                .font(.system(size: 24))
+                                .font(.system(size: 20, weight: .semibold))
                         }
 
                         Button(action: {}) {
                             Image(systemName: "ellipsis")
                                 .foregroundColor(.primary)
-                                .font(.system(size: 24))
+                                .font(.system(size: 20, weight: .semibold))
                         }
                     }
                 }
