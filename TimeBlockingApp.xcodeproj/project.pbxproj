@@ -21,7 +21,7 @@
 		A696C5B12CC14F6B00F23E2E /* DayTimeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */; };
 		A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */; };
 		A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */; };
-		A696C5C42CD3B16700F23E2E /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C32CD3B16700F23E2E /* AddEventView.swift */; };
+		A696C5C42CD3B16700F23E2E /* EventFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C32CD3B16700F23E2E /* EventFormView.swift */; };
 		A696C5C62CD5061700F23E2E /* SideMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C52CD5061700F23E2E /* SideMenuButton.swift */; };
 		A696C5C82CD5087200F23E2E /* WeekCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C72CD5087200F23E2E /* WeekCalendarView.swift */; };
 		A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C92CD5088900F23E2E /* MonthCalendarView.swift */; };
@@ -58,7 +58,7 @@
 		A696C5B02CC14F6B00F23E2E /* DayTimeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTimeGrid.swift; sourceTree = "<group>"; };
 		A696C5B32CC2A6B100F23E2E /* DayCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalendarView.swift; sourceTree = "<group>"; };
 		A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
-		A696C5C32CD3B16700F23E2E /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
+		A696C5C32CD3B16700F23E2E /* EventFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormView.swift; sourceTree = "<group>"; };
 		A696C5C52CD5061700F23E2E /* SideMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButton.swift; sourceTree = "<group>"; };
 		A696C5C72CD5087200F23E2E /* WeekCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCalendarView.swift; sourceTree = "<group>"; };
 		A696C5C92CD5088900F23E2E /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				A6C74E542CB965940084FE6A /* ContentView.swift */,
-				A696C5C32CD3B16700F23E2E /* AddEventView.swift */,
+				A696C5C32CD3B16700F23E2E /* EventFormView.swift */,
 				A696C5CB2CD50AB900F23E2E /* CalendarViews */,
 				A696C5CC2CD50B7900F23E2E /* SideMenu.swift */,
 				A6F9A6A92CFDE61300A61FBD /* AccountsView.swift */,
@@ -313,7 +313,7 @@
 				A6C74E552CB965940084FE6A /* ContentView.swift in Sources */,
 				A6F9A6AC2CFDE63100A61FBD /* SettingsView.swift in Sources */,
 				A696C5B12CC14F6B00F23E2E /* DayTimeGrid.swift in Sources */,
-				A696C5C42CD3B16700F23E2E /* AddEventView.swift in Sources */,
+				A696C5C42CD3B16700F23E2E /* EventFormView.swift in Sources */,
 				A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */,
 				A6F9A6AA2CFDE61300A61FBD /* AccountsView.swift in Sources */,
 				A696C5C82CD5087200F23E2E /* WeekCalendarView.swift in Sources */,

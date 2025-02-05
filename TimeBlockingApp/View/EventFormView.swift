@@ -7,16 +7,40 @@
 
 import SwiftUI
 
-struct AddEventView: View {
+struct EventFormView: View {
     @Binding var isAddEventPresented: Bool
-
-    @State private var title: String = ""
-    @State private var isAllDay = false
-    @State private var startDate = TimeUtils.getStartDate()
-    @State private var endDate = TimeUtils.getEndDate()
-    @State private var location: String = ""
-    @State private var description: String = ""
     @EnvironmentObject var calendarViewModel: CalendarViewModel
+    let event: EventModel?
+    let onSave: (() -> Void)?
+
+    @State private var title: String
+    @State private var isAllDay: Bool
+    @State private var startDate: Date
+    @State private var endDate: Date
+    @State private var location: String
+    @State private var description: String
+
+    init(isAddEventPresented: Binding<Bool>, event: EventModel? = nil, onSave: (() -> Void)? = nil) {
+        self._isAddEventPresented = isAddEventPresented
+        self.event = event
+        self.onSave = onSave
+
+        if let event = event {
+            _title = State(initialValue: event.title)
+            _isAllDay = State(initialValue: event.isAllDay ?? false)
+            _startDate = State(initialValue: event.startDate)
+            _endDate = State(initialValue: event.endDate)
+            _location = State(initialValue: "")
+            _description = State(initialValue: event.description ?? "")
+        } else {
+            _title = State(initialValue: "")
+            _isAllDay = State(initialValue: false)
+            _startDate = State(initialValue: TimeUtils.getStartDate())
+            _endDate = State(initialValue: TimeUtils.getEndDate())
+            _location = State(initialValue: "")
+            _description = State(initialValue: "")
+        }
+    }
 
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -45,13 +69,14 @@ struct AddEventView: View {
                     }
                     Spacer()
                     Button(action: {
-                        createAndSaveEvent()
+                        saveEvent()
                     }) {
                         Text("Save")
                             .font(.system(size: 18, weight: .regular, design: .rounded))
                             .underline()
                     }
                 }
+                .foregroundStyle(.blue)
                 .padding(.all)
 
                 // MARK: Event Title
@@ -111,14 +136,16 @@ struct AddEventView: View {
                 Divider()
 
                 // MARK: Location
-                HStack {
+                HStack(spacing: 16) {
                     Image(systemName: "mappin.and.ellipse")
                         .imageScale(.large)
+                        .frame(width: 24)
                     TextField(text: $location) {
                         Text("Add location")
                     }
                     .font(.system(size: 24, weight: .regular, design: .rounded))
                     .padding(.leading, 2)
+                    Spacer()
                 }
                 .padding(.leading, 16)
                 .padding(.vertical, 16)
@@ -153,7 +180,7 @@ struct AddEventView: View {
                 Divider()
 
                 // MARK: Description
-                HStack {
+                HStack(spacing: 10) {
                     Image(systemName: "text.justify.left")
                         .imageScale(.large)
                     TextField(text: $description) {
@@ -161,12 +188,14 @@ struct AddEventView: View {
                     }
                     .font(.system(size: 24, weight: .regular, design: .rounded))
                     .padding(.leading, 2)
+                    Spacer()
                 }
                 .padding(.leading, 16)
                 .padding(.vertical, 16)
                 Divider()
                 Spacer()
             }
+            .foregroundStyle(.black)
             .onChange(of: startDate) { newStartDate in
                 if endDate < newStartDate {
                     endDate = Calendar.current.date(byAdding: .hour, value: 1, to: newStartDate)!
@@ -175,20 +204,40 @@ struct AddEventView: View {
         }
     }
 
-    func createAndSaveEvent() {
-        let newEvent = EventModel(
+//    func createEvent() {
+//        let newEvent = EventModel(
+//            title: title,
+//            startDate: startDate,
+//            endDate: endDate,
+//            description: description,
+//            isAllDay: isAllDay
+//        )
+//        calendarViewModel.createEvent(newEvent)
+//        isAddEventPresented.toggle()
+//    }
+
+    private func saveEvent() {
+        let updatedEvent = EventModel(
+            id: event?.id ?? UUID(),
             title: title,
             startDate: startDate,
             endDate: endDate,
             description: description,
             isAllDay: isAllDay
         )
-        calendarViewModel.createEvent(newEvent)
+
+        if event != nil {
+            calendarViewModel.updateEvent(updatedEvent)
+        } else {
+            calendarViewModel.createEvent(updatedEvent)
+        }
+
         isAddEventPresented.toggle()
+        onSave?()
     }
 }
 
 #Preview {
-    AddEventView(isAddEventPresented: .constant(true))
+    EventFormView(isAddEventPresented: .constant(true))
         .environmentObject(CalendarViewModel())
 }
