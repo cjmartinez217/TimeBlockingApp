@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EventDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var showEventForm: Bool = false
     let event: EventModel // Assuming you have an Event model
 
     var body: some View {
@@ -80,7 +81,9 @@ struct EventDetailView: View {
 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(spacing: 16) {
-                        Button(action: {}) {
+                        Button(action: {
+                            showEventForm = true
+                        }) {
                             Image(systemName: "pencil")
                                 .foregroundColor(.primary)
                                 .font(.system(size: 20, weight: .semibold))
@@ -93,6 +96,16 @@ struct EventDetailView: View {
                         }
                     }
                 }
+            }
+            .sheet(isPresented: $showEventForm) {
+                EventFormView(
+                    isAddEventPresented: $showEventForm,
+                    event: event,
+                    onSave: {
+                        dismiss()
+                    }
+                )
+                .environmentObject(CalendarViewModel())
             }
         }
     }

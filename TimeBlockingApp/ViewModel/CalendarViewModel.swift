@@ -51,4 +51,20 @@ class CalendarViewModel: ObservableObject {
             }
         }
     }
+
+    func updateEvent(_ event: EventModel) {
+        Task {
+            do {
+                events = try await calendarService.fetchEvents(for: event.startDate)
+                print("events before")
+                print(events)
+                try await calendarService.updateEvent(event)
+                events = try await calendarService.fetchEvents(for: event.startDate)
+                print("events after")
+                print(events)
+            } catch {
+                self.error = error
+            }
+        }
+    }
 }
