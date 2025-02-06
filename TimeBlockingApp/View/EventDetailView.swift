@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EventDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var calendarViewModel: CalendarViewModel
     @State private var showEventForm: Bool = false
     let event: EventModel // Assuming you have an Event model
 
@@ -105,7 +106,6 @@ struct EventDetailView: View {
                         dismiss()
                     }
                 )
-                .environmentObject(CalendarViewModel())
             }
         }
     }
