@@ -83,6 +83,7 @@ struct EventFormView: View {
                 TextField(text: $title) {
                     Text("Add title")
                 }
+                .multilineTextAlignment(.leading)
                 .font(.system(size: 32, weight: .medium, design: .rounded))
                 .padding(.leading, 42)
                 .padding(.vertical, 16)
@@ -143,6 +144,7 @@ struct EventFormView: View {
                     TextField(text: $location) {
                         Text("Add location")
                     }
+                    .multilineTextAlignment(.leading)
                     .font(.system(size: 24, weight: .regular, design: .rounded))
                     .padding(.leading, 2)
                     Spacer()
@@ -187,6 +189,7 @@ struct EventFormView: View {
                     TextField(text: $description) {
                         Text("Add description")
                     }
+                    .multilineTextAlignment(.leading)
                     .font(.system(size: 24, weight: .regular, design: .rounded))
                     .padding(.leading, 2)
                     Spacer()
