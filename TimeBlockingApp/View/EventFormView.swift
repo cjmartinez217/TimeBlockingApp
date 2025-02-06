@@ -136,7 +136,7 @@ struct EventFormView: View {
                 Divider()
 
                 // MARK: Location
-                HStack(spacing: 16) {
+                HStack {
                     Image(systemName: "mappin.and.ellipse")
                         .imageScale(.large)
                         .frame(width: 24)
@@ -180,9 +180,10 @@ struct EventFormView: View {
                 Divider()
 
                 // MARK: Description
-                HStack(spacing: 10) {
+                HStack {
                     Image(systemName: "text.justify.left")
                         .imageScale(.large)
+                        .frame(width: 24)
                     TextField(text: $description) {
                         Text("Add description")
                     }
@@ -203,18 +204,6 @@ struct EventFormView: View {
             }
         }
     }
-
-//    func createEvent() {
-//        let newEvent = EventModel(
-//            title: title,
-//            startDate: startDate,
-//            endDate: endDate,
-//            description: description,
-//            isAllDay: isAllDay
-//        )
-//        calendarViewModel.createEvent(newEvent)
-//        isAddEventPresented.toggle()
-//    }
 
     private func saveEvent() {
         let updatedEvent = EventModel(
@@ -238,6 +227,15 @@ struct EventFormView: View {
 }
 
 #Preview {
-    EventFormView(isAddEventPresented: .constant(true))
+    EventFormView(
+        isAddEventPresented: .constant(true),
+        event: EventModel(
+            id: UUID(),
+            title: "Test1",
+            startDate: Calendar.current.date(byAdding: .hour, value: 0, to: Date())!,
+            endDate: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!,
+            description: "testing"
+        )
+    )
         .environmentObject(CalendarViewModel())
 }
