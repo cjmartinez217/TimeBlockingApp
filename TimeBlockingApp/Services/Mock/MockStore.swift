@@ -7,12 +7,11 @@
 
 import Foundation
 
-class MockStore {
+class MockStore: ObservableObject {
     static let shared = MockStore()
-    private var events: [EventModel] = []
+    @Published private(set) var events: [EventModel] = []
 
     private init() {
-        let today = Date()
         let calendar = Calendar.current
 
         var todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())

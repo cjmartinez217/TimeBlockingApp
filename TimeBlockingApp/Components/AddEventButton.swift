@@ -23,7 +23,7 @@ struct AddEventButton: View {
         }
         .disabled(isDisabled)
         .sheet(isPresented: $isAddEventPresented) {
-            AddEventView(isAddEventPresented: $isAddEventPresented)
+            EventFormView(isAddEventPresented: $isAddEventPresented)
         }
     }
 }

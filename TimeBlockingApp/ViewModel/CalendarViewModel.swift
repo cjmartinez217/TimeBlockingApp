@@ -51,4 +51,15 @@ class CalendarViewModel: ObservableObject {
             }
         }
     }
+
+    func updateEvent(_ event: EventModel) {
+        Task {
+            do {
+                try await calendarService.updateEvent(event)
+                await fetchEvents(for: event.startDate)
+            } catch {
+                self.error = error
+            }
+        }
+    }
 }

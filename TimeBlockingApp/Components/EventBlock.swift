@@ -9,26 +9,36 @@ import SwiftUI
 
 struct EventBlock: View {
     let event: EventModel
+    @State private var showingDetail = false
 
     var body: some View {
         let durationInMinutes = event.endDate.timeIntervalSince(event.startDate) / 60
         let eventHeight =  durationInMinutes / 60 * Constants.hourHeight
 
-        VStack {
-            VStack(alignment: .leading) {
-                Text(event.title)
-                    .font(.system(size: 16, weight: .bold))
-                if let eventDescription = event.description {
-                    Text(eventDescription)
-                        .font(.system(size: 12))
+        Button(action: {
+            showingDetail = true
+        }) {
+            VStack {
+                VStack(alignment: .leading) {
+                    Text(event.title)
+                        .font(.system(size: 16, weight: .bold))
+                        .foregroundStyle(.black)
+                    if let eventDescription = event.description {
+                        Text(eventDescription)
+                            .font(.system(size: 12))
+                            .foregroundStyle(.black)
+                    }
                 }
+                .padding(8)
             }
-            .padding(8)
+            .frame(height: eventHeight)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.blue)
+            .cornerRadius(10)
+            .fullScreenCover(isPresented: $showingDetail) {
+                EventDetailView(event: event)
+            }
         }
-        .frame(height: eventHeight)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.blue)
-        .cornerRadius(10)
     }
 }
 
