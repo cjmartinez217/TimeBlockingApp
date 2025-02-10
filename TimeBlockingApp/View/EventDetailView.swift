@@ -90,8 +90,11 @@ struct EventDetailView: View {
                                 .font(.system(size: 20, weight: .semibold))
                         }
 
-                        Button(action: {}) {
-                            Image(systemName: "ellipsis")
+                        Button(action: {
+                            calendarViewModel.deleteEvent(with: event.id)
+                            dismiss()
+                        }) {
+                            Image(systemName: "trash")
                                 .foregroundColor(.primary)
                                 .font(.system(size: 20, weight: .semibold))
                         }
