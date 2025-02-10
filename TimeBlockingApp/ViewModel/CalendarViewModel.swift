@@ -45,7 +45,9 @@ class CalendarViewModel: ObservableObject {
         Task {
             do {
                 try await calendarService.createEvent(event)
-                await fetchEvents(for: event.startDate)
+                if Calendar.current.isDate(event.startDate, inSameDayAs: Date()) {
+                    await fetchEvents(for: event.startDate)
+                }
             } catch {
                 self.error = error
             }
