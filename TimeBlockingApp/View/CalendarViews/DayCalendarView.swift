@@ -13,7 +13,7 @@ struct DayCalendarView: View {
     @EnvironmentObject var calendarViewModel: CalendarViewModel
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack(alignment: .center) {
                 SideMenuButton(presentSideMenu: $presentSideMenu)
                 VStack(alignment: .leading) {
@@ -27,6 +27,13 @@ struct DayCalendarView: View {
                 AddEventButton(isDisabled: $presentSideMenu)
             }
             .padding(.horizontal, 10)
+            .padding(.bottom, 10)
+
+            fullDayEvents(events: calendarViewModel.events)
+
+            Divider()
+                .background(Color.gray)
+                .shadow(color: Color.black, radius: 1.5, x: 0, y: 1)
             DayTimeGrid(displayDate: displayDate, events: calendarViewModel.events)
         }
         .gesture(
@@ -40,6 +47,23 @@ struct DayCalendarView: View {
                 }
         )
         .animation(.easeInOut)
+    }
+
+    func fullDayEvents(events: [EventModel]) -> some View {
+        let allDayEvents = events.filter { $0.isAllDay }
+
+        return Group {
+            if !allDayEvents.isEmpty {
+                VStack(alignment: .trailing, spacing: 3) {
+                    ForEach(allDayEvents) { event in
+                        EventBlock(event: event, height: 25)
+                    }
+                }
+                .padding(.bottom, 3)
+                .padding(.leading, 66)
+                .padding(.trailing, 5)
+            }
+        }
     }
 }
 

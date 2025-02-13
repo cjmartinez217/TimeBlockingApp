@@ -19,6 +19,7 @@ struct AIButton: View {
                     .fill(isDisabled ? Color.gray : Color(red: 0.9, green: 0.9, blue: 0.9))
                     .frame(width: 64, height: 64)
                     .animation(.easeInOut, value: isDisabled)
+                    .opacity(0.8)
                 Circle()
                     .stroke(
                         LinearGradient(
