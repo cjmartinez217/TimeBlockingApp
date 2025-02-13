@@ -13,7 +13,7 @@ struct EventModel: Codable, Identifiable {
     let startDate: Date
     let endDate: Date
     let description: String?
-    let isAllDay: Bool?
+    let isAllDay: Bool
 
     init(id: UUID = UUID(), title: String, startDate: Date, endDate: Date, description: String = "", isAllDay: Bool = false) {
         self.id = id

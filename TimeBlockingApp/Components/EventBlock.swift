@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EventBlock: View {
     let event: EventModel
+    var height: CGFloat?
     @State private var showingDetail = false
 
     var body: some View {
@@ -18,23 +19,18 @@ struct EventBlock: View {
         Button(action: {
             showingDetail = true
         }) {
-            VStack {
-                VStack(alignment: .leading) {
-                    Text(event.title)
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundStyle(.black)
-                    if let eventDescription = event.description {
-                        Text(eventDescription)
-                            .font(.system(size: 12))
-                            .foregroundStyle(.black)
-                    }
-                }
-                .padding(8)
+            VStack(alignment: .leading) {
+                Text(event.title)
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundStyle(.white)
+                    .padding(.leading, 12)
+                    .padding(.top, 4)
+                Spacer()
             }
-            .frame(height: eventHeight)
+            .frame(height: height ?? eventHeight)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Color.blue)
-            .cornerRadius(10)
+            .cornerRadius(6)
             .fullScreenCover(isPresented: $showingDetail) {
                 EventDetailView(event: event)
             }
@@ -47,7 +43,7 @@ struct EventBlock: View {
         id: UUID(),
         title: "Test1",
         startDate: Calendar.current.date(byAdding: .hour, value: 0, to: Date())!,
-        endDate: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!,
+        endDate: Calendar.current.date(byAdding: .hour, value: 1, to: Date())!,
         description: "testing"
     ))
 }

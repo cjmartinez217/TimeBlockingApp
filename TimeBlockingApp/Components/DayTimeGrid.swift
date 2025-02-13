@@ -38,14 +38,18 @@ struct DayTimeGrid: View {
                     }
                 }
                 ForEach(events) { event in
-                    EventBlock(event: event)
-                        .padding(.top, getTopPadding(event))
-                        .padding(.leading, 66)
-                        .offset(y: 37)
+                    if !event.isAllDay {
+                        EventBlock(event: event)
+                            .padding(.top, getTopPadding(event))
+                            .padding(.leading, 66)
+                            .padding(.trailing, 5)
+                            .offset(y: 37)
+                    }
                 }
                 if (Calendar.current.isDateInToday(displayDate)) {
                     TimeBar()
                         .padding(.leading, 60)
+                        .padding(.trailing, 5)
                         .offset(y: currentTimePosition)
                         .onAppear {
                             updateCurrentTimePosition()

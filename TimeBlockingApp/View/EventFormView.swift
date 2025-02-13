@@ -209,6 +209,9 @@ struct EventFormView: View {
     }
 
     private func saveEvent() {
+        if title.isEmpty {
+            title = "(No title)"
+        }
         let updatedEvent = EventModel(
             id: event?.id ?? UUID(),
             title: title,
