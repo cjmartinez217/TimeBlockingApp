@@ -103,6 +103,7 @@ struct EventDetailView: View {
             }
             .sheet(isPresented: $showEventForm) {
                 EventFormView(
+                    date: event.startDate,
                     isAddEventPresented: $showEventForm,
                     event: event,
                     onSave: {

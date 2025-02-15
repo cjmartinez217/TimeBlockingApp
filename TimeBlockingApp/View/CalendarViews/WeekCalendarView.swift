@@ -19,7 +19,7 @@ struct WeekCalendarView: View {
                 Text(TimeUtils.getMonth(date: dateInWeek))
                     .font(.system(size: 28, weight: .medium, design: .rounded))
                 Spacer()
-                AddEventButton(isDisabled: $presentSideMenu)
+                AddEventButton(date: dateInWeek, isDisabled: $presentSideMenu)
             }
             .padding(.horizontal, 10)
             WeekHeader(dateInWeek: dateInWeek, onDaySelected: onDaySelected)

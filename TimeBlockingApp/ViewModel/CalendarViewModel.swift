@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import SwiftUI
 
 @MainActor
 class CalendarViewModel: ObservableObject {
@@ -13,6 +15,7 @@ class CalendarViewModel: ObservableObject {
     @Published var events: [EventModel] = []
     @Published var isLoading = false
     @Published var error: Error?
+    @Published var currentOffset: CGFloat = 0
 
     init(calendarService: CalendarServiceProtocol = MockCalendarService()) {
         self.calendarService = calendarService

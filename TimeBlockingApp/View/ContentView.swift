@@ -10,7 +10,6 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @StateObject private var calendarViewModel = CalendarViewModel()
     @State var presentSideMenu = false
     @State var selectedSideMenuTab = 0
     @State var selectedDay: Date = Date()
@@ -19,7 +18,6 @@ struct ContentView: View {
 
         ZStack {
             currentCalendarView
-                .environmentObject(calendarViewModel)
             SideMenu(isShowing: $presentSideMenu, selectedSideMenuTab: $selectedSideMenuTab)
                 .ignoresSafeArea(.all)
 
@@ -31,12 +29,6 @@ struct ContentView: View {
                         .padding(.trailing, 24)
                 }
             }
-        }
-        .onChange(of: selectedDay) { newValue in
-            calendarViewModel.fetchEvents(for: newValue)
-        }
-        .onAppear {
-            calendarViewModel.fetchEvents(for: selectedDay)
         }
     }
 
