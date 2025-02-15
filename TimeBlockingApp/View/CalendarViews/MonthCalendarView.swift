@@ -19,7 +19,7 @@ struct MonthCalendarView: View {
                 Text(TimeUtils.getMonth(date: displayDate))
                     .font(.system(size: 28, weight: .medium, design: .rounded))
                 Spacer()
-                AddEventButton(isDisabled: $presentSideMenu)
+                AddEventButton(date: displayDate, isDisabled: $presentSideMenu)
             }
             .padding(.horizontal, 10)
             ZStack {
