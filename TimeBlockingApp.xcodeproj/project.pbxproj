@@ -34,6 +34,7 @@
 		A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E5B2CB965960084FE6A /* Persistence.swift */; };
 		A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6C74E5D2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld */; };
 		A6E150E82D5F87D500780CFA /* SlideableCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E150E72D5F87D500780CFA /* SlideableCalendarView.swift */; };
+		A6E150EA2D6797CD00780CFA /* mockInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = A6E150E92D6797CD00780CFA /* mockInfo.json */; };
 		A6F9A6AA2CFDE61300A61FBD /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6A92CFDE61300A61FBD /* AccountsView.swift */; };
 		A6F9A6AC2CFDE63100A61FBD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6AB2CFDE63100A61FBD /* SettingsView.swift */; };
 		A6F9A6AE2CFDE64C00A61FBD /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F9A6AD2CFDE64C00A61FBD /* FeedbackView.swift */; };
@@ -73,6 +74,7 @@
 		A6C74E5B2CB965960084FE6A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A6C74E5E2CB965960084FE6A /* TimeBlockingApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeBlockingApp.xcdatamodel; sourceTree = "<group>"; };
 		A6E150E72D5F87D500780CFA /* SlideableCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideableCalendarView.swift; sourceTree = "<group>"; };
+		A6E150E92D6797CD00780CFA /* mockInfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockInfo.json; sourceTree = "<group>"; };
 		A6F9A6A92CFDE61300A61FBD /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
 		A6F9A6AB2CFDE63100A61FBD /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A6F9A6AD2CFDE64C00A61FBD /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				A6535C292D37F59F00EC81B2 /* MockStore.swift */,
 				A6535C2D2D37F6BC00EC81B2 /* MockCalendarService.swift */,
+				A6E150E92D6797CD00780CFA /* mockInfo.json */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			files = (
 				A6C74E5A2CB965960084FE6A /* Preview Assets.xcassets in Resources */,
 				A6C74E572CB965960084FE6A /* Assets.xcassets in Resources */,
+				A6E150EA2D6797CD00780CFA /* mockInfo.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

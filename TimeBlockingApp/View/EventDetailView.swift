@@ -91,7 +91,9 @@ struct EventDetailView: View {
                         }
 
                         Button(action: {
-                            calendarViewModel.deleteEvent(with: event.id)
+                            Task {
+                                await calendarViewModel.deleteEvent(with: event.id)
+                            }
                             dismiss()
                         }) {
                             Image(systemName: "trash")

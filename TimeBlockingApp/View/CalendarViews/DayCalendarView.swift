@@ -29,16 +29,22 @@ struct DayCalendarView: View {
                 dayContent(for: nextDate, calendarViewModel: nextCalendarViewModel)
             },
             onSwipeLeft: {
-                swipeLeft()
+                Task {
+                    swipeLeft()
+                }
             },
             onSwipeRight: {
-                swipeRight()
+                Task {
+                    swipeRight()
+                }
             }
         )
         .onAppear {
-            calendarViewModel.fetchEvents(for: displayDate)
-            previousCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: -1, to: displayDate)!)
-            nextCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: 1, to: displayDate)!)
+            Task {
+                await calendarViewModel.fetchEvents(for: displayDate)
+                await previousCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: -1, to: displayDate)!)
+                await nextCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: 1, to: displayDate)!)
+            }
         }
     }
 
@@ -55,6 +61,7 @@ struct DayCalendarView: View {
                 }
                 Spacer()
                 AddEventButton(date: date, isDisabled: $presentSideMenu)
+                    .environmentObject(calendarViewModel)
             }
             .padding(.horizontal, 10)
             .padding(.bottom, 10)
@@ -65,6 +72,7 @@ struct DayCalendarView: View {
                 .background(Color.gray)
                 .shadow(color: Color.black, radius: 1.5, x: 0, y: 1)
             DayTimeGrid(displayDate: displayDate, events: calendarViewModel.events)
+                .environmentObject(calendarViewModel)
         }
     }
 
@@ -89,8 +97,10 @@ struct DayCalendarView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { // Wait for animation to complete
             displayDate = Calendar.current.date(byAdding: .day, value: 1, to: displayDate)!
             calendarViewModel.events = nextCalendarViewModel.events
-            previousCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: -1, to: displayDate)!)
-            nextCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: 1, to: displayDate)!)
+            // Start both fetch calls concurrently
+            Task {
+                await updateSideDays()
+            }
         }
     }
 
@@ -98,8 +108,19 @@ struct DayCalendarView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { // Wait for animation to complete
             displayDate = Calendar.current.date(byAdding: .day, value: -1, to: displayDate)!
             calendarViewModel.events = previousCalendarViewModel.events
-            previousCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: -1, to: displayDate)!)
-            nextCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: 1, to: displayDate)!)
+            Task {
+                await updateSideDays()
+            }
+        }
+    }
+
+    func updateSideDays() async {
+        Task {
+            await previousCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: -1, to: displayDate)!)
+        }
+
+        Task {
+            await nextCalendarViewModel.fetchEvents(for: Calendar.current.date(byAdding: .day, value: 1, to: displayDate)!)
         }
     }
 }

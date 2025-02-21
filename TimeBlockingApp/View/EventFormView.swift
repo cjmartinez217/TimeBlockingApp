@@ -223,10 +223,13 @@ struct EventFormView: View {
             isAllDay: isAllDay
         )
 
-        if event != nil {
-            calendarViewModel.updateEvent(updatedEvent)
-        } else {
-            calendarViewModel.createEvent(updatedEvent)
+        Task {
+            if event != nil {
+                await calendarViewModel.updateEvent(updatedEvent)
+            } else {
+                await calendarViewModel.createEvent(updatedEvent)
+            }
+            await calendarViewModel.fetchEvents(for: date)
         }
 
         isAddEventPresented.toggle()
