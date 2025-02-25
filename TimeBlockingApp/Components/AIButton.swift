@@ -9,15 +9,15 @@ import SwiftUI
 
 struct AIButton: View {
     @Binding var isDisabled: Bool
-    @State private var isAIViewPresented: Bool = false
-    
+    var onTap: () -> Void
+
     var body: some View {
-        ZStack {
-            // Only show the button when modal is not presented
-            if !isAIViewPresented {
+//        ZStack {
+//            // Only show the button when modal is not presented
+//            if !isAIViewPresented {
                 Button {
                     withAnimation(.spring()) {
-                        isAIViewPresented.toggle()
+                        onTap()
                     }
                 } label: {
                     ZStack {
@@ -41,17 +41,11 @@ struct AIButton: View {
                     }
                 }
                 .disabled(isDisabled)
-            }
-            
-            if isAIViewPresented {
-                AIModal(isPresented: $isAIViewPresented, isDisabled: $isDisabled)
-                    .transition(.move(edge: .bottom))
-                    .animation(.spring(), value: isAIViewPresented)
-            }
-        }
+//            }
+//        }
     }
 }
 
 #Preview {
-    AIButton(isDisabled: .constant(false))
+    AIButton(isDisabled: .constant(false), onTap: {})
 }

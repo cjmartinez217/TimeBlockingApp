@@ -9,21 +9,21 @@ import SwiftUI
 
 struct AIModal: View {
     @Binding var isPresented: Bool
-    @Binding var isDisabled: Bool
+    // @Binding var isDisabled: Bool
     @State private var isSpeakerOn: Bool = true
     @State private var isMicOn: Bool = true
     @State private var rotation: Double = 0
     @State private var isSpinning: Bool = false
     @State private var scale: CGFloat = 1.0
     @State private var isPulsing: Bool = false
-    @State private var shadowRadius: CGFloat = 0
+    // @State private var shadowRadius: CGFloat = 0
 
     var body: some View {
-        GeometryReader { geometry in
-            HStack {
-                Spacer()
-                VStack {
-                    Spacer()
+//        GeometryReader { geometry in // TODO: do we need Geometry Reader here?
+//            HStack {
+//                Spacer()
+//                VStack {
+//                    Spacer()
                     VStack {
                         Text("AI Name")
                             .font(.title)
@@ -42,21 +42,24 @@ struct AIModal: View {
                         }
                         .padding(.bottom, 20)
                     }
-                    .frame(width: UIScreen.main.bounds.width * 0.85)
-                    .frame(height: UIScreen.main.bounds.width * 0.85)
+//                    .frame(width: UIScreen.main.bounds.width * 0.85)
+//                    .frame(height: UIScreen.main.bounds.width * 0.85)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(Color.white)
                     .cornerRadius(20)
                     .shadow(radius: 10)
-                    .padding(.bottom, 40)
-                }
-                Spacer()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .ignoresSafeArea()
-        }
+                    // .padding(.bottom, 40) I think the screen that adops this component should handle placement
+//                }
+//                Spacer()
+//            }
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            .ignoresSafeArea()
+//        }
     }
+
     
-    var speakerIcon: some View {
+
+    var speakerIcon: some View { // TODO: would speaker off ever be used?
         Button(action: {
             isSpeakerOn.toggle()
             print("Speaker button toggled: \(isSpeakerOn ? "On" : "Off")")
@@ -107,9 +110,9 @@ struct AIModal: View {
         Circle()
             .stroke(
                 LinearGradient(
-                    gradient: Gradient(colors: isDisabled
-                        ? [Color(red: 0.8, green: 0.1, blue: 0.1), Color(red: 0.1, green: 0.1, blue: 0.6)]
-                        : [Color.red, Color.blue]
+                    gradient: Gradient(colors: // isDisabled
+                        // ? [Color(red: 0.8, green: 0.1, blue: 0.1), Color(red: 0.1, green: 0.1, blue: 0.6)]
+                        [Color.red, Color.blue]
                     ),
                     startPoint: .topTrailing,
                     endPoint: .bottomLeading),
@@ -135,29 +138,27 @@ struct AIModal: View {
                     scale = 1.0
                 }
             }
-            .animation(.easeInOut, value: isDisabled)
+            .animation(.easeInOut) //, value: isDisabled)
     }
 }
 
-extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
-        clipShape(RoundedCorner(radius: radius, corners: corners))
-    }
-}
-
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners,
-                                cornerRadii: CGSize(width: radius, height: radius))
-        return Path(path.cgPath)
-    }
-}
+//extension View {
+//    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+//        clipShape(RoundedCorner(radius: radius, corners: corners))
+//    }
+//}
+//
+//struct RoundedCorner: Shape {
+//    var radius: CGFloat = .infinity
+//    var corners: UIRectCorner = .allCorners
+//
+//    func path(in rect: CGRect) -> Path {
+//        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners,
+//                                cornerRadii: CGSize(width: radius, height: radius))
+//        return Path(path.cgPath)
+//    }
+//}
 
 #Preview {
-    @Previewable @State var isPresented = true
-    @Previewable @State var isDisabled = false
-    AIModal(isPresented: $isPresented, isDisabled: $isDisabled)
+    AIModal(isPresented: .constant(true)) // , isDisabled: .constant(false))
 }
