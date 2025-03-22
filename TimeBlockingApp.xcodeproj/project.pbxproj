@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85A5A85F2D6BC33E00EF9D2A /* AIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5A85E2D6BC33500EF9D2A /* AIView.swift */; };
 		A6172AD22CECE9050021532B /* WeekTimeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD12CECE9050021532B /* WeekTimeGrid.swift */; };
 		A6172AD42CEF8FD60021532B /* WeekHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6172AD32CEF8FD60021532B /* WeekHeader.swift */; };
 		A63739962D43D33500DCDB61 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63739952D43D33500DCDB61 /* DatePickerView.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		85A5A85E2D6BC33500EF9D2A /* AIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIView.swift; sourceTree = "<group>"; };
 		A6172AD12CECE9050021532B /* WeekTimeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTimeGrid.swift; sourceTree = "<group>"; };
 		A6172AD32CEF8FD60021532B /* WeekHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekHeader.swift; sourceTree = "<group>"; };
 		A63739952D43D33500DCDB61 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		A6C74E692CBE9DF40084FE6A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				85A5A85E2D6BC33500EF9D2A /* AIView.swift */,
 				A6C74E542CB965940084FE6A /* ContentView.swift */,
 				A696C5C32CD3B16700F23E2E /* EventFormView.swift */,
 				A696C5CB2CD50AB900F23E2E /* CalendarViews */,
@@ -320,6 +323,7 @@
 				A696C5C42CD3B16700F23E2E /* EventFormView.swift in Sources */,
 				A696C5B42CC2A6B100F23E2E /* DayCalendarView.swift in Sources */,
 				A6F9A6AA2CFDE61300A61FBD /* AccountsView.swift in Sources */,
+				85A5A85F2D6BC33E00EF9D2A /* AIView.swift in Sources */,
 				A696C5C82CD5087200F23E2E /* WeekCalendarView.swift in Sources */,
 				A6F9A6AE2CFDE64C00A61FBD /* FeedbackView.swift in Sources */,
 				A6535C2E2D37F6BC00EC81B2 /* MockCalendarService.swift in Sources */,
