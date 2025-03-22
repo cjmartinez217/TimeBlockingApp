@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EventFormView: View {
+    let date: Date
     @Binding var isAddEventPresented: Bool
     @EnvironmentObject var calendarViewModel: CalendarViewModel
     let event: EventModel?
@@ -20,7 +21,8 @@ struct EventFormView: View {
     @State private var location: String
     @State private var description: String
 
-    init(isAddEventPresented: Binding<Bool>, event: EventModel? = nil, onSave: (() -> Void)? = nil) {
+    init(date: Date, isAddEventPresented: Binding<Bool>, event: EventModel? = nil, onSave: (() -> Void)? = nil) {
+        self.date = date
         self._isAddEventPresented = isAddEventPresented
         self.event = event
         self.onSave = onSave
@@ -35,8 +37,8 @@ struct EventFormView: View {
         } else {
             _title = State(initialValue: "")
             _isAllDay = State(initialValue: false)
-            _startDate = State(initialValue: TimeUtils.getStartDate())
-            _endDate = State(initialValue: TimeUtils.getEndDate())
+            _startDate = State(initialValue: TimeUtils.getStartDate(date: date))
+            _endDate = State(initialValue: TimeUtils.getEndDate(date: date))
             _location = State(initialValue: "")
             _description = State(initialValue: "")
         }
@@ -209,6 +211,9 @@ struct EventFormView: View {
     }
 
     private func saveEvent() {
+        if title.isEmpty {
+            title = "(No title)"
+        }
         let updatedEvent = EventModel(
             id: event?.id ?? UUID(),
             title: title,
@@ -231,6 +236,7 @@ struct EventFormView: View {
 
 #Preview {
     EventFormView(
+        date: Date(),
         isAddEventPresented: .constant(true),
         event: EventModel(
             id: UUID(),

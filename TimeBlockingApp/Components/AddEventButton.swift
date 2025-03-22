@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddEventButton: View {
     @State var isAddEventPresented: Bool = false
+    let date: Date
     @Binding var isDisabled: Bool
 
     var body: some View {
@@ -23,11 +24,11 @@ struct AddEventButton: View {
         }
         .disabled(isDisabled)
         .sheet(isPresented: $isAddEventPresented) {
-            EventFormView(isAddEventPresented: $isAddEventPresented)
+            EventFormView(date: date, isAddEventPresented: $isAddEventPresented)
         }
     }
 }
 
 #Preview {
-    AddEventButton(isDisabled: .constant(false))
+    AddEventButton(date: Date(), isDisabled: .constant(false))
 }
