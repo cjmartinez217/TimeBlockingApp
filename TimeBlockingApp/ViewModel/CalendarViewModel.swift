@@ -33,7 +33,7 @@ class CalendarViewModel: ObservableObject {
         }
     }
 
-    func deleteEvent(with id: UUID) {
+    func deleteEvent(with id: String) {
         Task {
             do {
                 try await calendarService.deleteEvent(with: id)
