@@ -14,21 +14,12 @@ struct MonthCalendarView: View {
 
     var body: some View {
         VStack {
-            HStack(alignment: .center) {
-                SideMenuButton(presentSideMenu: $presentSideMenu)
-                Text(TimeUtils.getMonth(date: displayDate))
-                    .font(.system(size: 28, weight: .medium, design: .rounded))
-                Spacer()
-                AddEventButton(date: displayDate, isDisabled: $presentSideMenu)
-            }
-            .padding(.horizontal, 10)
-
 //            HorizontalCalendarViewRepresentable(onDaySelected: onDaySelected)
 
-//            ZStack {
-//                Color.clear
-//                MonthGrid(date: displayDate, onDaySelected: onDaySelected)
-//            }
+            ZStack {
+                Color.clear
+                MonthGrid(date: displayDate, onDaySelected: onDaySelected)
+            }
 //            .contentShape(Rectangle())
 //            .gesture(
 //                DragGesture()

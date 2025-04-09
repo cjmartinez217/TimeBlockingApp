@@ -12,31 +12,13 @@ struct SideMenu: View {
     @Binding var selectedSideMenuTab: Int
     @State private var selectedPage: SideMenuPage?
 
-    var edgeTransition: AnyTransition = .move(edge: .leading)
     var body: some View {
-        ZStack(alignment: .bottom) {
-            if (isShowing) {
-                Color.black
-                    .opacity(0.3)
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        isShowing.toggle()
-                    }
-                sideMenuContent
-                    .transition(edgeTransition)
-                    .background(
-                        Color.clear
-                    )
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-        .ignoresSafeArea()
-        .animation(.easeInOut, value: isShowing)
-        .fullScreenCover(item: $selectedPage) { page in
-             SideMenuDetailView(page: page) {
-                 selectedPage = nil
+        sideMenuContent
+            .fullScreenCover(item: $selectedPage) { page in
+                 SideMenuDetailView(page: page) {
+                     selectedPage = nil
+                 }
              }
-         }
     }
 
     var sideMenuContent: some View {
@@ -112,8 +94,7 @@ struct SideMenu: View {
 
                     Spacer()
                 }
-                .padding(.top, 100)
-                .frame(width: 270)
+                .padding(.top, 16)
                 .background(
                     Color.white
                 )
