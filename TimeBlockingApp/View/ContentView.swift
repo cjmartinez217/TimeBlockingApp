@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var presentSideMenu = false
     @State var selectedSideMenuTab = 0
     @State var selectedDay: Date = Date()
+    @State private var isAIViewPresented: Bool = false
 
     var body: some View {
 
@@ -25,8 +26,21 @@ struct ContentView: View {
                 Spacer()
                 VStack(alignment: .trailing) {
                     Spacer()
-                    AIButton(isDisabled: $presentSideMenu)
-                        .padding(.trailing, 24)
+                    AIButton(isDisabled: $presentSideMenu) {
+                        isAIViewPresented.toggle()
+                    }
+                    .padding(.trailing, 24)
+                }
+            }
+            if isAIViewPresented {
+                VStack {
+                    Spacer()
+                    AIModal(isPresented: $isAIViewPresented)
+                        .frame(width: UIScreen.main.bounds.width * 0.85)
+                        .frame(height: UIScreen.main.bounds.width * 0.85)
+                        .transition(.move(edge: .bottom))
+                        .animation(.spring(), value: isAIViewPresented)
+                        .padding(.bottom, 10)
                 }
             }
         }
