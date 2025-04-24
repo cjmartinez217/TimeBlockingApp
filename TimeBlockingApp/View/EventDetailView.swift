@@ -118,7 +118,6 @@ struct EventDetailView: View {
 #Preview {
     EventDetailView(event:
         EventModel(
-//            id: UUID(),
             title: "Test1",
             startDate: Calendar.current.date(byAdding: .hour, value: 0, to: Date())!,
             endDate: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!,

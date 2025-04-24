@@ -14,7 +14,7 @@ class SampleData {
     private let thirdDate = Date().set(day: Date().day+2, hour: Date().hour+1, minute: 0, second: 0)
     
     lazy var events: [EventModel] = [
-        EventModel(title: "One", startDate: firstDate, endDate: firstDate.add(component: .hour, value: 1)),
+        EventModel(title: "One", startDate: firstDate, endDate: firstDate.add(component: .minute, value: 75)),
         EventModel(title: "AllDay-1", startDate: firstDate.startOfDay, endDate: firstDate.endOfDay, isAllDay: true, color: Color.google.emerald),
         EventModel(title: "AllDay-2", startDate: firstDate.startOfDay, endDate: firstDate.endOfDay, isAllDay: true, color: Color.google.emerald),
         EventModel(title: "AllDay-3", startDate: firstDate.startOfDay, endDate: firstDate.endOfDay, isAllDay: true, color: Color.google.flamingo),
