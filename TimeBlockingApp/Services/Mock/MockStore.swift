@@ -34,14 +34,12 @@ class MockStore: ObservableObject {
 
         events = [
             EventModel(
-                id: UUID(),
                 title: "Team Meeting",
                 startDate: firstEventStart,
                 endDate: firstEventEnd,
                 description: "Conference Room A"
             ),
             EventModel(
-                id: UUID(),
                 title: "Lunch Break",
                 startDate: secondEventStart,
                 endDate: secondEventEnd,
@@ -61,7 +59,7 @@ class MockStore: ObservableObject {
         events.append(event)
     }
 
-    func deleteEvent(with id: UUID) {
+    func deleteEvent(with id: String) {
         events.removeAll { $0.id == id }
     }
 

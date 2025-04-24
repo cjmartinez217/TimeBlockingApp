@@ -37,15 +37,15 @@ struct DayTimeGrid: View {
                         }
                     }
                 }
-                ForEach(events) { event in
-                    if !event.isAllDay {
-                        EventBlock(event: event)
-                            .padding(.top, getTopPadding(event))
-                            .padding(.leading, 66)
-                            .padding(.trailing, 5)
-                            .offset(y: 37)
-                    }
-                }
+//                ForEach(events) { event in
+//                    if !event.isAllDay {
+//                        EventBlock(event: event)
+//                            .padding(.top, getTopPadding(event))
+//                            .padding(.leading, 66)
+//                            .padding(.trailing, 5)
+//                            .offset(y: 37)
+//                    }
+//                }
                 if (Calendar.current.isDateInToday(displayDate)) {
                     TimeBar()
                         .padding(.leading, 60)
@@ -76,7 +76,7 @@ struct DayTimeGrid: View {
 #Preview {
     DayTimeGrid(events: [
         EventModel(
-            id: UUID(),
+//            id: UUID().uuidString,
             title: "Test1",
             startDate: Calendar.current.date(byAdding: .hour, value: 0, to: Date())!,
             endDate: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!,

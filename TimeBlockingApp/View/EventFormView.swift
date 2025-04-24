@@ -215,7 +215,6 @@ struct EventFormView: View {
             title = "(No title)"
         }
         let updatedEvent = EventModel(
-            id: event?.id ?? UUID(),
             title: title,
             startDate: startDate,
             endDate: endDate,
@@ -239,7 +238,6 @@ struct EventFormView: View {
         date: Date(),
         isAddEventPresented: .constant(true),
         event: EventModel(
-            id: UUID(),
             title: "Test1",
             startDate: Calendar.current.date(byAdding: .hour, value: 0, to: Date())!,
             endDate: Calendar.current.date(byAdding: .hour, value: 2, to: Date())!,

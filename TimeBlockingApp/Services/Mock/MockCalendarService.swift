@@ -15,7 +15,7 @@ class MockCalendarService: CalendarServiceProtocol {
         return store.getEvents(for: date)
     }
 
-    func deleteEvent(with id: UUID) async throws {
+    func deleteEvent(with id: String) async throws {
         try? await Task.sleep(nanoseconds: 500_000_000)
         store.deleteEvent(with: id)
     }

@@ -75,7 +75,7 @@ struct DayCalendarView: View {
             if !allDayEvents.isEmpty {
                 VStack(alignment: .trailing, spacing: 3) {
                     ForEach(allDayEvents) { event in
-                        EventBlock(event: event, height: 25)
+                        EventBlockView(event)
                     }
                 }
                 .padding(.bottom, 3)
