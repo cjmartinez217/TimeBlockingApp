@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @State var events: [EventModel] = SampleData().events
+    @StateObject private var eventStore = MockEventStore.shared
     @State var currentDate: Date = Date()
     @State var targetDate: Date?
     @State var selectedItem: EventModel?
     @State private var isSideMenuPresented: Bool = false
     @State private var selectedSideMenuTab: Int = 1
 
-
     @ObservedObject var settings: CustomSettings = CustomSettings(numOfDays: 7, setDate: Date())
-
 
     var body: some View {
         VStack(spacing: 0.0) {
@@ -38,34 +36,35 @@ struct CalendarView: View {
         .sheet(item: $selectedItem, onDismiss: { selectedItem = nil }, content: { EventDetailView(event: $0) })
         .sideMenu(isPresented: $isSideMenuPresented) {
             SideMenu(isShowing: $isSideMenuPresented, selectedSideMenuTab: $selectedSideMenuTab)
-//                .ignoresSafeArea(.container, edges: .bottom)
         }
+        .ignoresSafeArea(.container, edges: .bottom)
     }
 
     var horizontalCalendarView: some View {
-        InfiniteCalendar<EventBlockView, EventBlock, CustomSettings>(events: $events, settings: settings, targetDate: $targetDate)
-            .onCurrentDateChanged { date in
-                // Don't recommend update date of @Sate variable (if you defined) with date obtained.
-                // Because, if update @State variable, InfiniteCalendar will start re-rendaring then it will use CPU too much.
-                if currentDate.month != date.month {
-                    currentDate = date
-                    print("update current month: \(date)")
-                }
+        InfiniteCalendar<EventBlockView, EventBlock, CustomSettings>(
+            events: .constant(eventStore.events),
+            settings: settings,
+            targetDate: $targetDate
+        )
+        .onCurrentDateChanged { date in
+            // Don't recommend update date of @Sate variable (if you defined) with date obtained.
+            // Because, if update @State variable, InfiniteCalendar will start re-rendaring then it will use CPU too much.
+            if currentDate.month != date.month {
+                currentDate = date
             }
-            .onItemSelected { item in
-                selectedItem = item
-            }
-            .onEventAdded { item in
-                events.append(item)
-            }
-            .onEventMoved { item in
-                if let index = events.firstIndex(where: {$0.id == item.id}) {
-                    events[index] = item
-                }
-            }
-            .onEventCanceled { _ in
-                print("Canceled some event gesture.")
-            }
+        }
+        .onItemSelected { item in
+            selectedItem = item
+        }
+        .onEventAdded { item in
+            eventStore.addEvent(item)
+        }
+        .onEventMoved { item in
+            eventStore.updateEvent(item)
+        }
+        .onEventCanceled { _ in
+            print("Canceled some event gesture.")
+        }
     }
 
     var monthCalendarView: some View {

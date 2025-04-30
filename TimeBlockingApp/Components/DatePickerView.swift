@@ -37,13 +37,6 @@ struct DatePickerView: View {
 
     var body: some View {
         ZStack {
-            // Conditional underline for time display
-            if displayedComponents == .hourAndMinute {
-                Text(label)
-                    .underline()
-            } else {
-                Text(label)
-            }
             DatePicker(
                 "",
                 selection: $selection,
@@ -51,10 +44,12 @@ struct DatePickerView: View {
                 displayedComponents: displayedComponents
             )
             .labelsHidden()
-            .opacity(0.02)
-            .frame(width: 0, height: 0) // Reduce visual footprint
+            .opacity(0.015)
+
+            Text(label)
+                .underline(displayedComponents == .hourAndMinute)
+                .allowsHitTesting(false)
         }
-        .animation(.easeInOut)
     }
 }
 

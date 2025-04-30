@@ -9,51 +9,43 @@ import SwiftUI
 
 struct EventFormView: View {
     let date: Date
-    @Binding var isAddEventPresented: Bool
-    @EnvironmentObject var calendarViewModel: CalendarViewModel
     let event: EventModel?
     let onSave: (() -> Void)?
+    @Binding var isPresented: Bool
+
+    @ObservedObject private var eventStore = MockEventStore.shared
 
     @State private var title: String
     @State private var isAllDay: Bool
     @State private var startDate: Date
     @State private var endDate: Date
-    @State private var location: String
     @State private var description: String
 
-    init(date: Date, isAddEventPresented: Binding<Bool>, event: EventModel? = nil, onSave: (() -> Void)? = nil) {
+    init(
+        date: Date,
+        isPresented: Binding<Bool>,
+        event: EventModel? = nil,
+        onSave: (() -> Void)? = nil
+    ) {
         self.date = date
-        self._isAddEventPresented = isAddEventPresented
+        self._isPresented = isPresented
         self.event = event
         self.onSave = onSave
 
+        // Initialize state
         if let event = event {
             _title = State(initialValue: event.title)
-            _isAllDay = State(initialValue: event.isAllDay ?? false)
+            _isAllDay = State(initialValue: event.isAllDay)
             _startDate = State(initialValue: event.startDate)
             _endDate = State(initialValue: event.endDate)
-            _location = State(initialValue: "")
             _description = State(initialValue: event.description ?? "")
         } else {
             _title = State(initialValue: "")
             _isAllDay = State(initialValue: false)
             _startDate = State(initialValue: TimeUtils.getStartDate(date: date))
             _endDate = State(initialValue: TimeUtils.getEndDate(date: date))
-            _location = State(initialValue: "")
             _description = State(initialValue: "")
         }
-    }
-
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMM d, yyyy"
-        return formatter
-    }
-
-    private var timeFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter
     }
 
     var body: some View {
@@ -63,7 +55,7 @@ struct EventFormView: View {
                 // MARK: Cancel and Save buttons
                 HStack {
                     Button(action: {
-                        isAddEventPresented.toggle()
+                        isPresented = false
                     }) {
                         Text("Cancel")
                             .font(.system(size: 18, weight: .regular, design: .rounded))
@@ -139,20 +131,20 @@ struct EventFormView: View {
                 Divider()
 
                 // MARK: Location
-                HStack {
-                    Image(systemName: "mappin.and.ellipse")
-                        .imageScale(.large)
-                        .frame(width: 24)
-                    TextField(text: $location) {
-                        Text("Add location")
-                    }
-                    .multilineTextAlignment(.leading)
-                    .font(.system(size: 24, weight: .regular, design: .rounded))
-                    .padding(.leading, 2)
-                    Spacer()
-                }
-                .padding(.leading, 16)
-                .padding(.vertical, 16)
+//                HStack {
+//                    Image(systemName: "mappin.and.ellipse")
+//                        .imageScale(.large)
+//                        .frame(width: 24)
+//                    TextField(text: $location) {
+//                        Text("Add location")
+//                    }
+//                    .multilineTextAlignment(.leading)
+//                    .font(.system(size: 24, weight: .regular, design: .rounded))
+//                    .padding(.leading, 2)
+//                    Spacer()
+//                }
+//                .padding(.leading, 16)
+//                .padding(.vertical, 16)
 
                 Divider()
 
@@ -211,24 +203,34 @@ struct EventFormView: View {
     }
 
     private func saveEvent() {
-        if title.isEmpty {
-            title = "(No title)"
+        let updatedEvent: EventModel
+        if let existingEvent = event {
+            // Use copy() for updating existing events
+            var eventCopy = existingEvent.copy()
+            eventCopy.title = title.isEmpty ? "(No title)" : title
+            eventCopy.startDate = startDate
+            eventCopy.endDate = endDate
+            eventCopy.description = description.isEmpty ? nil : description
+            eventCopy.isAllDay = isAllDay
+            updatedEvent = eventCopy
+        } else {
+            // Create new event
+            updatedEvent = EventModel(
+                title: title.isEmpty ? "(No title)" : title,
+                startDate: startDate,
+                endDate: endDate,
+                description: description.isEmpty ? "" : description,
+                isAllDay: isAllDay
+            )
         }
-        let updatedEvent = EventModel(
-            title: title,
-            startDate: startDate,
-            endDate: endDate,
-            description: description,
-            isAllDay: isAllDay
-        )
 
         if event != nil {
-            calendarViewModel.updateEvent(updatedEvent)
+            eventStore.updateEvent(updatedEvent)
         } else {
-            calendarViewModel.createEvent(updatedEvent)
+            eventStore.addEvent(updatedEvent)
         }
 
-        isAddEventPresented.toggle()
+        isPresented = false
         onSave?()
     }
 }
@@ -236,7 +238,7 @@ struct EventFormView: View {
 #Preview {
     EventFormView(
         date: Date(),
-        isAddEventPresented: .constant(true),
+        isPresented: .constant(true),
         event: EventModel(
             title: "Test1",
             startDate: Calendar.current.date(byAdding: .hour, value: 0, to: Date())!,

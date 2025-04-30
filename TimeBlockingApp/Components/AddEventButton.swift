@@ -24,7 +24,7 @@ struct AddEventButton: View {
         }
         .disabled(isDisabled)
         .sheet(isPresented: $isAddEventPresented) {
-            EventFormView(date: date, isAddEventPresented: $isAddEventPresented)
+            EventFormView(date: date, isPresented: $isAddEventPresented)
         }
     }
 }
