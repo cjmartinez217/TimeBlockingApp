@@ -210,6 +210,8 @@ struct EventFormView: View {
             eventCopy.title = title.isEmpty ? "(No title)" : title
             eventCopy.startDate = startDate
             eventCopy.endDate = endDate
+            eventCopy.intraStartDate = startDate
+            eventCopy.intraEndDate = endDate
             eventCopy.description = description.isEmpty ? nil : description
             eventCopy.isAllDay = isAllDay
             updatedEvent = eventCopy
