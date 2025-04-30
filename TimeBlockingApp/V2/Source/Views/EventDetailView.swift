@@ -9,9 +9,9 @@ import SwiftUI
 
 struct EventDetailView: View {
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var calendarViewModel: CalendarViewModel
     @State private var showEventForm: Bool = false
-    let event: EventModel // Assuming you have an Event model
+    let event: EventModel
+    @ObservedObject private var eventStore = MockEventStore.shared
 
     var body: some View {
         NavigationView {
@@ -91,7 +91,7 @@ struct EventDetailView: View {
                         }
 
                         Button(action: {
-                            calendarViewModel.deleteEvent(with: event.id)
+                            eventStore.deleteEvent(with: event.id)
                             dismiss()
                         }) {
                             Image(systemName: "trash")
