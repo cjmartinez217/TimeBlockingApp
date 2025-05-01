@@ -49,13 +49,6 @@ struct ContentView: View {
     @ViewBuilder
     var currentCalendarView: some View {
         switch selectedSideMenuTab {
-        case 0:
-            DayCalendarView(presentSideMenu: $presentSideMenu, displayDate: $selectedDay)
-        case 1:
-            WeekCalendarView(presentSideMenu: $presentSideMenu) { day in
-                selectedDay = day
-                selectedSideMenuTab = 0
-            }
         case 2:
             MonthCalendarView(presentSideMenu: $presentSideMenu) { day in
                 selectedDay = day
