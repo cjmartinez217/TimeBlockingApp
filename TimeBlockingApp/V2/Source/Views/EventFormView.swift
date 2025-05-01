@@ -248,5 +248,4 @@ struct EventFormView: View {
             description: "testing"
         )
     )
-        .environmentObject(CalendarViewModel())
 }
