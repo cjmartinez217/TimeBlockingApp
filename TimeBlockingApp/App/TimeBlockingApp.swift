@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct TimeBlockingAppApp: App {
+struct TimeBlockingApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
