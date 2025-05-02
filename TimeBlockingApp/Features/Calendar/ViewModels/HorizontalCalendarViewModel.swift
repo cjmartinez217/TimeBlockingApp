@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class CustomSettings: ICSettings {
+class HorizontalCalendarViewModel: ICSettings {
 
     @Published public var numOfDays: Int = 1
     @Published public var initDate: Date = Date()
