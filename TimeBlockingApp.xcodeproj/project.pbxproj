@@ -21,6 +21,7 @@
 		A654D1272DC2E83B0019439A /* EventDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654D1042DC2E83B0019439A /* EventDetailView.swift */; };
 		A654D1282DC2E83B0019439A /* CalendarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654D1072DC2E83B0019439A /* CalendarHeader.swift */; };
 		A654D1322DC2E83B0019439A /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654D1002DC2E83B0019439A /* SampleData.swift */; };
+		A654D1AC2DCA3BEF0019439A /* TBText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654D1AB2DCA3BEF0019439A /* TBText.swift */; };
 		A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */; };
 		A696C5C62CD5061700F23E2E /* SideMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C52CD5061700F23E2E /* SideMenuButton.swift */; };
 		A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C92CD5088900F23E2E /* MonthCalendarView.swift */; };
@@ -55,6 +56,7 @@
 		A654D1082DC2E83B0019439A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A654D1092DC2E83B0019439A /* HorizontalCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarViewModel.swift; sourceTree = "<group>"; };
 		A654D10A2DC2E83B0019439A /* SideMenuModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuModifier.swift; sourceTree = "<group>"; };
+		A654D1AB2DCA3BEF0019439A /* TBText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBText.swift; sourceTree = "<group>"; };
 		A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
 		A696C5C52CD5061700F23E2E /* SideMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButton.swift; sourceTree = "<group>"; };
 		A696C5C92CD5088900F23E2E /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				A654D0D12DC2E83B0019439A /* TBPrimaryButton.swift */,
+				A654D1AB2DCA3BEF0019439A /* TBText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				A6535C352D3F04A600EC81B2 /* EventBlock.swift in Sources */,
 				A6F9A6B02CFDEA0600A61FBD /* SideMenuDetailView.swift in Sources */,
 				A6C74E532CB965940084FE6A /* TimeBlockingApp.swift in Sources */,
+				A654D1AC2DCA3BEF0019439A /* TBText.swift in Sources */,
 				A696C5C62CD5061700F23E2E /* SideMenuButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
