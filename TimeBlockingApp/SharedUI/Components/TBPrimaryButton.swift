@@ -14,17 +14,9 @@ enum TBButtonSize {
 
     var dimension: CGFloat {
         switch self {
-        case .small: return 32
-        case .medium: return 44
-        case .large: return 56
-        }
-    }
-
-    var fontSize: CGFloat {
-        switch self {
-        case .small: return 12
-        case .medium: return 16
-        case .large: return 20
+        case .small: return Constants.buttonSizeSmall
+        case .medium: return Constants.buttonSizeMedium
+        case .large: return Constants.buttonSizeLarge
         }
     }
 }
