@@ -1,14 +1,16 @@
 //
-//  File.swift
+//  SideMenuUtils.swift
 //  TimeBlockingApp
 //
 //  Created by Christian Martinez on 11/1/24.
 //
 
+import SwiftUI
+
 enum SideMenuRowType: Int, CaseIterable {
     case day = 0
-    case week
-    case month
+    case week = 1
+    case month = 2
 
     var title: String {
         switch self {
@@ -31,6 +33,14 @@ enum SideMenuRowType: Int, CaseIterable {
             return "rectangle.split.3x3"
         }
     }
+
+    var numOfDays: Int? {
+        switch self {
+        case .day: return 1
+        case .week: return 7
+        case .month: return nil // Uses different view type
+        }
+    }
 }
 
 enum SideMenuPage: Identifiable {
@@ -43,4 +53,9 @@ enum SideMenuPage: Identifiable {
         case .feedback: return "feedback"
         }
     }
+}
+
+struct SideMenuState {
+    var isPresented: Bool
+    var selectedTab: SideMenuRowType
 }
