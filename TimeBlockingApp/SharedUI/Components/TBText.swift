@@ -27,13 +27,13 @@ enum TBTextSize {
 
 enum TBTextWeight {
     case light
-    case medium
+    case regular
     case bold
 
     var weight: Font.Weight {
         switch self {
         case .light: return .light
-        case .medium: return .medium
+        case .regular: return .regular
         case .bold: return .bold
         }
     }
@@ -47,7 +47,7 @@ struct TBText: View {
     init(
         _ text: String,
         size: TBTextSize = .size300,
-        weight: TBTextWeight = .medium
+        weight: TBTextWeight = .regular
     ) {
         self.text = text
         self.size = size
@@ -76,7 +76,7 @@ struct TBText: View {
         // Weight variations
         Group {
             TBText("Light Weight", weight: .light)
-            TBText("Medium Weight", weight: .medium)
+            TBText("Regular Weight", weight: .regular)
             TBText("Bold Weight", weight: .bold)
         }
 
@@ -86,7 +86,7 @@ struct TBText: View {
         Group {
             TBText("Large Bold", size: .size500, weight: .bold)
             TBText("Small Light", size: .size100, weight: .light)
-            TBText("Medium Medium", size: .size300, weight: .medium)
+            TBText("Medium Regular", size: .size300, weight: .regular)
         }
     }
     .padding()

@@ -66,17 +66,16 @@ struct TBSecondaryButton: View {
 
     var body: some View {
         Button(action: action) {
-            Text(text)
-                .font(.system(size: 14))
-                .foregroundColor(style.textColor)
+            TBText(text, size: .size100)
                 .padding(.vertical, 6)
                 .padding(.horizontal, 15)
                 .frame(maxWidth: .infinity)
+                .foregroundColor(style.textColor)
         }
         .background(style.backgroundColor)
-        .cornerRadius(8)
+        .cornerRadius(Constants.buttonCornerRadius)
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: Constants.buttonCornerRadius)
                 .stroke(style.borderColor, lineWidth: style.borderWidth)
         )
     }
@@ -86,14 +85,18 @@ struct TBSecondaryButton: View {
     VStack(spacing: 20) {
         TBSecondaryButton(
             text: "Remove Account",
-            style: .outline
-        ) {}
+            style: .outline,
+            action: {}
+        )
+        .frame(width: 150)
 
         TBSecondaryButton(
             text: "Add Account",
-            style: .filled
-        ) {}
-        
+            style: .filled,
+            action: {}
+        )
+        .frame(width: 150)
+
         TBSecondaryButton(
             text: "Custom Action",
             style: .filled
