@@ -27,6 +27,7 @@ struct AccountsView: View {
                 }
                 .padding(.horizontal, 8)
                 addButton
+                    .padding(.top, 10)
             }
         }
     }
@@ -56,20 +57,8 @@ struct AccountsView: View {
                 }
                 .labelsHidden()
             }
-            Button(action: {
+            TBSecondaryButton(text: "Remove Account", style: .outline) {
                 removeProfile(profile)
-            }) {
-                Text("Remove Account")
-                    .font(.system(size: 14))
-                    .foregroundColor(.black)
-                    .padding(.vertical, 6)
-                    .padding(.horizontal, 15)
-                    .background(Color.white)
-                    .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.black, lineWidth: 0.5)
-                    )
             }
         }
         .padding()
@@ -92,17 +81,11 @@ struct AccountsView: View {
     
     // Add a new profile
     var addButton: some View {
-        Button(action: {
+        TBSecondaryButton(text: "Add Account", style: .filled) {
             profiles.append(CalendarModel(name: "New User", email: "newuser@gmail.com", isActive: false))
-        }) {
-            Text("Add Account")
-                .font(.system(size: 14))
-                .foregroundColor(.white)
-                .padding(.vertical, 6)
-                .padding(.horizontal, 15)
-                .background(Color.blue)
-                .cornerRadius(8)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 10)
     }
     
     // Remove a profile

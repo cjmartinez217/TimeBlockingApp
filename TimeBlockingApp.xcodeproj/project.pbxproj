@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		85A5A85F2D6BC33E00EF9D2A /* AIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5A85E2D6BC33500EF9D2A /* AIView.swift */; };
+		85DA3B2C2DCAE38B00F0DDB5 /* TBSecondayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DA3B2B2DCAE38600F0DDB5 /* TBSecondayButton.swift */; };
 		A63739962D43D33500DCDB61 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63739952D43D33500DCDB61 /* DatePickerView.swift */; };
 		A6535C232D37EE8000EC81B2 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C222D37EE8000EC81B2 /* CalendarEventModel.swift */; };
 		A6535C332D3F03B500EC81B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6535C322D3F03B500EC81B2 /* Constants.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		85A5A85E2D6BC33500EF9D2A /* AIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIView.swift; sourceTree = "<group>"; };
+		85DA3B2B2DCAE38600F0DDB5 /* TBSecondayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBSecondayButton.swift; sourceTree = "<group>"; };
 		A63739952D43D33500DCDB61 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		A6535C222D37EE8000EC81B2 /* CalendarEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
 		A6535C322D3F03B500EC81B2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		A654D1462DC566A50019439A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				85DA3B2B2DCAE38600F0DDB5 /* TBSecondayButton.swift */,
 				A654D0D12DC2E83B0019439A /* TBPrimaryButton.swift */,
 				A654D1AB2DCA3BEF0019439A /* TBText.swift */,
 			);
@@ -581,6 +584,7 @@
 				A6535C232D37EE8000EC81B2 /* CalendarEventModel.swift in Sources */,
 				A696C5CD2CD50B7900F23E2E /* SideMenu.swift in Sources */,
 				A696C5D02CD50E6300F23E2E /* SideMenuUtils.swift in Sources */,
+				85DA3B2C2DCAE38B00F0DDB5 /* TBSecondayButton.swift in Sources */,
 				A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */,
 				A6535C352D3F04A600EC81B2 /* EventBlock.swift in Sources */,
 				A6F9A6B02CFDEA0600A61FBD /* SideMenuDetailView.swift in Sources */,
