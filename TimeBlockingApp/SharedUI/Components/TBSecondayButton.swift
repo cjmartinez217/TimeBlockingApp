@@ -1,3 +1,4 @@
+
 //
 //  TBSecondaryButton.swift
 //  TimeBlockingApp
@@ -70,6 +71,7 @@ struct TBSecondaryButton: View {
                 .foregroundColor(style.textColor)
                 .padding(.vertical, 6)
                 .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity)
         }
         .background(style.backgroundColor)
         .cornerRadius(8)
@@ -96,7 +98,7 @@ struct TBSecondaryButton: View {
             text: "Custom Action",
             style: .filled
         ) {}
-        .padding(.horizontal)
+        .padding(.horizontal) // Example of how it might be used in a wider context
     }
     .padding()
 }

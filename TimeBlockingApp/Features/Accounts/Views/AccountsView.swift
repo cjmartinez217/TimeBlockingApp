@@ -1,3 +1,4 @@
+
 //
 //  AccountsView.swift
 //  TimeBlockingApp
@@ -27,7 +28,7 @@ struct AccountsView: View {
                 }
                 .padding(.horizontal, 8)
                 addButton
-                    .padding(.top, 10)
+                    .padding(.top, 10) // Add some spacing if needed
             }
         }
     }
@@ -60,6 +61,7 @@ struct AccountsView: View {
             TBSecondaryButton(text: "Remove Account", style: .outline) {
                 removeProfile(profile)
             }
+            .frame(width: 200)
         }
         .padding()
         .overlay(
@@ -84,8 +86,7 @@ struct AccountsView: View {
         TBSecondaryButton(text: "Add Account", style: .filled) {
             profiles.append(CalendarModel(name: "New User", email: "newuser@gmail.com", isActive: false))
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 10)
+        .frame(width: 200)
     }
     
     // Remove a profile
