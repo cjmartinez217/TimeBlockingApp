@@ -53,14 +53,14 @@ enum TBButtonTheme {
 }
 
 struct TBPrimaryButton: View {
-    let icon: Image
+    let icon: TBIcon
     let action: () -> Void
     let size: TBButtonSize
     let theme: TBButtonTheme
     let background: TBButtonBackground
 
     init(
-        icon: Image,
+        icon: TBIcon,
         size: TBButtonSize = .medium,
         theme: TBButtonTheme = .standard,
         background: TBButtonBackground = .none,
@@ -76,37 +76,32 @@ struct TBPrimaryButton: View {
     var body: some View {
         Button(action: action) {
             icon
-                .resizable()
-                .scaledToFit()
-                .frame(width: size.dimension * 0.5, height: size.dimension * 0.5)
-                .foregroundStyle(.black)
-                .frame(minWidth: size.dimension, minHeight: size.dimension)
-                .fontWeight(theme.weight)
         }
+        .padding(size.dimension * 0.25)
         .background(background.color)
-        .clipShape(Capsule())
+        .clipShape(Circle())
     }
 }
 
 #Preview {
     HStack(spacing: 20) {
         TBPrimaryButton(
-            icon: Image(systemName: "plus"),
-            size: .large,
+            icon: TBIcon("plus", size: .small),
+            size: .small,
             theme: .bold,
             background: .none
         ) {}
 
         TBPrimaryButton(
-            icon: Image(systemName: "mic"),
+            icon: TBIcon("mic"),
             size: .medium,
             theme: .standard,
             background: .neutral
         ) {}
 
         TBPrimaryButton(
-            icon: Image(systemName: "xmark"),
-            size: .small,
+            icon: TBIcon("xmark", size: .large, theme: .light),
+            size: .large,
             theme: .light,
             background: .highlight
         ) {}
