@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SideMenu: View {
     @Binding var isShowing: Bool
-    @Binding var selectedSideMenuTab: Int
+    @Binding var selectedTab: Int
     @State private var selectedPage: SideMenuPage?
 
     var body: some View {
@@ -31,8 +31,8 @@ struct SideMenu: View {
                         .padding(.bottom, 10)
 
                     ForEach(SideMenuRowType.allCases, id: \.self){ row in
-                        RowView(isSelected: selectedSideMenuTab == row.rawValue, title: row.title, icon: row.icon) {
-                            selectedSideMenuTab = row.rawValue
+                        RowView(isSelected: selectedTab == row.rawValue, title: row.title, icon: row.icon) {
+                            selectedTab = row.rawValue
                             isShowing.toggle()
                         }
                     }
@@ -124,5 +124,5 @@ struct SideMenu: View {
 }
 
 #Preview {
-    SideMenu(isShowing: .constant(true), selectedSideMenuTab: .constant(0))
+    SideMenu(isShowing: .constant(true), selectedTab: .constant(0))
 }
