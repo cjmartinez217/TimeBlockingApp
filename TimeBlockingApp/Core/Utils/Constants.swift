@@ -13,6 +13,7 @@ struct Constants {
     static let buttonSizeSmall: CGFloat = 32
     static let buttonSizeMedium: CGFloat = 44
     static let buttonSizeLarge: CGFloat = 56
+    static let buttonCornerRadius: CGFloat = 8
 
     static let textSize100: CGFloat = 14
     static let textSize200: CGFloat = 18
