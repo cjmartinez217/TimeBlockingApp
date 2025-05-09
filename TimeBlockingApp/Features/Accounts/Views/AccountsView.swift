@@ -58,10 +58,13 @@ struct AccountsView: View {
                 }
                 .labelsHidden()
             }
-            TBSecondaryButton(text: "Remove Account", style: .outline) {
-                removeProfile(profile)
-            }
-            .frame(width: 200)
+            TBSecondaryButton(
+                text: "Remove Account",
+                style: .outline,
+                icon: TBIcon("trash", size: .small),
+                action: {}
+            )
+            .frame(width: 180, height: 40)
         }
         .padding()
         .overlay(
@@ -83,10 +86,13 @@ struct AccountsView: View {
     
     // Add a new profile
     var addButton: some View {
-        TBSecondaryButton(text: "Add Account", style: .filled) {
+        TBSecondaryButton(
+            text: "Add Account",
+            style: .filled,
+            icon: TBIcon("plus.circle.fill", size: .small, theme: .light)) {
             profiles.append(CalendarModel(name: "New User", email: "newuser@gmail.com", isActive: false))
         }
-        .frame(width: 200)
+            .frame(width: 180, height: 40)
     }
     
     // Remove a profile

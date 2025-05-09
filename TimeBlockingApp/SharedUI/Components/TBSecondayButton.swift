@@ -1,4 +1,3 @@
-
 //
 //  TBSecondaryButton.swift
 //  TimeBlockingApp
@@ -53,24 +52,32 @@ struct TBSecondaryButton: View {
     let text: String
     let style: TBSecondaryButtonStyle
     let action: () -> Void
+    let icon: TBIcon?
 
     init(
         text: String,
         style: TBSecondaryButtonStyle = .outline,
+        icon: TBIcon? = nil,
         action: @escaping () -> Void
     ) {
         self.text = text
         self.style = style
+        self.icon = icon
         self.action = action
     }
 
     var body: some View {
         Button(action: action) {
-            TBText(text, size: .size100)
-                .padding(.vertical, 6)
-                .padding(.horizontal, 15)
-                .frame(maxWidth: .infinity)
-                .foregroundColor(style.textColor)
+            HStack(spacing: 8) { // Adjust spacing as needed
+                if let icon {
+                    icon
+                }
+                TBText(text, size: .size100)
+            }
+            .padding(.vertical, 6)
+            .padding(.horizontal, 15)
+            .frame(maxWidth: .infinity)
+            .foregroundColor(style.textColor)
         }
         .background(style.backgroundColor)
         .cornerRadius(Constants.buttonCornerRadius)
@@ -86,9 +93,11 @@ struct TBSecondaryButton: View {
         TBSecondaryButton(
             text: "Remove Account",
             style: .outline,
+            // For outline style, text is black, so default icon theme (.dark) is fine.
+            icon: TBIcon("trash", size: .small),
             action: {}
         )
-        .frame(width: 150)
+        .frame(width: 200)
 
         TBSecondaryButton(
             text: "Add Account",
@@ -96,6 +105,16 @@ struct TBSecondaryButton: View {
             action: {}
         )
         .frame(width: 150)
+        
+        TBSecondaryButton(
+            text: "Add Account with Icon",
+            style: .filled,
+             // For filled style, text is white, so icon theme should be .light.
+            icon: TBIcon("plus.circle.fill", size: .small, theme: .light),
+            action: {}
+        )
+        .frame(width: 200)
+
 
         TBSecondaryButton(
             text: "Custom Action",
