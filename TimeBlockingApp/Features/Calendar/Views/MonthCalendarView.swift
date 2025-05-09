@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MonthCalendarView: View {
-    @Binding var presentSideMenu: Bool
     @State private var displayDate = Date()
     let onDaySelected: (Date) -> Void
 
@@ -35,5 +34,5 @@ struct MonthCalendarView: View {
 }
 
 #Preview {
-    MonthCalendarView(presentSideMenu: .constant(false), onDaySelected: { _ in })
+    MonthCalendarView(onDaySelected: { _ in })
 }
