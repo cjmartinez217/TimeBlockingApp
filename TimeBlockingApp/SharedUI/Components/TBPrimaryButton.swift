@@ -19,9 +19,17 @@ enum TBButtonSize {
         case .large: return Constants.buttonSizeLarge
         }
     }
+
+    var iconSize: TBIconSize {
+        switch self {
+        case .small: return .small
+        case .medium: return .medium
+        case .large: return .large
+        }
+    }
 }
 
-enum TBButtonBackground {
+enum TBButtonTheme {
     case none
     case neutral
     case highlight
@@ -38,47 +46,51 @@ enum TBButtonBackground {
     }
 }
 
-enum TBButtonTheme {
+enum TBButtonWeight {
     case light
     case standard
     case bold
 
-    var weight: Font.Weight {
+    var iconWeight: TBIconWeight {
         switch self {
-        case .light: return .light
+        case .light: return .thin
         case .standard: return .regular
-        case .bold: return .semibold
+        case .bold: return .bold
         }
     }
 }
 
 struct TBPrimaryButton: View {
-    let icon: TBIcon
+    let icon: String
     let action: () -> Void
     let size: TBButtonSize
+    let weight: TBButtonWeight
     let theme: TBButtonTheme
-    let background: TBButtonBackground
 
     init(
-        icon: TBIcon,
+        icon: String,
         size: TBButtonSize = .medium,
-        theme: TBButtonTheme = .standard,
-        background: TBButtonBackground = .none,
+        weight: TBButtonWeight = .standard,
+        theme: TBButtonTheme = .none,
         action: @escaping () -> Void
     ) {
         self.icon = icon
         self.size = size
+        self.weight = weight
         self.theme = theme
-        self.background = background
         self.action = action
     }
 
     var body: some View {
         Button(action: action) {
-            icon
+            TBIcon(
+                icon,
+                size: size.iconSize,
+                weight: weight.iconWeight,
+            )
         }
         .padding(size.dimension * 0.25)
-        .background(background.color)
+        .background(theme.color)
         .clipShape(Circle())
     }
 }
@@ -86,24 +98,24 @@ struct TBPrimaryButton: View {
 #Preview {
     HStack(spacing: 20) {
         TBPrimaryButton(
-            icon: TBIcon("plus", size: .small),
+            icon: "plus",
             size: .small,
-            theme: .bold,
-            background: .none
+            weight: .bold,
+            theme: .none
         ) {}
 
         TBPrimaryButton(
-            icon: TBIcon("mic"),
+            icon: "mic",
             size: .medium,
-            theme: .standard,
-            background: .neutral
+            weight: .standard,
+            theme: .neutral
         ) {}
 
         TBPrimaryButton(
-            icon: TBIcon("xmark", size: .large, theme: .light),
+            icon: "xmark",
             size: .large,
-            theme: .light,
-            background: .highlight
+            weight: .light,
+            theme: .highlight
         ) {}
     }
 }
