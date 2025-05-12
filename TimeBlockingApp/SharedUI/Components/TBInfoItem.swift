@@ -58,7 +58,7 @@ enum TBInfoItemWeight {
         case .light:
             return .light
         case .medium:
-            return .medium
+            return .regular
         case .bold:
             return .bold
         }
