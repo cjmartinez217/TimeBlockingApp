@@ -23,7 +23,7 @@ enum TBIconSize {
     }
 }
 
-enum TBIconStyle {
+enum TBIconWeight {
     case thin
     case regular
     case bold
@@ -52,24 +52,24 @@ enum TBIconTheme {
 struct TBIcon: View {
     private let name: String
     private let size: TBIconSize
-    private let style: TBIconStyle
+    private let weight: TBIconWeight
     private let theme: TBIconTheme
 
     init(
         _ name: String,
         size: TBIconSize = .medium,
-        style: TBIconStyle = .regular,
+        weight: TBIconWeight = .regular,
         theme: TBIconTheme = .dark
     ) {
         self.name = name
         self.size = size
-        self.style = style
+        self.weight = weight
         self.theme = theme
     }
 
     var body: some View {
         Image(systemName: name)
-            .font(.system(size: size.dimension, weight: style.weight))
+            .font(.system(size: size.dimension, weight: weight.weight))
             .foregroundColor(theme.color)
     }
 }
@@ -79,9 +79,9 @@ struct TBIcon: View {
         TBIcon("plus", size: .small)
         TBIcon("plus", size: .medium)
         TBIcon("plus", size: .large)
-        TBIcon("plus", size: .xLarge, style: .bold)
+        TBIcon("plus", size: .xLarge, weight: .bold)
         TBIcon("star.fill", theme: .dark)
-        TBIcon("heart", size: .medium, style: .thin, theme: .dark)
+        TBIcon("heart", size: .medium, weight: .thin, theme: .dark)
     }
     .padding()
 }
