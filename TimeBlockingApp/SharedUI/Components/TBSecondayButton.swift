@@ -74,8 +74,7 @@ struct TBSecondaryButton: View {
                 }
                 TBText(text, size: .size100)
             }
-            .padding(.vertical, 6)
-            .padding(.horizontal, 15)
+            .padding(.all, 6)
             .frame(maxWidth: .infinity)
             .foregroundColor(style.textColor)
         }
