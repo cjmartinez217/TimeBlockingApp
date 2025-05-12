@@ -25,6 +25,7 @@
 		A654D1AC2DCA3BEF0019439A /* TBText.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654D1AB2DCA3BEF0019439A /* TBText.swift */; };
 		A654D2482DCACB3A0019439A /* HorizontalCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654D2472DCACB3A0019439A /* HorizontalCalendarView.swift */; };
 		A654D3362DCCE8EB0019439A /* TBIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654D3352DCCE8EB0019439A /* TBIcon.swift */; };
+		A654D3D22DCCEEE80019439A /* TBInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A654D3D12DCCEEE80019439A /* TBInfoItem.swift */; };
 		A696C5B62CC2A73A00F23E2E /* AddEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */; };
 		A696C5C62CD5061700F23E2E /* SideMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C52CD5061700F23E2E /* SideMenuButton.swift */; };
 		A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696C5C92CD5088900F23E2E /* MonthCalendarView.swift */; };
@@ -63,6 +64,7 @@
 		A654D1AB2DCA3BEF0019439A /* TBText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBText.swift; sourceTree = "<group>"; };
 		A654D2472DCACB3A0019439A /* HorizontalCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCalendarView.swift; sourceTree = "<group>"; };
 		A654D3352DCCE8EB0019439A /* TBIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBIcon.swift; sourceTree = "<group>"; };
+		A654D3D12DCCEEE80019439A /* TBInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBInfoItem.swift; sourceTree = "<group>"; };
 		A696C5B52CC2A73A00F23E2E /* AddEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventButton.swift; sourceTree = "<group>"; };
 		A696C5C52CD5061700F23E2E /* SideMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuButton.swift; sourceTree = "<group>"; };
 		A696C5C92CD5088900F23E2E /* MonthCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarView.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				A654D0D12DC2E83B0019439A /* TBPrimaryButton.swift */,
 				A654D1AB2DCA3BEF0019439A /* TBText.swift */,
 				A654D3352DCCE8EB0019439A /* TBIcon.swift */,
+				A654D3D12DCCEEE80019439A /* TBInfoItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				A6C74E5C2CB965960084FE6A /* Persistence.swift in Sources */,
 				A63739962D43D33500DCDB61 /* DatePickerView.swift in Sources */,
 				A6F9A6B42D0B718900A61FBD /* AIButton.swift in Sources */,
+				A654D3D22DCCEEE80019439A /* TBInfoItem.swift in Sources */,
 				A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */,
 				A6535C332D3F03B500EC81B2 /* Constants.swift in Sources */,
 				A6F9A6B22D08808C00A61FBD /* MonthGrid.swift in Sources */,
