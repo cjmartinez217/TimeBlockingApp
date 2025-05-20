@@ -9,21 +9,18 @@ import LiveKit
 import LiveKitComponents
 import SwiftUI
 
-/// The ControlBar component handles connection, disconnection, and audio controls
-/// You can customize this component to fit your app's needs
+// The ControlBar component handles connection, disconnection, and audio controls
 struct ControlBar: View {
     @EnvironmentObject private var tokenService: TokenService
     @EnvironmentObject private var room: Room
 
-    // Private internal state
     @State private var isConnecting: Bool = false
     @State private var isDisconnecting: Bool = false
-    // @State private var isButtonDisabled: Bool = false
-
-    // Namespace for view transitions
     @Namespace private var animation
+    @State private var rotationDegrees: Double = 0
+    @State private var showCentralControls: Bool = false
+    @State private var showAIButton: Bool = true
 
-    // These are the overall configurations for this component, based on current app state
     private enum Configuration {
         case disconnected, connected, transitioning
     }
@@ -39,79 +36,118 @@ struct ControlBar: View {
     }
 
     var body: some View {
-        HStack(spacing: 16) {
-            Spacer()
-
-            switch currentConfiguration {
-            case .disconnected:
-                AIButton(isDisabled: $isConnecting, onTap: connect)
-                    .matchedGeometryEffect(id: "main-button", in: animation, properties: .position)
-            case .connected:
-                // When connected, show audio controls and disconnect button in segmented button-like group
-                HStack(spacing: 2) {
-                    Button(action: {
-                        Task {
-                            try? await room.localParticipant.setMicrophone(
-                                enabled: !room.localParticipant.isMicrophoneEnabled())
-                        }
-                    }) {
-                        Label {
-                            Text(room.localParticipant.isMicrophoneEnabled() ? "Mute" : "Unmute")
-                        } icon: {
-                            Image(
-                                systemName: room.localParticipant.isMicrophoneEnabled()
-                                    ? "mic" : "mic.slash")
-                        }
-                        .labelStyle(.iconOnly)
-                        .frame(width: 44, height: 44)
-                        .contentShape(Rectangle())
+        ZStack(alignment: .bottom) {
+            // Center controls
+            if showCentralControls {
+                HStack(spacing: 12) {
+                    HStack(spacing: 8) {
+                        // Mute button
+                        TBPrimaryButton(
+                            icon: TBIcon(
+                                room.localParticipant.isMicrophoneEnabled() ? "mic" : "mic.slash",
+                                size: .medium,
+                                weight: .regular,
+                                theme: .dark
+                            ),
+                            size: .medium,
+                            theme: .standard,
+                            background: .none,
+                            action: {
+                                Task {
+                                    try? await room.localParticipant.setMicrophone(
+                                        enabled: !room.localParticipant.isMicrophoneEnabled())
+                                }
+                            }
+                        )
+                        
+                        // Audio visualizer
+                        LocalAudioVisualizer(track: room.localParticipant.firstAudioTrack)
+                            .frame(height: 44)
+                            .id(room.localParticipant.firstAudioTrack?.id ?? "no-track")
+                            .padding(.trailing, 8)
                     }
-                    .buttonStyle(.plain)
-
-                    LocalAudioVisualizer(track: room.localParticipant.firstAudioTrack)
-                        .frame(height: 44)
-                        .id(room.localParticipant.firstAudioTrack?.id ?? "no-track") // Force the component to re-render when the track changes
-                    #if !os(macOS)
-                        .padding(.trailing, 8)
-                    #endif
-
-                    #if os(macOS)
-                    AudioDeviceSelector()
-                    #endif
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
+                    
+                    // Exit button
+                    TBPrimaryButton(
+                        icon: TBIcon("xmark", size: .medium, weight: .bold, theme: .light),
+                        size: .medium,
+                        theme: .bold,
+                        background: .destructive,
+                        action: disconnect
+                    )
                 }
-                .background(.primary.opacity(0.1))
-                .cornerRadius(8)
-
-                DisconnectButton(disconnectAction: disconnect)
-                    .matchedGeometryEffect(id: "main-button", in: animation, properties: .position)
-            case .transitioning:
-                //         or keep TransitionButton for disconnecting state
-                if isConnecting {
-                    AIButton(isDisabled: .constant(true), onTap: {}) // Visually similar to TransitionButton's disabled state
-                        .matchedGeometryEffect(id: "main-button", in: animation, properties: .position)
-                } else { // isDisconnecting
-                    TransitionButton(isConnecting: false) // Keep original for disconnecting
-                        .matchedGeometryEffect(id: "main-button", in: animation, properties: .position)
+                .padding(.bottom, 16)
+                .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.3)))
+            }
+            
+            // Right-aligned AI Button
+            HStack {
+                Spacer() // Push to right
+                
+                if showAIButton {
+                    if currentConfiguration == .disconnected {
+                        // Normal AI Button
+                        AIButton(isDisabled: $isConnecting, onTap: connect)
+                            .padding(.trailing, 16)
+                            .padding(.bottom, 16)
+                            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.3)))
+                    } else if isConnecting {
+                        // Spinning AI Button during connection
+                        AIButton(isDisabled: .constant(true), onTap: {})
+                            .rotationEffect(Angle(degrees: rotationDegrees))
+                            .onAppear {
+                                withAnimation(Animation.linear(duration: 2).repeatForever(autoreverses: false)) {
+                                    rotationDegrees = 360
+                                }
+                            }
+                            .padding(.trailing, 16)
+                            .padding(.bottom, 16)
+                            .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.3)))
+                    }
                 }
             }
-
-            Spacer()
         }
-        .animation(.spring(duration: 0.3), value: currentConfiguration)
+        .onChange(of: currentConfiguration) { oldValue, newValue in
+            // Handle state transitions with proper animations
+            if newValue == .connected && oldValue == .transitioning {
+                // When connection completes
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    showAIButton = false
+                }
+                // Delay showing the central controls
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        showCentralControls = true
+                    }
+                }
+            } else if newValue == .disconnected && (oldValue == .connected || oldValue == .transitioning) {
+                // When disconnection completes
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    showCentralControls = false
+                }
+                // Delay showing the AI button
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        showAIButton = true
+                    }
+                }
+            }
+        }
+        .onAppear {
+            // Initialize visibility states based on current configuration
+            showAIButton = currentConfiguration == .disconnected || isConnecting
+            showCentralControls = currentConfiguration == .connected && !isConnecting
+        }
     }
 
-    /// Fetches a token and connects to the LiveKit room
-    /// This assumes the agent is running and is configured to automatically join new rooms
     private func connect() {
         Task {
             isConnecting = true
-
-
+            
             // Generate a random room name to ensure a new room is created
-            // In a production app, you may want a more reliable process for ensuring agent dispatch
             let roomName = "room-\(Int.random(in: 1000 ... 9999))"
-
-            // For this demo, we'll use a random participant name as well. you may want to use user IDs in a production app
             let participantName = "user-\(Int.random(in: 1000 ... 9999))"
 
             do {
@@ -136,17 +172,31 @@ struct ControlBar: View {
         }
     }
 
-    /// Disconnects from the current LiveKit room
     private func disconnect() {
         Task {
             isDisconnecting = true
+            
+            // Start fading out controls immediately when disconnect is pressed
+            await MainActor.run {
+                withAnimation(.easeInOut(duration: 0.3)) {
+                    showCentralControls = false
+                }
+            }
+            
+            // Wait for fade-out to complete before disconnecting
+            try? await Task.sleep(nanoseconds: 300_000_000) // 0.3 seconds
+            
+            // Disconnect from room
             await room.disconnect()
+            
             isDisconnecting = false
+            
+            // AI button will fade in automatically due to onChange handler
         }
     }
 }
 
-/// Displays real-time audio levels for the local participant
+// Displays real-time audio levels for the local participant
 private struct LocalAudioVisualizer: View {
     var track: AudioTrack?
 
@@ -180,32 +230,7 @@ private struct LocalAudioVisualizer: View {
     }
 }
 
-/// Button shown when connected to end the conversation
-private struct DisconnectButton: View {
-    var disconnectAction: () -> Void
-
-    var body: some View {
-        Button(action: disconnectAction) {
-            Label {
-                Text("Disconnect")
-            } icon: {
-                Image(systemName: "xmark")
-                    .fontWeight(.bold)
-            }
-            .labelStyle(.iconOnly)
-            .frame(width: 44, height: 44)
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .background(
-            .red.opacity(0.9)
-        )
-        .foregroundStyle(.white)
-        .cornerRadius(8)
-    }
-}
-
-/// (fake) button shown during connection state transitions
+// (fake) button shown during connection state transitions
 private struct TransitionButton: View {
     var isConnecting: Bool
 
@@ -226,7 +251,7 @@ private struct TransitionButton: View {
     }
 }
 
-/// Dropdown menu for selecting audio input device on macOS
+
 private struct AudioDeviceSelector: View {
     @State private var audioDevices: [AudioDevice] = []
     @State private var selectedDevice: AudioDevice = AudioManager.shared.defaultInputDevice
@@ -247,12 +272,14 @@ private struct AudioDeviceSelector: View {
                 }
             }
         } label: {
-            Image(systemName: "chevron.down")
-                .fontWeight(.bold)
-                .frame(width: 44, height: 44)
-                .contentShape(Rectangle())
+            TBPrimaryButton(
+                icon: TBIcon("chevron.down", size: .medium, weight: .bold, theme: .dark),
+                size: .medium,
+                theme: .bold,
+                background: .none,
+                action: {}
+            )
         }
-        .buttonStyle(.plain)
         .onAppear {
             updateDevices()
 

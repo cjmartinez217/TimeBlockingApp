@@ -21,14 +21,13 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             calendarStack
-            
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
                     AIModal()
-                      .transition(.move(edge: .bottom))
-                      .environmentObject(tokenService)
+                        .transition(.move(edge: .bottom))
+                        .environmentObject(tokenService)
                 }
             }
         }

@@ -27,8 +27,6 @@ struct AIModal: View {
     var body: some View {
         VStack(spacing: 8) {
             StatusView()
-                .frame(height: 256)
-                .frame(maxWidth: 256)
             ControlBar()
         }
         .padding()

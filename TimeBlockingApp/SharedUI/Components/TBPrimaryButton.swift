@@ -25,6 +25,7 @@ enum TBButtonBackground {
     case none
     case neutral
     case highlight
+    case destructive
 
     var color: Color {
         switch self {
@@ -34,6 +35,8 @@ enum TBButtonBackground {
             return .backgroundNeutral
         case .highlight:
             return .backgroundHighlight
+        case .destructive:
+            return Color.red.opacity(0.9)
         }
     }
 }

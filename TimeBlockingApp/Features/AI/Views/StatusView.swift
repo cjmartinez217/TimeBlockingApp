@@ -36,11 +36,11 @@ struct StatusView: View {
         if let participant = agentParticipant {
             BarAudioVisualizer(audioTrack: participant.firstAudioTrack, agentState: agentState, barColor: .black.opacity(0.5), barCount: 23)
                 .id(participant.firstAudioTrack?.id)
-                .frame(height: 140) // Reduced height for the visualizer itself
+                .frame(height: 140)
+                .frame(width: 180)
         } else {
-            // Placeholder for when agent audio isn't available yet
             Rectangle().fill(.clear)
-                .frame(height: 140) // Match placeholder height
+                .frame(height: 140)
         }
     }
 }
