@@ -15,11 +15,22 @@ struct ContentView: View {
     @State private var selectedEvent: EventModel?
     @State private var sideMenuState = SideMenuState(isPresented: false, selectedTab: .week)
     @State private var isAIViewPresented = false
+    private var tokenService: TokenService = .init()
+    
 
     var body: some View {
         ZStack {
             calendarStack
-            aiModal
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    AIModal()
+                      .transition(.move(edge: .bottom))
+                      .environmentObject(tokenService)
+                }
+            }
         }
         .ignoresSafeArea(.container, edges: .bottom)
     }
@@ -62,17 +73,7 @@ struct ContentView: View {
         }
     }
 
-    @ViewBuilder
-    private var aiModal: some View {
-      if isAIViewPresented {
-        AIModal(isPresented: $isAIViewPresented)
-          .frame(maxWidth: 350, maxHeight: 350)
-          .transition(.move(edge: .bottom))
-          .animation(.spring(), value: isAIViewPresented)
-          .padding(.bottom, 10)
-      }
-    }
-  }
+}
 
 #Preview {
     ContentView()

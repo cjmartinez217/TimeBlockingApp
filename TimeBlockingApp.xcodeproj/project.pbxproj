@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8575F4732DDB872700A83EF0 /* LiveKitComponents in Frameworks */ = {isa = PBXBuildFile; productRef = 8575F4722DDB872700A83EF0 /* LiveKitComponents */; };
+		8575F4B92DDB8DA100A83EF0 /* .env.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8575F4B82DDB8DA100A83EF0 /* .env.xcconfig */; };
+		8575F4BC2DDB8DEA00A83EF0 /* LiveKitKrispNoiseFilter in Frameworks */ = {isa = PBXBuildFile; productRef = 8575F4BB2DDB8DEA00A83EF0 /* LiveKitKrispNoiseFilter */; };
+		8575F4BE2DDB8F2100A83EF0 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8575F4BD2DDB8F1D00A83EF0 /* ControlBar.swift */; };
+		8575F4C02DDB8F3B00A83EF0 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8575F4BF2DDB8F3B00A83EF0 /* StatusView.swift */; };
+		8575F4C22DDB8FEB00A83EF0 /* TokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8575F4C12DDB8FE800A83EF0 /* TokenService.swift */; };
 		85A5A85F2D6BC33E00EF9D2A /* AIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A5A85E2D6BC33500EF9D2A /* AIView.swift */; };
 		85DA3B2C2DCAE38B00F0DDB5 /* TBSecondayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DA3B2B2DCAE38600F0DDB5 /* TBSecondayButton.swift */; };
 		A63739962D43D33500DCDB61 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63739952D43D33500DCDB61 /* DatePickerView.swift */; };
@@ -46,6 +52,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8575F4B82DDB8DA100A83EF0 /* .env.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = .env.xcconfig; sourceTree = "<group>"; };
+		8575F4BD2DDB8F1D00A83EF0 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
+		8575F4BF2DDB8F3B00A83EF0 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		8575F4C12DDB8FE800A83EF0 /* TokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenService.swift; sourceTree = "<group>"; };
+		8575F4C32DDB942E00A83EF0 /* TimeBlockingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimeBlockingApp.entitlements; sourceTree = "<group>"; };
 		85A5A85E2D6BC33500EF9D2A /* AIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIView.swift; sourceTree = "<group>"; };
 		85DA3B2B2DCAE38600F0DDB5 /* TBSecondayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBSecondayButton.swift; sourceTree = "<group>"; };
 		A63739952D43D33500DCDB61 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
@@ -94,6 +105,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8575F4BC2DDB8DEA00A83EF0 /* LiveKitKrispNoiseFilter in Frameworks */,
+				8575F4732DDB872700A83EF0 /* LiveKitComponents in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +371,10 @@
 		A654D1A12DC56D8F0019439A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8575F4BF2DDB8F3B00A83EF0 /* StatusView.swift */,
 				85A5A85E2D6BC33500EF9D2A /* AIView.swift */,
+				8575F4C12DDB8FE800A83EF0 /* TokenService.swift */,
+				8575F4BD2DDB8F1D00A83EF0 /* ControlBar.swift */,
 				A696C5B22CC2A67400F23E2E /* Components */,
 			);
 			path = Views;
@@ -493,6 +509,8 @@
 		A6C74E512CB965940084FE6A /* TimeBlockingApp */ = {
 			isa = PBXGroup;
 			children = (
+				8575F4C32DDB942E00A83EF0 /* TimeBlockingApp.entitlements */,
+				8575F4B82DDB8DA100A83EF0 /* .env.xcconfig */,
 				A654D1362DC500F50019439A /* App */,
 				A654D13A2DC5011A0019439A /* Resources */,
 				A654D1372DC501030019439A /* Features */,
@@ -567,6 +585,10 @@
 				Base,
 			);
 			mainGroup = A6C74E462CB965940084FE6A;
+			packageReferences = (
+				8575F4712DDB872700A83EF0 /* XCRemoteSwiftPackageReference "components-swift" */,
+				8575F4BA2DDB8DEA00A83EF0 /* XCRemoteSwiftPackageReference "swift-krisp-noise-filter" */,
+			);
 			productRefGroup = A6C74E502CB965940084FE6A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -582,6 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6C74E5A2CB965960084FE6A /* Preview Assets.xcassets in Resources */,
+				8575F4B92DDB8DA100A83EF0 /* .env.xcconfig in Resources */,
 				A6C74E572CB965960084FE6A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -599,6 +622,7 @@
 				A654D3D22DCCEEE80019439A /* TBInfoItem.swift in Sources */,
 				A696C5CA2CD5088900F23E2E /* MonthCalendarView.swift in Sources */,
 				A6535C332D3F03B500EC81B2 /* Constants.swift in Sources */,
+				8575F4C02DDB8F3B00A83EF0 /* StatusView.swift in Sources */,
 				A6F9A6B22D08808C00A61FBD /* MonthGrid.swift in Sources */,
 				A654D3362DCCE8EB0019439A /* TBIcon.swift in Sources */,
 				A6C74E5F2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld in Sources */,
@@ -613,10 +637,12 @@
 				A654D1242DC2E83B0019439A /* ContentView.swift in Sources */,
 				A654D1262DC2E83B0019439A /* EventStore.swift in Sources */,
 				A654D1272DC2E83B0019439A /* EventDetailView.swift in Sources */,
+				8575F4BE2DDB8F2100A83EF0 /* ControlBar.swift in Sources */,
 				A654D1282DC2E83B0019439A /* CalendarHeader.swift in Sources */,
 				A654D1322DC2E83B0019439A /* SampleData.swift in Sources */,
 				A6F9A6AE2CFDE64C00A61FBD /* FeedbackView.swift in Sources */,
 				A6F9A6B62D13110500A61FBD /* TimeUtils.swift in Sources */,
+				8575F4C22DDB8FEB00A83EF0 /* TokenService.swift in Sources */,
 				A6535C232D37EE8000EC81B2 /* CalendarEventModel.swift in Sources */,
 				A696C5CD2CD50B7900F23E2E /* SideMenu.swift in Sources */,
 				A696C5D02CD50E6300F23E2E /* SideMenuUtils.swift in Sources */,
@@ -757,12 +783,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TimeBlockingApp/TimeBlockingApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeBlockingApp/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = C585564R9G;
+				DEVELOPMENT_TEAM = P6LPJ66N4A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimeBlockingApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -775,6 +803,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.christianmartinez.TimeBlockingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -786,12 +818,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TimeBlockingApp/TimeBlockingApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TimeBlockingApp/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = C585564R9G;
+				DEVELOPMENT_TEAM = P6LPJ66N4A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimeBlockingApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -804,6 +838,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.christianmartinez.TimeBlockingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -832,6 +870,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8575F4712DDB872700A83EF0 /* XCRemoteSwiftPackageReference "components-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/livekit/components-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
+		8575F4BA2DDB8DEA00A83EF0 /* XCRemoteSwiftPackageReference "swift-krisp-noise-filter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/livekit/swift-krisp-noise-filter";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8575F4722DDB872700A83EF0 /* LiveKitComponents */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8575F4712DDB872700A83EF0 /* XCRemoteSwiftPackageReference "components-swift" */;
+			productName = LiveKitComponents;
+		};
+		8575F4BB2DDB8DEA00A83EF0 /* LiveKitKrispNoiseFilter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8575F4BA2DDB8DEA00A83EF0 /* XCRemoteSwiftPackageReference "swift-krisp-noise-filter" */;
+			productName = LiveKitKrispNoiseFilter;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		A6C74E5D2CB965960084FE6A /* TimeBlockingApp.xcdatamodeld */ = {

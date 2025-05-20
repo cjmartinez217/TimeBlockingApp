@@ -12,9 +12,6 @@ struct AIButton: View {
     var onTap: () -> Void
 
     var body: some View {
-//        ZStack {
-//            // Only show the button when modal is not presented
-//            if !isAIViewPresented {
                 Button {
                     withAnimation(.spring()) {
                         onTap()
@@ -22,7 +19,7 @@ struct AIButton: View {
                 } label: {
                     ZStack {
                         Circle()
-                            .fill(isDisabled ? Color.gray : Color(red: 0.9, green: 0.9, blue: 0.9))
+                            .fill(isDisabled ? Color.gray.opacity(0.7) : Color(red: 0.9, green: 0.9, blue: 0.9).opacity(0.7))
                             .frame(width: 64, height: 64)
                             .animation(.easeInOut, value: isDisabled)
                         Circle()
@@ -36,16 +33,17 @@ struct AIButton: View {
                                     endPoint: .bottomLeading),
                                 style: StrokeStyle(lineWidth: 8)
                             )
+                            .opacity(isDisabled ? 0.5 : 0.8)
                             .frame(width: 36, height: 36)
                             .animation(.easeInOut, value: isDisabled)
                     }
                 }
                 .disabled(isDisabled)
-//            }
-//        }
     }
 }
 
 #Preview {
-    AIButton(isDisabled: .constant(false), onTap: {})
+    AIButton(isDisabled: .constant(false)) {
+        
+    }
 }
